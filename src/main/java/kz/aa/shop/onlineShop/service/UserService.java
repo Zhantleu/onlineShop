@@ -4,45 +4,34 @@ import kz.aa.shop.onlineShop.model.Role;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.HashSet;
 
 @Service
-public class UserService implements UserDetailsService {
-    @Autowired
+public class UserService {
+
     private UserRepository userRepository;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    private PasswordEncoder encoder;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-
-        return user;
+    public UserService(UserRepository userRepository,
+                       BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public boolean addUser(User user) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDb != null) {
-            return false;
-        }
-
-        user.setRoles(Collections.singleton(Role.USER));
-        user.setPassword(encoder.encode(user.getPassword()));
-
-        userRepository.save(user);
-
-        return true;
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
+
+    public User saveUser(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(true);
+        user.setRoles(new HashSet<>(Collections.singletonList(Role.USER)));
+        return userRepository.save(user);
+    }
+
 }
