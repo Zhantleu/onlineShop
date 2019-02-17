@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.service.UserService;
+import kz.aa.shop.onlineShop.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
@@ -36,7 +36,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
@@ -48,10 +48,11 @@ public class LoginController {
             modelAndView.setViewName("registration");
         } else {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "User has been registered successfully. You will redirect to login page");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
 
+
+            modelAndView.setViewName("redirect:/login");
         }
         return modelAndView;
     }

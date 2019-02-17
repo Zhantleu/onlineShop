@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="UTF-8">
+<head>
+    <div th:replace="parts/header :: header-css"></div>
+    <title>Hello)</title>
+</head>
+<body>
+<div th:replace="parts/header :: header"></div>
+
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+        </tr>
+        </thead>
+        <tbody th:each="user : ${users}">
+        <tr>
+            <td scope="col" th:text="${user.name}"></td>
+            <td scope="col" th:text="${user.lastName}"></td>
+            <td scope="col" th:text="${user.email}"></td>
+            <td scope="col" th:text="${user.password}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <!--<div class="card my-3" th:each="user : ${users}" th:remove="tag">-->
+            <!--<div class="m-2 border border-primary">-->
+                <!--<span th:text="${user.name}"></span><br/>-->
+            <!--</div>-->
+            <!--<div class="card-footer text-muted container border border-primary">-->
+                <!--<div class="row">-->
+                    <!--<p class="font-weight-bold" th:text="${user.email}"></p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="card-3" th:each="user : ${users}" th:remove="tag">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+    <div th:replace="parts/footer :: footer"></div>
+</div>
+
+</body>
+</html>

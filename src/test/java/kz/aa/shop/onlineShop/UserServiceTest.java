@@ -3,6 +3,7 @@ package kz.aa.shop.onlineShop;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.repository.UserRepository;
 import kz.aa.shop.onlineShop.service.UserService;
+import kz.aa.shop.onlineShop.service.impl.UserServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -27,7 +28,7 @@ public class UserServiceTest {
     @Before
     public void setUp() {
         initMocks(this);
-        userServiceUnderTest = new UserService(mockUserRepository,
+        userServiceUnderTest = new UserServiceImpl(mockUserRepository,
                 mockBCryptPasswordEncoder);
         user = User.builder()
                 .id(1)
