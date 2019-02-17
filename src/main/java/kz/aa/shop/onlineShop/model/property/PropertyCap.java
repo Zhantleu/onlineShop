@@ -1,6 +1,7 @@
 package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
+import kz.aa.shop.onlineShop.model.item.Cap;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
@@ -8,10 +9,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -28,4 +26,11 @@ public class PropertyCap extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ColorEnum colorEnum;
+
+    @Enumerated(EnumType.STRING)
+    private SizeEnum sizeEnum;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cap_id")
+    private Cap cap;
 }

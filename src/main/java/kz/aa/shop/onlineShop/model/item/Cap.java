@@ -3,6 +3,7 @@ package kz.aa.shop.onlineShop.model.item;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.property.Gender;
+import kz.aa.shop.onlineShop.model.property.PropertyCap;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -25,9 +26,13 @@ import java.util.Set;
 public class Cap extends BaseEntity {
 
     @ElementCollection(targetClass = Gender.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "item_gender", joinColumns = @JoinColumn(name = "item_id"))
+    @CollectionTable(name = "item_gender", joinColumns = @JoinColumn(name = "cap_id"))
     @Enumerated(EnumType.STRING)
     private Set<Gender> genders;
+
+    @OneToOne(mappedBy = "cap", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private PropertyCap propertyCap;
 
     private String url;
 

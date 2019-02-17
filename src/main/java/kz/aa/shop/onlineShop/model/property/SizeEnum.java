@@ -1,4 +1,5 @@
 package kz.aa.shop.onlineShop.model.property;
 
-public class SizeEnum {
+public enum SizeEnum {
+    L, M, S, XL, XS;
 }
