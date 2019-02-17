@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <title>KAZ SAUDA</title>
@@ -16,54 +16,7 @@
 <body>
 
 
-<!-- navigation -->
-<nav class="nav-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <a href="#" class="logo">kazsauda</a>
-            </div>
-            <div class="col-md-9">
-                <div class="navigation">
-                    <a href="#" class="navigation__link">Colection</a>
-                    <a href="#" class="navigation__link">Zhanalyq</a>
-                    <a href="#" class="navigation__link">Ylttiq kyimder</a>
-                    <a href="#" class="navigation__link">Erler</a>
-                    <a href="#" class="navigation__link">Ayelder</a>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="cart">
-                    <img src="/images/icons/1-1.svg" alt="" height="28px">
-                    <div class="cart__number">3</div>
-                </div>
-            </div>
-            <div class="col-md-1">
-                <div class="contacts">
-                    <i class="fas fa-phone"></i>
-                    <div class="num">+77086892990</div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</nav>
-
-
-<!-- header	 -->
-<header class="header">
-    <div class="container">
-        <div class="header__bg"></div>
-        <div class="header__content">
-            <div class="header__title">Ulttyq kyimder qol zhetymdi bagada</div>
-            <div class="header__description">Демо описание пример: текст какой-то еще больше
-                текста something ewe ewe ewe text
-
-            </div>
-            <a href="#" class="header__button">Перейти</a>
-        </div>
-    </div>
-</header>
+<div th:replace="parts/header :: header"></div>
 
 
 <!-- products  -->

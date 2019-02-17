@@ -116,7 +116,7 @@ body {
 		 	top: 0;
 		 	overflow: hidden;
 		 	background-color: #ffffff;
-		 	background-image: url(../img/girl.jpg);
+		 	background-image: url(/images/girl.jpg);
 		 	background-repeat: no-repeat;
 		 	background-position: left top;
 		 	z-index: -1;
