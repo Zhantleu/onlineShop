@@ -1,0 +1,213 @@
+/* 
+font-family: 'Muli', sans-serif;
+font-family: 'Lora', serif;
+*/
+*{
+	zoom: 0.98;
+}
+body {
+	font-family: 'Muli', sans-serif;
+}
+.block-example {
+	background-color: #84F775;
+	padding: 15px;
+}
+
+/* 
+       NAViGATION 
+       */
+
+       .logo{
+       	font-size: 23px;
+       	color: #041122;
+       	font-weight: 800;
+       	text-transform: uppercase;
+       	text-decoration: none;
+       }
+
+       .logo:hover{
+       	font-size: 23px;
+       	color: #f72464;
+       	font-weight: 800;
+       	text-transform: uppercase;
+       	text-decoration: none;
+       }
+
+       .nav-wrapper{
+       	padding-top: 20px;
+       	padding-bottom: 20px;
+       }
+
+       .navigation{
+       	font-size: 15px;
+       	font-weight: 600;
+       	padding-top: 5px
+       }
+
+       .navigation__link{
+       	color: #52575D;
+       	text-decoration: none;
+       	margin-right: 30px;
+       }
+
+       .navigation__link:hover, .navigation__link:active, .navigation__link:focus{
+       	color: #f72464;
+       	text-decoration: none;
+       	margin-right: 30px;
+       }
+       .contacts{
+       	width: 10px;
+       }
+       .contacts .num{
+       	top: 0px;
+       	left: 35px;
+       	position: absolute;
+       }
+
+       .contacts:hover, .contacts:active, .contacts:focus{
+       	color: #f72464;
+       	text-decoration: none;
+       }
+       .cart{
+       	padding-top: 5px;
+       	color: #52575D;
+       	position: relative;
+       }
+       .cart__number{
+       	width: 19px;
+       	height: 19px;
+       	background-color: #f72464;
+       	border-radius: 10px;
+       	color: #FFF;
+       	font-size: 12px;
+       	font-weight: 600; 
+       	text-align: center;
+       	padding-top: 1px;
+       	position: absolute;
+       	left: 7px;
+       	top: 18px;
+       }
+
+/*
+		 HEADER
+		 */
+
+		 .header {
+		 	height: 700px;
+		 	overflow: hidden;
+		 	position: relative;
+		 	background-color: #fff;
+		 	display: flex;
+		 	align-items: center;
+		 	z-index: 1;
+		 }
+		 .header .container{
+		 	position: relative;
+		 	height: 100%;
+		 	display: flex;
+		 	align-items: center;
+		 }
+
+		 .header__bg{
+		 	position: absolute;
+		 	height: 100%;
+		 	width: 100%;
+		 	left: 40%;
+		 	top: 0;
+		 	overflow: hidden;
+		 	background-color: #ffffff;
+		 	background-image: url(../img/girl.jpg);
+		 	background-repeat: no-repeat;
+		 	background-position: left top;
+		 	z-index: -1;
+
+		 }
+		 .header__content{
+		 	width: 750px;
+		 	padding-top: 50px;
+		 }
+		 .header__title{
+		 	color: #000000;
+		 	font-size: 80px;
+		 	font-family: 'Lora', serif;
+		 	line-height: 1.5;
+		 	margin-bottom: 25px;
+		 }
+		 .header__description{
+		 	color: #52575d;
+		 	font-size: 18px;
+		 	font-weight: 300;
+		 	margin-bottom: 35px;
+		 	max-width: 650px;
+		 }
+		 .header__button{
+		 	background-color: #F72464;
+		 	font-style: 20px;
+		 	color: #fff;
+		 	padding-left: 45px;
+		 	padding-right: 45px;
+		 	padding-top: 10px;
+		 	height: 40px;
+		 	border-radius: 3px;
+		 	display: inline-block;
+		 	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.4);
+		 	transition: all 0.2s ease-in;
+		 }
+		 .header__button:hover{
+		 	background-color: #da0f4d;
+		 	text-decoration: none;
+		 	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.6);
+		 	color: #FFF;
+		 }
+
+/* 
+	CONTENT 
+	*/
+
+	.section {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+
+	.title {
+		font-size: 35px;
+		color: #222;
+		font-family: 'Lora', serif;
+		margin: 0;
+		margin-bottom: 5px;
+		text-align: center;
+		font-weight: 400;
+	}
+	.subtitle {
+		font-style: 12px;
+		color: #919191;
+		font-weight: 300;
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.card {
+		font-family: 'Lora', serif;
+		text-align: center;
+	}
+
+	.card__image {
+		margin-bottom: 20px;
+	}
+	.card__title {
+		color: #222;
+		font-size: 18px;
+		margin-bottom: 10px;
+		font-weight: 600;
+	}
+	.card__price {
+		font-size: 13px;
+		color: #da0f4d;
+		font-weight: 600;
+	}
+
+	.card__price span {
+		color: #919191;
+		text-decoration: line-through;
+		margin-right: 5px;
+	}

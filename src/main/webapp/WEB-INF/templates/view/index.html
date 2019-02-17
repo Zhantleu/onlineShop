@@ -1,39 +1,95 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
+<html>
 <head>
-    <title>Admin Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <title>KAZ SAUDA</title>
+    <!-- стили -->
+
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
-
 <body>
-<div class="container">
 
-    <form th:action="@{/logout}" method="get">
-        <button class="btn btn-md btn-danger btn-block" type="Submit">Logout
-        </button>
-    </form>
 
-    <div class="panel-group" style="margin-top:40px">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <span th:utext="${userName}"></span>
+<!-- navigation -->
+<nav class="nav-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="#" class="logo">kazsauda</a>
             </div>
-            <div class="panel-body">
-                <img th:src="@{/images/beer.jpg}" class="img-responsive center-block" width="400" height="400"
-                     alt="Beer"/>
+            <div class="col-md-9">
+                <div class="navigation">
+                    <a href="#" class="navigation__link">Colection</a>
+                    <a href="#" class="navigation__link">Zhanalyq</a>
+                    <a href="#" class="navigation__link">Ylttiq kyimder</a>
+                    <a href="#" class="navigation__link">Erler</a>
+                    <a href="#" class="navigation__link">Ayelder</a>
+                </div>
             </div>
-            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            <div class="col-md-1">
+                <div class="cart">
+                    <img src="/images/icons/1-1.svg" alt="" height="28px">
+                    <div class="cart__number">3</div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="contacts">
+                    <i class="fas fa-phone"></i>
+                    <div class="num">+77086892990</div>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div sec:authorize="hasAuthority('ADMIN')" > Has Authority ADMIN <br/>
-        <a class="btn btn-primary" th:href="@{/usersList}" role="button" th:method="post">For admins</a>
+</nav>
+
+
+<!-- header	 -->
+<header class="header">
+    <div class="container">
+        <div class="header__bg"></div>
+        <div class="header__content">
+            <div class="header__title">Ulttyq kyimder qol zhetymdi bagada</div>
+            <div class="header__description">Демо описание пример: текст какой-то еще больше
+                текста something ewe ewe ewe text
+
+            </div>
+            <a href="#" class="header__button">Перейти</a>
+        </div>
     </div>
-    <div sec:authorize="hasAuthority('USER')" > Has Authority USER </div>
+</header>
+
+
+<!-- products  -->
+<div class="section">
+    <div class="container">
+        <h2 class="title">Zhana kelim</h2></div>
+    <div class="subtitle">Decription</div>
 </div>
+</div>
+
+<div class="card">
+    <div class="card__image">
+        <img src="/images/1.png" alt="product1">
+    </div>
+    <div class="card__title">
+        Demo 1
+    </div>
+    <div class="card__price">
+        <span>$100.00</span>
+        $90.00
+    </div>
+
+</div>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </body>
 </html>
