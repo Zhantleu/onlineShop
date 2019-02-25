@@ -1,48 +1,420 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.springframework.org/schema/security">
 <head>
-    <meta charset="utf-8">
-    <title>KAZ SAUDA</title>
-    <!-- стили -->
-
-    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<title>KAZ SAUDA</title>
+	<div th:replace="parts/header :: header-css"></div>
 </head>
 <body>
 
 
 <div th:replace="parts/header :: header"></div>
 
+	<!-- products  -->
+	<div class="section">
+		<div class="container">
+			<h2 class="title">Zhana kelim</h2>
+			<div class="subtitle">Decription</div>
+			<!-- row -->
+			<div class="row">
+				<!-- FIRTS LINE -->
+				<!-- first col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/1.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div><!-- /first col -->
+				<!-- second col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%202.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /second col -->
+				<!-- third col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%203.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /third col -->
+				<!-- fourth col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%204.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /fourth col -->
 
-<!-- products  -->
-<div class="section">
-    <div class="container">
-        <h2 class="title">Zhana kelim</h2></div>
-    <div class="subtitle">Decription</div>
-</div>
-</div>
+				<!-- /FIRTS LINE -->
+				
+				<!-- SECOND LINE -->	
+				
+				<!-- first col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%201%20copy.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div><!-- /first col -->
+				<!-- second col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%202%20copy.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /second col -->
+				<!-- third col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%203%20copy.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /third col -->
+				<!-- fourth col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image hovered">
+							<img src="../../../images/products/1.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							<span>$100.00</span>
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /fourth col -->
 
-<div class="card">
-    <div class="card__image">
-        <img src="/images/1.png" alt="product1">
-    </div>
-    <div class="card__title">
-        Demo 1
-    </div>
-    <div class="card__price">
-        <span>$100.00</span>
-        $90.00
-    </div>
+				<!-- /SECOND LINE -->
+			</div>
+			<!-- /row -->
 
-</div>
+			<a href="#" class="button-outline">Baryn koru</a>
 
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		</div>
+	</div>
+	<!-- /products -->
+
+	<!-- block-avd -->
+	<div class="adv-wrapper	adv-wrapper--bg-1">
+		<div class="container adv-content-center">
+			<div class="adv__title">50% Zhelindik!</div>
+			<a href="#" class="adv__button">Satip alu!</a>
+		</div>
+	</div>
+	<!-- /block-avd -->
+	
+	<!-- products  -->
+	<div class="section">
+		<div class="container">
+			<h2 class="title">Tanymal onimder</h2>
+			<div class="subtitle">bizdin en tanimal onimderimiz</div>
+			<!-- row -->
+			<div class="row">
+				<!-- FIRTS LINE -->
+				<!-- first col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/1.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 1
+						</div>
+						<div class="card__price">
+							$54.00
+						</div>
+					</div>
+				</div><!-- /first col -->
+				<!-- second col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%202.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 2
+						</div>
+						<div class="card__price">
+
+							$90.00
+						</div>
+					</div>
+				</div>
+				<!-- /second col -->
+				<!-- third col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%203.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 3
+						</div>
+						<div class="card__price">
+							
+							$150.00
+						</div>
+					</div>
+				</div>
+				<!-- /third col -->
+				<!-- fourth col -->
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card__image">
+							<img src="../../../images/products/Product%204.png" alt="product1">
+							<div class="card__hover">
+								<a href="#" class="card__button">Satip alu</a>
+								<a href="#" class="card__button">Karau</a>
+							</div>
+						</div>
+						<div class="card__title">
+							Demo 4
+						</div>
+						<div class="card__price">
+							
+							$120.00
+						</div>
+					</div>
+				</div>
+				<!-- /fourth col -->
+				<!-- /FIRTS LINE -->
+
+			</div>
+			<!-- /row -->
+
+			<a href="#" class="button-outline">Baryn koru</a>
+
+
+		</div>
+	</div>
+	<!-- /products -->
+
+	<!-- block-avd -->
+	<div class="adv-wrapper	adv-wrapper--bg-2">
+		<div class="container adv-content-center">
+			<img src="../../../images/brands/brand1.png" alt="Brand">
+			<img src="../../../images/brands/brand2.png" alt="Brand2">
+			<img src="../../../images/brands/brand3.png" alt="Brand3">
+			<img src="../../../images/brands/brand4.png" alt="Brand4">
+			<img src="../../../images/brands/brand5.png" alt="Brand5">
+			<img src="../../../images/brands/brand6.png" alt="Brand6">
+
+		</div>
+	</div>
+	<!-- /block-avd -->
+
+	<!-- БЛОГ -->
+	<div class="container section">
+		<h2 class="title">Blog</h2>
+		<div class="subtitle">Subtitle description</div>
+		
+		<div class="row">
+			<!-- post 1 -->
+			<div class="col-md-6 blog">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="../../../images/blog/blog1.png" alt="Blogpost">
+					</div>
+					<div class="col-md-8">
+						<div class="blog__title">Lorem Dolor Amet Consectetur Dipisicing </div>
+						<div class="blog__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</div>
+						<a href="#" class="blog__read-more">Read more</a>
+					</div>
+				</div>
+			</div>
+			<!-- /post1 -->
+			<!-- post 2 -->
+			<div class="col-md-6 blog">
+				<div class="row bottom--padding">
+					<div class="col-md-4">
+						<img src="../../../images/blog/blog2.png" alt="Blogpost">
+					</div>
+					<div class="col-md-8">
+						<div class="blog__title">Lorem Dolor Amet Consectetur Dipisicing </div>
+						<div class="blog__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</div>
+						<a href="#" class="blog__read-more">Read more</a>
+					</div>
+				</div>
+			</div>
+			<!-- /post2 -->
+			<!-- post 3 -->
+			<div class="col-md-6 blog">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="../../../images/blog/blog3.png" alt="Blogpost">
+					</div>
+					<div class="col-md-8">
+						<div class="blog__title">Lorem Dolor Amet Consectetur Dipisicing </div>
+						<div class="blog__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</div>
+						<a href="#" class="blog__read-more">Read more</a>
+					</div>
+				</div>
+			</div>
+			<!-- /post3 -->
+			<!-- post 4 -->
+			<div class="col-md-6 blog">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="../../../images/blog/blog4.png" alt="Blogpost">
+					</div>
+					<div class="col-md-8">
+						<div class="blog__title">Lorem Dolor Amet Consectetur Dipisicing </div>
+						<div class="blog__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</div>
+						<a href="#" class="blog__read-more">Read more</a>
+					</div>
+				</div>
+			</div>
+			<!-- /post4 -->
+		</div>
+<a href="#" class="button-outline marg__top-bot">Read all posts</a>
+		<!-- /БЛОГ -->
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<h2 class="title">Bizge kosiliniz</h2>
+				<div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod est ut ipsa similique accusantium eveniet quibusdam dicta itaque, aspernatur a eligendi, cum ratione nostrum aut? Temporibus quaerat sint, ipsa enim.</div>
+			</div>
+		</div>
+	</div>
+
+<form action="" class="subcribe">
+	<input type="text" class="subcribe__input" placeholder="Email address">
+	<input type="submit" class="subcribe__button" value="Qosily">
+</form>
+
+
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__nav">			
+				<a href="#" class="footer-nav__link">MENU 1</a>
+				<a href="#" class="footer-nav__link">BIZGE ZHAZU</a>
+				<a href="#" class="footer-nav__link">KOMEK</a>
+
+			</div>
+		</div>
+		<div class="footer__socials">
+			<a href="#"><i class="fab fa-facebook-f"></i></a>
+			<a href="#"><i class="fab fa-instagram"></i></a>
+			<a href="#"><i class="fab fa-vk"></i></a>
+			<a href="#"><i class="fab fa-whatsapp"></i></a>
+		</div>
+		<div class="footer__copyright">Copyright © 000	 . All Rights Reserved.</div>
+	</footer>
+
+
+	<link rel="stylesheet" 
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
+	crossorigin="anonymous">
 </body>
 </html>

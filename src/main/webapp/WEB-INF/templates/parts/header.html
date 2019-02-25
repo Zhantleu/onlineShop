@@ -1,12 +1,16 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <div th:fragment="header-css">
+        <!-- стили -->
+
+        <link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap-grid.css">
+        <link rel="stylesheet" href="../../../css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Muli:300,400,600,700,800&amp;subset=cyrillic"
+              rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    </div>
 </head>
 <body>
 <div th:fragment="header">
@@ -24,19 +28,20 @@
                         <a href="#" class="navigation__link">Ylttiq kyimder</a>
                         <a href="#" class="navigation__link">Erler</a>
                         <a href="#" class="navigation__link">Ayelder</a>
-                        <a th:href="@{/admin/main}" class="navigation__link" sec:authorize="hasAuthority('ADMIN')">Для Администратора</a>
+                        <a th:href="@{/admin/page}" class="navigation__link" sec:authorize="hasAuthority('ADMIN')">Для Администратора</a>
                     </div>
                 </div>
                 <div class="col-md-1">
                     <div class="cart">
                         <img src="/images/icons/1-1.svg" alt="" height="28px">
                         <div class="cart__number">3</div>
-                    </div>
-                    <div sec:authorize="!isAuthenticated()">
-                        <li><a th:href="@{/login}">Авторизоваться</a></li>
-                    </div>
-                    <div sec:authorize="isAuthenticated()">
-                        <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a></li>
+                        <div sec:authorize="!isAuthenticated()">
+                            <li><a th:href="@{/login}">Авторизоваться</a></li>
+                        </div>
+                        <div sec:authorize="isAuthenticated()">
+                            <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
+                            </li>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -66,5 +71,41 @@
         </div>
     </header>
 </div>
+    <div th:fragment="header-for-admin-panel">
+        <nav class="nav-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="#" class="logo">kazsauda</a>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="navigation">
+                            <a href="#" class="navigation__link">Colection</a>
+                            <a href="#" class="navigation__link">Zhanalyq</a>
+                            <a href="#" class="navigation__link">Ylttiq kyimder</a>
+                            <a href="#" class="navigation__link">Erler</a>
+                            <a href="#" class="navigation__link">Ayelder</a>
+                            <a th:href="@{/admin/page}" class="navigation__link" sec:authorize="hasAuthority('ADMIN')">Для Администратора</a>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="cart">
+                            <img src="/images/icons/1-1.svg" alt="" height="28px">
+                            <div class="cart__number">3</div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="contacts">
+                            <i class="fas fa-phone"></i>
+                            <div class="num">+77086892990</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
 </body>
 </html>

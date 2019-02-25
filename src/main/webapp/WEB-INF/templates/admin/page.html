@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin page</title>
+    <script src="../../../js/admin_page.js"></script>
+    <link rel="stylesheet" href="../../../css/main_admin.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <div th:replace="parts/header :: header-css"></div>
 </head>
 <body>
+<div th:replace="parts/header :: header-for-admin-panel"></div>
 
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'ulttikKyimder');">Ұлттық киімдер</button>
+    <button class="tablinks" onclick="openTab(event, 'ulltikAspaptar');">Ұлттық аспаптар</button>
+    <button class="tablinks" onclick="openTab(event,'ultiikAchekey-Buimdar')">Ұлттық әшекей- бұйымдар</button>
+</div>
+
+<!--Will be all which belong to ulttikKyimder-->
+<div id="ulttikKyimder" class="tabcontent">
+    <h3>Ұлттық киімдер</h3>
+</div>
+
+<div id="ulltikAspaptar" class="tabcontent">
+    <h3>Ұлттық аспаптар</h3>
+</div>
+
+<div id="ultiikAchekey-Buimdar" class="tabcontent">
+    <p class="">Ұлттық әшекей- бұйымдар</p>
+    <button type="button" id="cap-button-out" onclick="openBox('cap-button-out',this)" class="btn btn-outline-primary">
+        Сақина
+    </button>
+    <div id="caps" style="display: none">
+        <h1>Форма для создания шапок</h1>
+        <form action="#" th:action="@{/admin/createItem}" method="post">
+            <p>Название: <label>
+                <input type="text" th:field="${cap.name}"/>
+            </label></p>
+            <p>Цена: <label>
+                <input type="text" th:field="${propertyCap.price}"/>
+            </label></p>
+            <p>Тип: <label>
+                <input type="radio" name="gender"
+                       th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"
+                       th:value="${gender}"
+                       th:text="${gender.label}">
+            </label></p>
+            <p>Цвет: <label>
+                <input type="radio" name="color"
+                       th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"
+                       th:value="${color}"
+                       th:text="${color.label}">
+            </label></p>
+            <p>Размер: <label>
+                <input type="checkbox" name="size"
+                       th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"
+                       th:text="${size}"/>
+            </label></p>
+            <p>Материал: <label>
+                <input type="checkbox" name="material"
+                       th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"
+                       th:value="${material}" th:text="${material.label}"/>
+            </label></p>
+            <p><input type="submit" value="Создать"/></p>
+        </form>
+    </div>
+</div>
 </body>
 </html>

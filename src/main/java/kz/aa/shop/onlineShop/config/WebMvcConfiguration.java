@@ -35,11 +35,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         return new BCryptPasswordEncoder();
     }
 
-    /* **************************************************************** */
-    /*  THYMELEAF-SPECIFIC ARTIFACTS                                    */
-    /*  TemplateResolver <- TemplateEngine <- ViewResolver              */
-    /* **************************************************************** */
-
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
@@ -56,7 +51,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Bean
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setEnableSpringELCompiler(true); // Compiled SpringEL should speed up executions
+        templateEngine.setEnableSpringELCompiler(true);
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.addDialect(new SpringSecurityDialect());
         return templateEngine;
