@@ -10,6 +10,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -27,8 +28,10 @@ public class PropertyCap extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ColorEnum colorEnum;
 
+    @ElementCollection(targetClass = Gender.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "item_size", joinColumns = @JoinColumn(name = "cap_property_id"))
     @Enumerated(EnumType.STRING)
-    private SizeEnum sizeEnum;
+    private Set<SizeEnum> sizeEnum;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cap_id")

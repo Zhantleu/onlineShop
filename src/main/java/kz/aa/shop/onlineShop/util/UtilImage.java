@@ -10,7 +10,8 @@ import java.util.UUID;
 @Service
 public class UtilImage {
 
-    public void saveFile(MultipartFile file, String uploadPath) throws IOException {
+    public String saveFile(MultipartFile file, String uploadPath) throws IOException {
+        String resultFilename = null;
         if (file != null && !file.getOriginalFilename().isEmpty()) {
             File uploadDir = new File(uploadPath);
 
@@ -19,9 +20,11 @@ public class UtilImage {
             }
 
             String uuidFile = UUID.randomUUID().toString();
-            String resultFilename = uuidFile + "." + file.getOriginalFilename();
+            resultFilename = uuidFile + "." + file.getOriginalFilename();
 
             file.transferTo(new File(uploadPath + "/" + resultFilename));
         }
+
+        return resultFilename;
     }
 }

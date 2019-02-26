@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Set;
 
 @Controller
@@ -51,7 +52,7 @@ public class AdminController {
         return "admin/page";
     }
 
-    @RequestMapping(value = "/admin/createItem", method = RequestMethod.POST, headers = "content-type=multipart/*")
+    @RequestMapping(value = "/admin/createCap", method = RequestMethod.POST, headers = "content-type=multipart/*")
     public String createItem(@ModelAttribute("cap") Cap cap,
                              @ModelAttribute("propertyCap") PropertyCap propertyCap,
                              @ModelAttribute("color") ColorEnum colorEnum,
@@ -61,17 +62,17 @@ public class AdminController {
                              @RequestParam("file") MultipartFile file
     ) throws IOException {
 
-//        cap.setGenders(Collections.singleton(gender));
-//        capService.saveOrUpdate(cap);
-//
-//        propertyCap.setCap(cap);
-//        propertyCap.setColorEnum(colorEnum);
-//        propertyCap.setMaterialEnum(materialEnum);
-//        propertyCap.setSizeEnum(sizeEnum);
-//
-//        propertyCapService.saveOrUpdate(propertyCap);
+        cap.setGenders(Collections.singleton(gender));
+        cap.setUrl(utilImage.saveFile(file,uploadPath));
+        capService.saveOrUpdate(cap);
 
-        utilImage.saveFile(file,uploadPath);
+        propertyCap.setCap(cap);
+        propertyCap.setColorEnum(colorEnum);
+        propertyCap.setMaterialEnum(materialEnum);
+        propertyCap.setSizeEnum(sizeEnum);
+
+        propertyCapService.saveOrUpdate(propertyCap);
+
         return "admin/page";
     }
 }
