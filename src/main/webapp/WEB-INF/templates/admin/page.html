@@ -31,115 +31,155 @@
 </div>
 
 <!--<div id="ultiikAchekey-Buimdar" class="tabcontent">-->
-    <!--<p class="">Ұлттық әшекей- бұйымдар</p>-->
-    <!--<button type="button" id="cap-button-out" onclick="openBox('cap-button-out',this)" class="btn btn-outline-primary">-->
-        <!--Сақина-->
-    <!--</button>-->
-    <!--<div id="caps" style="display: none">-->
-        <!--<h1>Форма для создания шапок</h1>-->
-        <!--<form action="#" th:action="@{/admin/createItem}" method="post">-->
-            <!--<p>Название: <label>-->
-                <!--<input type="text" th:field="${cap.name}"/>-->
-            <!--</label></p>-->
-            <!--<p>Цена: <label>-->
-                <!--<input type="text" th:field="${propertyCap.price}"/>-->
-            <!--</label></p>-->
-            <!--<p>Тип: <label>-->
-                <!--<input type="radio" name="gender"-->
-                       <!--th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"-->
-                       <!--th:value="${gender}"-->
-                       <!--th:text="${gender.label}">-->
-            <!--</label></p>-->
-            <!--<p>Цвет: <label>-->
-                <!--<input type="radio" name="color"-->
-                       <!--th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"-->
-                       <!--th:value="${color}"-->
-                       <!--th:text="${color.label}">-->
-            <!--</label></p>-->
-            <!--<p>Размер: <label>-->
-                <!--<input type="checkbox" name="size"-->
-                       <!--th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"-->
-                       <!--th:text="${size}"/>-->
-            <!--</label></p>-->
-            <!--<p>Материал: <label>-->
-                <!--<input type="checkbox" name="material"-->
-                       <!--th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"-->
-                       <!--th:value="${material}" th:text="${material.label}"/>-->
-            <!--</label></p>-->
-            <!--<p><input type="submit" value="Создать"/></p>-->
-        <!--</form>-->
-    <!--</div>-->
+<!--<p class="">Ұлттық әшекей- бұйымдар</p>-->
+<!--<button type="button" id="cap-button-out" onclick="openBox('cap-button-out',this)" class="btn btn-outline-primary">-->
+<!--Сақина-->
+<!--</button>-->
+<!--<div id="caps" style="display: none">-->
+<!--<h1>Форма для создания шапок</h1>-->
+<!--<form action="#" th:action="@{/admin/createItem}" method="post">-->
+<!--<p>Название: <label>-->
+<!--<input type="text" th:field="${cap.name}"/>-->
+<!--</label></p>-->
+<!--<p>Цена: <label>-->
+<!--<input type="text" th:field="${propertyCap.price}"/>-->
+<!--</label></p>-->
+<!--<p>Тип: <label>-->
+<!--<input type="radio" name="gender"-->
+<!--th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"-->
+<!--th:value="${gender}"-->
+<!--th:text="${gender.label}">-->
+<!--</label></p>-->
+<!--<p>Цвет: <label>-->
+<!--<input type="radio" name="color"-->
+<!--th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"-->
+<!--th:value="${color}"-->
+<!--th:text="${color.label}">-->
+<!--</label></p>-->
+<!--<p>Размер: <label>-->
+<!--<input type="checkbox" name="size"-->
+<!--th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"-->
+<!--th:text="${size}"/>-->
+<!--</label></p>-->
+<!--<p>Материал: <label>-->
+<!--<input type="checkbox" name="material"-->
+<!--th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"-->
+<!--th:value="${material}" th:text="${material.label}"/>-->
+<!--</label></p>-->
+<!--<p><input type="submit" value="Создать"/></p>-->
+<!--</form>-->
 <!--</div>-->
+<!--</div>-->
+<div class="container">
+    <form action="#" th:action="@{/admin/createItem}" method="post" enctype="multipart/form-data">
+        <p>Название: <label>
+            <input type="text" th:field="${cap.name}"/>
+        </label></p>
+        <p>Цена: <label>
+            <input type="text" th:field="${propertyCap.price}"/>
+        </label></p>
+        <p>Тип: <label>
+            <input type="radio" name="gender"
+                   th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"
+                   th:value="${gender}"
+                   th:text="${gender.label}">
+        </label></p>
+        <p>Цвет: <label>
+            <input type="radio" name="color"
+                   th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"
+                   th:value="${color}"
+                   th:text="${color.label}">
+        </label></p>
+        <p>Размер: <label>
+            <input type="checkbox" name="size"
+                   th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"
+                   th:text="${size}"/>
+        </label></p>
+        <p>Материал: <label>
+            <input type="checkbox" name="material"
+                   th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"
+                   th:value="${material}" th:text="${material.label}"/>
+        </label></p>
 
-<form action="#" th:action="@{/admin/createItem}" method="post" enctype="multipart/form-data">
-    <p>Название: <label>
-        <input type="text" th:field="${cap.name}"/>
-    </label></p>
-    <p>Цена: <label>
-        <input type="text" th:field="${propertyCap.price}"/>
-    </label></p>
-    <p>Тип: <label>
-        <input type="radio" name="gender"
-               th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"
-               th:value="${gender}"
-               th:text="${gender.label}">
-    </label></p>
-    <p>Цвет: <label>
-        <input type="radio" name="color"
-               th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"
-               th:value="${color}"
-               th:text="${color.label}">
-    </label></p>
-    <p>Размер: <label>
-        <input type="checkbox" name="size"
-               th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"
-               th:text="${size}"/>
-    </label></p>
-    <p>Материал: <label>
-        <input type="checkbox" name="material"
-               th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"
-               th:value="${material}" th:text="${material.label}"/>
-    </label></p>
-    <div class="form-group">
-        <div class="custom-file">
-            <input type="file" name="file" id="customFile">
-            <label class="custom-file-label" for="customFile">Choose file</label>
-        </div>
-    </div>
-    <p><input type="submit" value="Создать"/></p>
-</form>
-
-<section id="tabs">
-    <div class="container">
-        <h6 class="section-title h1">Tabs</h6>
-        <div class="row">
-            <div class="col-xs-12 ">
-                <nav>
-                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-                        <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">About</a>
-                    </div>
-                </nav>
-                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                    </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                    </div>
-                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                        Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
-                    </div>
-                </div>
-
+        <div class="file-field">
+            <div class="btn btn-primary btn-sm float-left">
+                <span>Выберите изображение</span>
+                <input type="file" name="file" id="customFile">
             </div>
         </div>
-    </div>
-</section>
+        <p><input type="submit" value="Создать"/></p>
+    </form>
+
+    <section id="tabs">
+        <div class="container">
+            <h6 class="section-title h1">Tabs</h6>
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+                               role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                               role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+                               role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+                            <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about"
+                               role="tab"
+                               aria-controls="nav-about" aria-selected="false">About</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
+                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
+                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
+                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
+                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
+                            non
+                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
+                            occaecat
+                            ex.
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
+                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
+                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
+                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
+                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
+                            non
+                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
+                            occaecat
+                            ex.
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
+                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
+                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
+                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
+                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
+                            non
+                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
+                            occaecat
+                            ex.
+                        </div>
+                        <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
+                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
+                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
+                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
+                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
+                            non
+                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
+                            occaecat
+                            ex.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 </body>
 </html>

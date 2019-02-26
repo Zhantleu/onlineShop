@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Set;
 
@@ -25,26 +24,28 @@ import java.util.Set;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
 
-    @Autowired
-    private CapServiceImpl capService;
-    @Autowired
-    private PropertyCapServiceImpl propertyCapService;
-    @Autowired
-    private UtilImage utilImage;
-    @Autowired
-    private ApplicationContext applicationContext;
+    private final CapServiceImpl capService;
+    private final PropertyCapServiceImpl propertyCapService;
+    private final UtilImage utilImage;
+    private final ApplicationContext applicationContext;
 
     private String uploadPath;
+
+    @Autowired
+    public AdminController(CapServiceImpl capService, PropertyCapServiceImpl propertyCapService, UtilImage utilImage, ApplicationContext applicationContext) throws IOException {
+        this.capService = capService;
+        this.propertyCapService = propertyCapService;
+        this.utilImage = utilImage;
+        this.applicationContext = applicationContext;
+
+        Resource resource = applicationContext.getResource("img_src");
+        uploadPath = resource.getFile().getAbsolutePath();
+    }
 
     @RequestMapping(value = "/admin/page", method = RequestMethod.GET)
     public String mainForAdmin(Model model,
                                @ModelAttribute("cap") Cap cap,
                                @ModelAttribute("propertyCap") PropertyCap propertyCap) throws IOException {
-
-
-        Resource resource = applicationContext.getResource("easdasd");
-        uploadPath = resource.getFile().getAbsolutePath();
-        System.out.println(uploadPath);
 
 
         return "admin/page";
