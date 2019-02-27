@@ -43,6 +43,7 @@ public class AdminController {
         uploadPath = resource.getFile().getAbsolutePath();
     }
 
+
     @RequestMapping(value = "/admin/page", method = RequestMethod.GET)
     public String mainForAdmin(Model model,
                                @ModelAttribute("cap") Cap cap,
