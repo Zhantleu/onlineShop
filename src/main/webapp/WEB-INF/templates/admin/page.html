@@ -31,34 +31,44 @@
 </div>
 
 <div class="container-fluid">
-    <form action="#" th:action="@{/admin/createCap}" method="post" enctype="multipart/form-data">
+    <form action="#" th:action="@{/admin/createCap}" method="post" enctype="multipart/form-data" th:object="${cap}">
         <p>Название: <label>
-            <input type="text" th:field="${cap.name}"/>
+            <input type="text" th:field="*{name}"/>
+            <span th:errors="*{name}" class="error"></span>
         </label></p>
         <p>Цена: <label>
-            <input type="text" th:field="${propertyCap.price}"/>
+            <input type="text" th:field="*{propertyCap.price}"/>
         </label></p>
         <p>Тип: <label>
-            <input type="radio" name="gender"
-                   th:each="gender : ${T(kz.aa.shop.onlineShop.model.property.Gender).values()}"
-                   th:value="${gender}"
-                   th:text="${gender.label}">
+            <select th:field="*{propertyCap.gender}">
+                <option th:each="gender : ${genderTypes}"
+                        th:value="${gender}"
+                        th:text="${gender.label}">
+                </option>
+            </select>
         </label></p>
         <p>Цвет: <label>
-            <input type="radio" name="color"
-                   th:each="color : ${T(kz.aa.shop.onlineShop.model.property.ColorEnum).values()}"
-                   th:value="${color}"
-                   th:text="${color.label}">
+            <select th:field="*{propertyCap.colorEnum}">
+                <option th:each="color : ${colorEnum}"
+                        th:value="${color}"
+                        th:text="${color.label}">
+            </select>
         </label></p>
         <p>Размер: <label>
-            <input type="checkbox" name="size"
-                   th:each="size : ${T(kz.aa.shop.onlineShop.model.property.SizeEnum).values()}" th:value="${size}"
-                   th:text="${size}"/>
+            <select th:field="*{propertyCap.sizeEnum}">
+                <option th:text="${size}"
+                        th:each="size : ${sizeEnum}"
+                        th:value="${size}">
+                </option>
+            </select>
         </label></p>
         <p>Материал: <label>
-            <input type="checkbox" name="material"
-                   th:each="material : ${T(kz.aa.shop.onlineShop.model.property.MaterialEnum).values()}"
-                   th:value="${material}" th:text="${material.label}"/>
+            <select th:field="*{propertyCap.materialEnum}">
+                <option th:text="${material.label}"
+                        th:each="material : ${materialEnum}"
+                        th:value="${material}">
+                </option>
+            </select>
         </label></p>
 
         <div class="file-field">
@@ -67,93 +77,8 @@
                 <input type="file" name="file" id="customFile">
             </div>
         </div>
-        <p><input type="submit" value="Создать"/></p>
+        <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
     </form>
-
-    <section id="tabs">
-        <div class="container-fluid">
-            <h6 class="section-title h1">Tabs</h6>
-            <div class="row">
-                <div class="col-xs-12 ">
-                    <nav>
-                        <div class="nav nav-tabs nav-fill" id="nav-tab-1" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-1"
-                               role="tab" aria-controls="nav-home" aria-selected="true">Ұлттық киімдер</a>
-                            <a class="nav-item nav-link" id="nav-tab-2" data-toggle="tab" href="#nav-2"
-                               role="tab" aria-controls="nav-profile" aria-selected="false">Ұлтттық әшекей- бұйымдар</a>
-                            <a class="nav-item nav-link" id="nav-tab-3" data-toggle="tab" href="#nav-3"
-                               role="tab" aria-controls="nav-contact" aria-selected="false">Ұлттық аспаптар</a>
-                            <a class="nav-item nav-link" id="nav-tab-4" data-toggle="tab" href="#nav-4"
-                               role="tab"
-                               aria-controls="nav-about" aria-selected="false">Ұлттық ыдыс-аяқтар</a>
-                            <a class="nav-item nav-link" id="nav-tab-5" data-toggle="tab" href="#nav-5"
-                               role="tab"
-                               aria-controls="nav-about" aria-selected="false">Қазіргі таңдағы ұлтттық бұйымдар</a>
-                        </div>
-                    </nav>
-                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                             aria-labelledby="nav-1">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
-                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
-                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
-                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
-                            non
-                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
-                            occaecat
-                            ex.
-                        </div>
-                        <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav-tab-2">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
-                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
-                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
-                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
-                            non
-                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
-                            occaecat
-                            ex.
-                        </div>
-                        <div class="tab-pane fade" id="nav-3" role="tabpanel" aria-labelledby="nav-tab-3">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
-                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
-                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
-                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
-                            non
-                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
-                            occaecat
-                            ex.
-                        </div>
-                        <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-tab-4">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
-                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
-                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
-                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
-                            non
-                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
-                            occaecat
-                            ex.
-                        </div>
-                        <div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-tab-5">
-                            Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim
-                            occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit
-                            dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse
-                            consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod
-                            tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa
-                            non
-                            adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis
-                            occaecat
-                            ex.
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
 </body>
 </html>

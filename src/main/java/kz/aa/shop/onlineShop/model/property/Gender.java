@@ -9,9 +9,6 @@ public enum Gender {
         this.label = label;
     }
 
-    Gender() {
-    }
-
     public String getLabel() {
         return label;
     }

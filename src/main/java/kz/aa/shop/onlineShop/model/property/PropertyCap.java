@@ -10,14 +10,13 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @DynamicUpdate
 @DynamicInsert
-@Table(name="property_cap")
+@Table(name = "property_cap")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class PropertyCap extends BaseEntity {
     private Double price;
@@ -28,10 +27,12 @@ public class PropertyCap extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ColorEnum colorEnum;
 
-    @ElementCollection(targetClass = Gender.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "item_size", joinColumns = @JoinColumn(name = "cap_property_id"))
     @Enumerated(EnumType.STRING)
-    private Set<SizeEnum> sizeEnum;
+    private SizeEnum sizeEnum;
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cap_id")

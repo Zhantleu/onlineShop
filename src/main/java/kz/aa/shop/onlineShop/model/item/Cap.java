@@ -25,11 +25,6 @@ import java.util.Set;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Cap extends BaseEntity {
 
-    @ElementCollection(targetClass = Gender.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "item_gender", joinColumns = @JoinColumn(name = "cap_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Gender> genders;
-
     @OneToOne(mappedBy = "cap", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private PropertyCap propertyCap;
