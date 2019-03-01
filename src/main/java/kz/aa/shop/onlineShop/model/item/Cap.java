@@ -2,7 +2,6 @@ package kz.aa.shop.onlineShop.model.item;
 
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.Gender;
 import kz.aa.shop.onlineShop.model.property.PropertyCap;
 import lombok.*;
 import org.hibernate.annotations.Cache;
@@ -11,7 +10,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -29,6 +28,7 @@ public class Cap extends BaseEntity {
             fetch = FetchType.LAZY, optional = false)
     private PropertyCap propertyCap;
 
+    @NotBlank(message = "Пожалуйста загрузите фотографию")
     private String url;
 
     private String name;

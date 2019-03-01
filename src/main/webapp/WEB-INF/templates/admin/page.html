@@ -31,10 +31,9 @@
 </div>
 
 <div class="container-fluid">
-    <form action="#" th:action="@{/admin/createCap}" method="post" enctype="multipart/form-data" th:object="${cap}">
+    <form method="post" enctype="multipart/form-data" th:object="${cap}">
         <p>Название: <label>
             <input type="text" th:field="*{name}"/>
-            <span th:errors="*{name}" class="error"></span>
         </label></p>
         <p>Цена: <label>
             <input type="text" th:field="*{propertyCap.price}"/>
@@ -75,6 +74,8 @@
             <div class="btn btn-primary btn-sm float-left">
                 <span>Выберите изображение</span>
                 <input type="file" name="file" id="customFile">
+                <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
+                <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error en el dato ingresado</p>
             </div>
         </div>
         <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
