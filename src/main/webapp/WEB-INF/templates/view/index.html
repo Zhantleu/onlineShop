@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.springframework.org/schema/security">
+<html xmlns:th="http://www.springframework.org/schema/security" xmlns:h="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8">
 	<title>KAZ SAUDA</title>
@@ -19,170 +19,23 @@
 			<div class="row">
 				<!-- FIRTS LINE -->
 				<!-- first col -->
-				<div class="col-md-3">
+				<div class="col-md-3" th:each="prod : ${products}">
 					<div class="card">
 						<div class="card__image">
-							<img src="../../../images/products/1.png" alt="product1">
+							<img th:src="@{'/img_src/' + ${prod.url}}" alt="product">
 							<div class="card__hover">
 								<a href="#" class="card__button">Satip alu</a>
 								<a href="#" class="card__button">Karau</a>
 							</div>
 						</div>
 						<div class="card__title">
-							Demo 1
+							<p th:text="${prod.name}"></p>
 						</div>
 						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div><!-- /first col -->
-				<!-- second col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%202.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
+							<span th:text="@{prod.price}"></span>
 						</div>
 					</div>
 				</div>
-				<!-- /second col -->
-				<!-- third col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%203.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div>
-				<!-- /third col -->
-				<!-- fourth col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%204.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div>
-				<!-- /fourth col -->
-
-				<!-- /FIRTS LINE -->
-				
-				<!-- SECOND LINE -->	
-				
-				<!-- first col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%201%20copy.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div><!-- /first col -->
-				<!-- second col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%202%20copy.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div>
-				<!-- /second col -->
-				<!-- third col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image">
-							<img src="../../../images/products/Product%203%20copy.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div>
-				<!-- /third col -->
-				<!-- fourth col -->
-				<div class="col-md-3">
-					<div class="card">
-						<div class="card__image hovered">
-							<img src="../../../images/products/1.png" alt="product1">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
-							</div>
-						</div>
-						<div class="card__title">
-							Demo 1
-						</div>
-						<div class="card__price">
-							<span>$100.00</span>
-							$90.00
-						</div>
-					</div>
-				</div>
-				<!-- /fourth col -->
-
-				<!-- /SECOND LINE -->
 			</div>
 			<!-- /row -->
 

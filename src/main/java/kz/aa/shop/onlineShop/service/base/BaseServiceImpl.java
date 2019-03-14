@@ -1,6 +1,8 @@
 package kz.aa.shop.onlineShop.service.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.io.Serializable;
@@ -24,6 +26,11 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @Override
     public void delete(T id) {
         repository.delete(id);
+    }
+
+    @Override
+    public Page<T> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

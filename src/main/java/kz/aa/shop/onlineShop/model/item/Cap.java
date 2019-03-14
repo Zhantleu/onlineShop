@@ -14,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Data
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "caps")
@@ -28,8 +27,42 @@ public class Cap extends BaseEntity {
             fetch = FetchType.LAZY, optional = false)
     private PropertyCap propertyCap;
 
+    private String name;
+
+    private Double price;
+
     @NotBlank(message = "Пожалуйста загрузите фотографию")
     private String url;
 
-    private String name;
+    public PropertyCap getPropertyCap() {
+        return propertyCap;
+    }
+
+    public void setPropertyCap(PropertyCap propertyCap) {
+        this.propertyCap = propertyCap;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

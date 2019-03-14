@@ -30,13 +30,19 @@
     <h3>Ұлттық аспаптар</h3>
 </div>
 
+<div>
+    <form method="get">
+        <p th:field="${test}"></p>
+    </form>
+</div>
+
 <div class="container-fluid">
     <form method="post" enctype="multipart/form-data" th:object="${cap}">
         <p>Название: <label>
             <input type="text" th:field="*{name}"/>
         </label></p>
         <p>Цена: <label>
-            <input type="text" th:field="*{propertyCap.price}"/>
+            <input type="text" th:field="*{price}"/>
         </label></p>
         <p>Тип: <label>
             <select th:field="*{propertyCap.gender}">
