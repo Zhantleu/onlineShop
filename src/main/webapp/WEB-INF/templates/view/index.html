@@ -37,28 +37,21 @@
 					</div>
 				</div>
 			</div>
+		</div>
 			<!-- /row -->
 
-			<div class="row" th:fragment="pagination">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<nav aria-label="Pagination">
-						<ul class="pagination justify-content-center">
-							<li class="page-item" th:each="pageNumber : ${pageNumbers}" >
-								<a class="page-link" th:href="@{|/home/${pageNumber}|}" th:text=${pageNumber}>1</a>
+			<div th:fragment="pagination">
+				<div class="mt-3">
+						<ul class="pagination">
+							<li class="page-item" th:each="pageNumber : ${pageNumbers}">
+								<a class="page-link" th:href="@{|/home?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
 							</li>
 						</ul>
-					</nav>
 				</div>
-				<div class="col-md-2"></div>
 			</div>
 
-
 			<a href="#" class="button-outline">Baryn koru</a>
-
-
 		</div>
-	</div>
 	<!-- /products -->
 
 	<!-- block-avd -->
