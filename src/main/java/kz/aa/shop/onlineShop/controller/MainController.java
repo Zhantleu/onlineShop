@@ -1,9 +1,9 @@
 package kz.aa.shop.onlineShop.controller;
 
-import kz.aa.shop.onlineShop.model.Order;
+import kz.aa.shop.onlineShop.model.order.Order;
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.service.impl.CapServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +61,12 @@ public class MainController {
             params = {"itemId"},
             method = RequestMethod.POST,
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public String addItem(@RequestParam(value = "itemId") String itemId) {
+    public String addItem(@RequestParam(value = "itemId") String itemId,
+                          @RequestParam(value = "categoryType") String categoryType) {
+        OrderItem orderItem = new OrderItem();
         Order order = new Order();
         order.setUser(user);
-        order.setBaseEntity();
+        order.setOrderItem();
 
         return "view/index";
     }

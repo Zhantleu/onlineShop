@@ -1,11 +1,10 @@
-package kz.aa.shop.onlineShop.model;
+package kz.aa.shop.onlineShop.model.order;
 
+import kz.aa.shop.onlineShop.model.TypeCategory;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -19,5 +18,8 @@ public class OrderItem extends BaseEntity {
     private Order order;
 
     private Long idItem;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 8)
     private TypeCategory typeCategory;
 }

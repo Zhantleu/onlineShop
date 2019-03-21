@@ -1,6 +1,7 @@
-package kz.aa.shop.onlineShop.model;
+package kz.aa.shop.onlineShop.model.order;
 
 
+import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
@@ -18,4 +19,7 @@ import javax.persistence.Table;
 public class Order extends BaseEntity {
     @OneToMany
     private User user;
+
+    @OneToMany
+    private OrderItem orderItem;
 }
