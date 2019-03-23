@@ -5,7 +5,10 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +23,7 @@ import java.util.List;
 public class Order extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+//    @JoinColumn(name="user_id", nullable=false)
     private User user;
 
     @OneToMany
