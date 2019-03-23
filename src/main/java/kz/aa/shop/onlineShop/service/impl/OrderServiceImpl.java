@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-
 @Transactional
 @Service
 public class OrderServiceImpl extends BaseServiceImpl<Order, Long> implements OrderService {
@@ -19,12 +17,12 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Long> implements Or
     private OrderRepository orderRepository;
 
     @Override
-    public Order findTopByUserAndAndOrderTime(User user, LocalDateTime orderTime) {
-        return orderRepository.findTopByUserAndAndOrderTime(user,orderTime);
+    public Order findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(User user) {
+        return orderRepository.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user);
     }
 
     @Override
-    public Order findByUserAndConfirmedIsFalse(User user) {
-        return orderRepository.findByUserAndConfirmedIsFalse(user);
+    public Order findByUserAndIsConfirmedIsFalse(User user) {
+        return orderRepository.findByUserAndIsConfirmedIsFalse(user);
     }
 }

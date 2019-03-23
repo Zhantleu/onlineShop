@@ -10,8 +10,4 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class CapServiceImpl extends BaseServiceImpl<Cap, Long> implements CapService {
-    @Override
-    public Page findAllByCategory(Class clazz) {
-        return null;
-    }
 }

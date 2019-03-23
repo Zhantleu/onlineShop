@@ -5,12 +5,13 @@ import kz.aa.shop.onlineShop.model.order.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    Order findTopByUserAndAndOrderTime(User user, LocalDateTime orderTime);
+//    Order findTopByOrderTimeAndIsConfirmedIsFalseAndByUser(User user);
 
-    Order findByUserAndConfirmedIsFalse(User user);
+    Order findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(User user);
+//    Order findTopByMedicalCardOrderByModifiedOnDesc
+
+    Order findByUserAndIsConfirmedIsFalse(User user);
 
 }
