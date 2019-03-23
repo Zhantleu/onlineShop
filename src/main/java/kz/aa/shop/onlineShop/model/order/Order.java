@@ -5,9 +5,9 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -15,11 +15,18 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+//@SecondaryTable(name = "order_items", pkJoinColumns = @PrimaryKeyJoinColumn(name = "authorId", referencedColumnName = "id"))
 @Table(name = "orders", schema = "public")
 public class Order extends BaseEntity {
-    @OneToMany
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
     private User user;
 
     @OneToMany
-    private OrderItem orderItem;
+    private List<OrderItem> orderItemList;
+
+    private LocalDateTime orderTime;
+
+    private boolean isConfirmed;
 }

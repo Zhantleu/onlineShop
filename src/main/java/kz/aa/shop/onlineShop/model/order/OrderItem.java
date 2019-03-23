@@ -14,7 +14,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "order_items", schema = "public")
 public class OrderItem extends BaseEntity {
-    @OneToMany
+
+    @ManyToOne
+    @JoinColumn(name="order_id", nullable=false)
     private Order order;
 
     private Long idItem;

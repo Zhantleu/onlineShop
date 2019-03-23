@@ -65,8 +65,8 @@ public class MainController {
                           @RequestParam(value = "categoryType") String categoryType) {
         OrderItem orderItem = new OrderItem();
         Order order = new Order();
-        order.setUser(user);
-        order.setOrderItem();
+//        order.setUser(user);
+//        order.setOrderItem();
 
         return "view/index";
     }
