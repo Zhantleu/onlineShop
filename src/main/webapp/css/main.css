@@ -491,5 +491,29 @@ FOOTER
 	color: #FFF;
 	vertical-align: middle;
 	outline: none;
+}
+.main {
+	width: 100%;
+	margin: 20px auto;
+	background: #fff;
+	max-height: 200px;
+}
+.sl__slide{
+	position: relative;
 
+}
+
+.sl__img{
+	width: 400px;
+	height: 300px;
+}
+
+.slick-prev:before {
+	color: #da0f4d;
+}
+.slick-next:before {
+	color: #da0f4d;
+}
+.slider--new_products{
+	margin-top: 50px;
 }
