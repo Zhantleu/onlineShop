@@ -2,6 +2,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
+
 </head>
 <body>
 <div th:fragment="footer">
@@ -17,10 +18,8 @@
                 Roles: <span sec:authentication="principal.authorities"></span> |
                 <a th:href="@{/logout}">Sign Out</a>
             </span>
-            <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-            <script src="../../../libs/slick/slick.js" type="text/javascript" charset="utf-8"></script>
-            <script type="text/javascript" src="../../../js/javascript.js"></script>
-            <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <!--<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
         </footer>
     </div>
