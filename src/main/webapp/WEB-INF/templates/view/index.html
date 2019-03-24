@@ -22,7 +22,7 @@
 				<div class="col-md-3" th:each="prod : ${products}">
 					<div class="card">
 						<div class="card__image">
-							<img th:src="@{'/img_src/' + ${prod.url}}" alt="product">
+							<img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
 							<div class="card__hover">
 								<a href="#" class="card__button">Satip alu</a>
 								<a href="#" class="card__button">Karau</a>

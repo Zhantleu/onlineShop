@@ -81,7 +81,7 @@
                 <span>Выберите изображение</span>
                 <input type="file" name="file" id="customFile">
                 <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
-                <p th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error en el dato ingresado</p>
+                <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
             </div>
         </div>
         <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>

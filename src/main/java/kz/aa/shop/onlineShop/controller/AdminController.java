@@ -69,7 +69,7 @@ public class AdminController {
             return "/admin/page";
         } else {
 
-            cap.setUrl(utilImage.saveFile(file, uploadPath));
+            cap.setUrlImage(utilImage.saveFile(file, uploadPath));
             cap.getPropertyCap().setCap(cap);
 
             capService.saveOrUpdate(cap);

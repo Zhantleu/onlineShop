@@ -2,6 +2,7 @@ package kz.aa.shop.onlineShop.model.item;
 
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
+import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
 import kz.aa.shop.onlineShop.model.property.PropertyCap;
 import lombok.*;
 import org.hibernate.annotations.Cache;
@@ -21,7 +22,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Cap extends BaseEntity {
+public class Cap extends BaseItemEntity {
 
     @OneToOne(mappedBy = "cap", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
@@ -30,9 +31,6 @@ public class Cap extends BaseEntity {
     private String name;
 
     private Double price;
-
-    @NotBlank(message = "Пожалуйста загрузите фотографию")
-    private String url;
 
     public PropertyCap getPropertyCap() {
         return propertyCap;
@@ -56,13 +54,5 @@ public class Cap extends BaseEntity {
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 }

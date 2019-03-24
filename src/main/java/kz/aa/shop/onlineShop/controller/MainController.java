@@ -1,15 +1,13 @@
 package kz.aa.shop.onlineShop.controller;
 
+import kz.aa.shop.onlineShop.dto.ItemDto;
 import kz.aa.shop.onlineShop.model.TypeCategory;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.item.Cap;
 import kz.aa.shop.onlineShop.model.order.Order;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.service.impl.CapServiceImpl;
-import kz.aa.shop.onlineShop.service.impl.OrderItemServiceImpl;
-import kz.aa.shop.onlineShop.service.impl.OrderServiceImpl;
-import kz.aa.shop.onlineShop.service.impl.UserServiceImpl;
+import kz.aa.shop.onlineShop.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,13 +35,15 @@ public class MainController {
     private final UserServiceImpl userService;
     private final OrderServiceImpl orderService;
     private final OrderItemServiceImpl orderItemService;
+    private final ItemDtoServiceImpl itemDtoService;
 
     @Autowired
-    public MainController(CapServiceImpl capService, UserServiceImpl userService, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService) {
+    public MainController(CapServiceImpl capService, UserServiceImpl userService, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService) {
         this.capService = capService;
         this.userService = userService;
         this.orderService = orderService;
         this.orderItemService = orderItemService;
+        this.itemDtoService = itemDtoService;
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -92,6 +93,11 @@ public class MainController {
                 setOrderItem(orderItem, capService.findById(Long.valueOf(itemId)));
                 break;
         }
+
+        List<ItemDto> itemDtos = new ArrayList<>();
+
+        itemDtos.addAll(itemDtoService.findNewItemByTypeCategory(Cap.class));
+
 
         return "view/index";
     }
