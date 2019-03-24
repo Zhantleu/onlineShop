@@ -60,7 +60,7 @@ NAViGATION
 }
 
 .contacts .num{
-	top: 0px;
+	top: -51px;
 	left: 35px;
 	position: absolute;
 }
@@ -725,7 +725,22 @@ li{
 .slider--new_products{
 	margin-top: 50px;
 }
+.dropdown-menu>li>a:hover{
+	color: #da0f4d;
+	text-decoration: none;
+}
+.fa-phone:before{
+	top: -46px;
+	left: 15px;
+	position: absolute;
+}
 
+
+
+/* УДАЛИТЬ ЕСЛИ НАДО ДРОПДАУН ПО КЛИКУ */
+.dropdown:hover>.dropdown-menu {
+	display: block;
+}
 /*
 font-family: 'Muli', sans-serif;
 font-family: 'Lora', serif;
