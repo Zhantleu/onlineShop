@@ -20,7 +20,7 @@ NAViGATION
 	text-decoration: none;
 }
 
-.logo:hover{
+.logo:hover ,.logo:focus ,.logo:active{
 	font-size: 23px;
 	color: #f72464;
 	font-weight: 800;
@@ -734,7 +734,13 @@ li{
 	left: 15px;
 	position: absolute;
 }
-
+.btn-light{
+	text-decoration: none;
+}
+.btn-light:focus,.btn-light:hover,.btn-light:active{
+	background-color: #da0f4d;
+	color: #fff;
+}
 
 
 /* УДАЛИТЬ ЕСЛИ НАДО ДРОПДАУН ПО КЛИКУ */
