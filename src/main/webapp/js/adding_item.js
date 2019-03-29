@@ -9,7 +9,8 @@ function likeFunction(caller) {
     $.ajax({
         type: "POST",
         url: "addItem",
-        data: 'itemId=' + postId,
+        data: 'itemId=' + postId
+        ,
         success: function () {
             console.log(postId);
         }
