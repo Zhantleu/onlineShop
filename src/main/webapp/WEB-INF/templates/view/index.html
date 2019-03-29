@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>KAZ SAUDA</title>
 	<div th:replace="parts/header :: header-css"></div>
+	<script src="../../../js/adding_item.js"></script>
 </head>
 <body>
 
@@ -20,7 +21,8 @@
 				<!-- FIRTS LINE -->
 				<!-- first col -->
 				<div class="col-md-3" th:each="prod : ${products}">
-					<div class="card">
+					<div class="card" th:id="${prod.urlImage}" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+						<input type="button" class='like' value="LikeButton"/>
 						<div class="card__image">
 							<img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
 							<div class="card__hover">
@@ -44,50 +46,51 @@
 			<div class="row">
 				<div class="container">
 					<div class="main">
-						<div class="sl">
+						<div class="sl" th:each="prod : ${products}">
 							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p1.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
+                                <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
+								<div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+                                    <input type="button" value="LikeButton"/>
 									<a href="#" class="card__button">Satip alu</a>
 									<a href="#" class="card__button">Karau</a>
 								</div>
 							</a></div>
-							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p2.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
-									<a href="#" class="card__button">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
+							<!--<div class="sl__slide"><a href="#">-->
+								<!--<img src="../../../images/slider/p2.jpg" alt="Kart#1" class="sl__img">-->
+								<!--<div class="card__hover">-->
+									<!--<a href="#" class="card__button">Satip alu</a>-->
+									<!--<a href="#" class="card__button">Karau</a>-->
+								<!--</div>-->
 
-							</a></div>
-							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p3.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
-									<a href="#" class="card__button">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
-							</a></div>
-							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p4.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
-									<a href="#" class="card__button">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
-							</a></div>
-							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p5.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
-									<a href="#" class="card__button">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
-							</a></div>
-							<div class="sl__slide"><a href="#">
-								<img src="../../../images/slider/p6.jpg" alt="Kart#1" class="sl__img">
-								<div class="card__hover">
-									<a href="#" class="card__button">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
-							</a></div>
+							<!--</a></div>-->
+							<!--<div class="sl__slide"><a href="#">-->
+								<!--<img src="../../../images/slider/p3.jpg" alt="Kart#1" class="sl__img">-->
+								<!--<div class="card__hover">-->
+									<!--<a href="#" class="card__button">Satip alu</a>-->
+									<!--<a href="#" class="card__button">Karau</a>-->
+								<!--</div>-->
+							<!--</a></div>-->
+							<!--<div class="sl__slide"><a href="#">-->
+								<!--<img src="../../../images/slider/p4.jpg" alt="Kart#1" class="sl__img">-->
+								<!--<div class="card__hover">-->
+									<!--<a href="#" class="card__button">Satip alu</a>-->
+									<!--<a href="#" class="card__button">Karau</a>-->
+								<!--</div>-->
+							<!--</a></div>-->
+							<!--<div class="sl__slide"><a href="#">-->
+								<!--<img src="../../../images/slider/p5.jpg" alt="Kart#1" class="sl__img">-->
+								<!--<div class="card__hover">-->
+									<!--<a href="#" class="card__button">Satip alu</a>-->
+									<!--<a href="#" class="card__button">Karau</a>-->
+								<!--</div>-->
+							<!--</a></div>-->
+							<!--<div class="sl__slide"><a href="#">-->
+								<!--<img src="../../../images/slider/p6.jpg" alt="Kart#1" class="sl__img">-->
+								<!--<div class="card__hover">-->
+									<!--<a href="#" class="card__button">Satip alu</a>-->
+									<!--<a href="#" class="card__button">Karau</a>-->
+								<!--</div>-->
+							<!--</a></div>-->
 
 						</div>
 					</div>
@@ -125,7 +128,7 @@
 		</div>
 	</div>
 	<!-- /block-avd -->
-	
+
 	<!-- products  -->
 	<div class="section">
 		<div class="container">
@@ -186,7 +189,7 @@
 							Demo 3
 						</div>
 						<div class="card__price">
-							
+
 							$150.00
 						</div>
 					</div>
@@ -206,7 +209,7 @@
 							Demo 4
 						</div>
 						<div class="card__price">
-							
+
 							$120.00
 						</div>
 					</div>
@@ -242,7 +245,7 @@
 	<div class="container section">
 		<h2 class="title">Blog</h2>
 		<div class="subtitle2">Subtitle description</div>
-		
+
 		<div class="row">
 			<!-- post 1 -->
 			<div class="col-md-6 blog">
@@ -319,7 +322,7 @@
 
 	<footer class="footer">
 		<div class="container">
-			<div class="footer__nav">			
+			<div class="footer__nav">
 				<a href="#" class="footer-nav__link">MENU 1</a>
 				<a href="#" class="footer-nav__link">BIZGE ZHAZU</a>
 				<a href="#" class="footer-nav__link">KOMEK</a>
@@ -336,9 +339,9 @@
 	</footer>
 
 
-	<link rel="stylesheet" 
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" 
+	<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 </body>
 </html>
