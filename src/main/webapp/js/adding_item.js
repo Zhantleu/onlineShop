@@ -5,14 +5,16 @@ $(function () {
 
 
 function likeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
+    var itemId = caller.parentElement.getAttribute('itemId');
+    var typeCategory = caller.parentElement.getAttribute('categoryType');
     $.ajax({
         type: "POST",
-        url: "addItem",
-        data: 'itemId=' + postId
-        ,
+        url: "addItem?itemId=" + itemId + "&categoryType=" + typeCategory,
+        // Here were a two params which send to server
+        // data: ""
         success: function () {
-            console.log(postId);
+            console.log(itemId);
+            console.log(typeCategory);
         }
     });
 }
