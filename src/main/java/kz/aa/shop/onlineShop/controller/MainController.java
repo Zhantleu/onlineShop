@@ -1,6 +1,5 @@
 package kz.aa.shop.onlineShop.controller;
 
-import kz.aa.shop.onlineShop.dto.ItemDto;
 import kz.aa.shop.onlineShop.model.TypeCategory;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
@@ -11,7 +10,6 @@ import kz.aa.shop.onlineShop.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,6 +33,7 @@ public class MainController {
     private final OrderServiceImpl orderService;
     private final OrderItemServiceImpl orderItemService;
     private final ItemDtoServiceImpl itemDtoService;
+
 
     @Autowired
     public MainController(CapServiceImpl capService, UserServiceImpl userService, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService) {
@@ -72,13 +70,11 @@ public class MainController {
     }
 
     @RequestMapping(value = "/addItem",
-            params = {"itemId", "categoryType"},
-            method = RequestMethod.GET,
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    public String addItem(@RequestParam(value = "itemId") String itemId,
-                          @RequestParam(value = "categoryType") String categoryType) {
+            method = RequestMethod.POST)
+    public String addItem(@RequestParam(name = "itemId") Long itemId,
+                          @RequestParam(name = "categoryType") String typeCategory) {
 
-        TypeCategory category = TypeCategory.valueOf(categoryType);
+        TypeCategory category = TypeCategory.valueOf(typeCategory);
         Order order = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user);
         OrderItem orderItem = new OrderItem();
 
@@ -90,14 +86,9 @@ public class MainController {
 
         switch (category) {
             case CAP:
-                setOrderItem(orderItem, capService.findById(Long.valueOf(itemId)));
+                setOrderItem(orderItem, capService.findById(itemId));
                 break;
         }
-
-        List<ItemDto> itemDtos = new ArrayList<>();
-
-        itemDtos.addAll(itemDtoService.findNewItemByTypeCategory(Cap.class));
-
 
         return "view/index";
     }
