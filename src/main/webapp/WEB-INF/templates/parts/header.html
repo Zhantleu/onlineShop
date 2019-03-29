@@ -105,16 +105,16 @@
                                 <div class="modal-body">
                                     <div class="modal-body">
                                         <div class="container-fluid">
-                                            <form>
+                                            <form method="post" th:action="@{/login}">
                                                 <div class="form-froup">
                                                     <label for="exampleInputEmail">Email adress</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail" aria-describdby="emailHelp"
+                                                    <input type="email" class="form-control" id="exampleInputEmail" aria-describdby="emailHelp" name="email"
                                                            placeholder="Email">
                                                     <small id="emailHelp" class="form-text text-muted">Enter your email</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputPass">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPass"
+                                                    <input type="password" class="form-control" id="exampleInputPass" name="password"
                                                            placeholder="Password">
                                                     <small id="passHelp" class="form-text text-muted">Минимум 6 символов</small>
                                                 </div>

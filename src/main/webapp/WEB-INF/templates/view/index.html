@@ -51,7 +51,7 @@
                                 <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
 								<div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
                                     <input type="button" value="LikeButton"/>
-									<a href="#" class="card__button">Satip alu</a>
+									<a href="#" class="card__button" th:value="LikeButton">Satip alu</a>
 									<a href="#" class="card__button">Karau</a>
 								</div>
 							</a></div>

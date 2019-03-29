@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Admin page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="../../../libs/bootstrap/js/ajax_libs_jquery_3.3.1_jquery.js"></script>
     <script src="../../../libs/bootstrap/js/bootstrap.js"></script>
     <script src="../../../libs/bootstrap/js/bootstrap_3.4.0_js_bootstrap.js"></script>
@@ -25,62 +25,62 @@
     <div class="tabContent">
         <h3>Ұлттық киімдер</h3>
         <div>
-        <form method="get">
-        <p th:field="${test}"></p>
-        </form>
+            <form method="get">
+                <p th:field="${test}"></p>
+            </form>
         </div>
 
         <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data" th:object="${cap}">
-        <p>Название: <label>
-        <input type="text" th:field="*{name}"/>
-        </label></p>
-        <p>Цена: <label>
-        <input type="text" th:field="*{price}"/>
-        </label></p>
-        <p>Тип: <label>
-        <select th:field="*{propertyCap.gender}">
-        <option th:each="gender : ${genderTypes}"
-        th:value="${gender}"
-        th:text="${gender.label}">
-        </option>
-        </select>
-        </label></p>
-        <p>Цвет: <label>
-        <select th:field="*{propertyCap.colorEnum}">
-        <option th:each="color : ${colorEnum}"
-        th:value="${color}"
-        th:text="${color.label}">
-        </select>
-        </label></p>
-        <p>Размер: <label>
-        <select th:field="*{propertyCap.sizeEnum}">
-        <option th:text="${size}"
-        th:each="size : ${sizeEnum}"
-        th:value="${size}">
-        </option>
-        </select>
-        </label></p>
-        <p>Материал: <label>
-        <select th:field="*{propertyCap.materialEnum}">
-        <option th:text="${material.label}"
-        th:each="material : ${materialEnum}"
-        th:value="${material}">
-        </option>
-        </select>
-        </label></p>
+            <form method="post" enctype="multipart/form-data" th:object="${cap}">
+                <p>Название: <label>
+                    <input type="text" th:field="*{name}"/>
+                </label></p>
+                <p>Цена: <label>
+                    <input type="text" th:field="*{price}"/>
+                </label></p>
+                <p>Тип: <label>
+                    <select th:field="*{propertyCap.gender}">
+                        <option th:each="gender : ${genderTypes}"
+                                th:value="${gender}"
+                                th:text="${gender.label}">
+                        </option>
+                    </select>
+                </label></p>
+                <p>Цвет: <label>
+                    <select th:field="*{propertyCap.colorEnum}">
+                        <option th:each="color : ${colorEnum}"
+                                th:value="${color}"
+                                th:text="${color.label}">
+                    </select>
+                </label></p>
+                <p>Размер: <label>
+                    <select th:field="*{propertyCap.sizeEnum}">
+                        <option th:text="${size}"
+                                th:each="size : ${sizeEnum}"
+                                th:value="${size}">
+                        </option>
+                    </select>
+                </label></p>
+                <p>Материал: <label>
+                    <select th:field="*{propertyCap.materialEnum}">
+                        <option th:text="${material.label}"
+                                th:each="material : ${materialEnum}"
+                                th:value="${material}">
+                        </option>
+                    </select>
+                </label></p>
 
-        <div class="file-field">
-        <div class="btn btn-primary btn-sm float-left">
-        <span>Выберите изображение</span>
-        <input type="file" name="file" id="customFile">
-        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
-        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
-        </div>
-        </div>
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Выберите изображение</span>
+                        <input type="file" name="file" id="customFile">
+                        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
+                        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
+                    </div>
+                </div>
 
-        <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
-        </form>
+                <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
+            </form>
         </div>
     </div>
     <!-- TAB 1 END -->
@@ -90,47 +90,46 @@
     <div class="tabContent">
         <h3>Ұлттық аспаптар</h3>
         <div>
-        <form method="get">
-        <p th:field="${test}"></p>
-        </form>
+            <form method="get">
+                <p th:field="${test}"></p>
+            </form>
         </div>
 
         <div class="container-fluid">
-        <form method="post" enctype="multipart/form-data" th:object="${cap}">
-        <p>Название: <label>
-        <input type="text" th:field="*{name}"/>
-        </label></p>
-        <p>Цена: <label>
-        <input type="text" th:field="*{price}"/>
-        </label></p>
-        <p>Тип: <label>
-        <select th:field="*{propertyCap.gender}">
-        <option th:each="gender : ${genderTypes}"
-        th:value="${gender}"
-        th:text="${gender.label}">
-        </option>
-        </select>
-        </label></p>
-        <p>Цвет: <label>
-        <select th:field="*{propertyCap.colorEnum}">
-        <option th:each="color : ${colorEnum}"
-        th:value="${color}"
-        th:text="${color.label}">
-        </select>
-        </label></p>
+            <form method="post" enctype="multipart/form-data" th:object="${cap}">
+                <p>Название: <label>
+                    <input type="text" th:field="*{name}"/>
+                </label></p>
+                <p>Цена: <label>
+                    <input type="text" th:field="*{price}"/>
+                </label></p>
+                <p>Тип: <label>
+                    <select th:field="*{propertyCap.gender}">
+                        <option th:each="gender : ${genderTypes}"
+                                th:value="${gender}"
+                                th:text="${gender.label}">
+                        </option>
+                    </select>
+                </label></p>
+                <p>Цвет: <label>
+                    <select th:field="*{propertyCap.colorEnum}">
+                        <option th:each="color : ${colorEnum}"
+                                th:value="${color}"
+                                th:text="${color.label}">
+                    </select>
+                </label></p>
 
 
-
-        <div class="file-field">
-        <div class="btn btn-primary btn-sm float-left">
-        <span>Выберите изображение</span>
-        <input type="file" name="file" id="customFile2">
-        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
-        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
-        </div>
-        </div>
-        <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
-        </form>
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Выберите изображение</span>
+                        <input type="file" name="file" id="customFile2">
+                        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
+                        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
+                    </div>
+                </div>
+                <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
+            </form>
         </div>
     </div>
     <!-- TAB 2 BEGIN -->
@@ -138,80 +137,80 @@
     <div class="tabContent">4</div>
 </div>
 <!--<div class="tab">-->
-    <!--<button class="tablinks" onclick="openTab(event, 'ulttikKyimder')">Ұлттық киімдер</button>-->
-    <!--<button class="tablinks" onclick="openTab(event, 'ulltikAspaptar')">Ұлттық аспаптар</button>-->
-    <!--<button class="tablinks" onclick="openTab(event,'ultiikAchekey-Buimdar')">Ұлттық әшекей- бұйымдар</button>-->
+<!--<button class="tablinks" onclick="openTab(event, 'ulttikKyimder')">Ұлттық киімдер</button>-->
+<!--<button class="tablinks" onclick="openTab(event, 'ulltikAspaptar')">Ұлттық аспаптар</button>-->
+<!--<button class="tablinks" onclick="openTab(event,'ultiikAchekey-Buimdar')">Ұлттық әшекей- бұйымдар</button>-->
 <!--</div>-->
 
 <!--&lt;!&ndash;Will be all which belong to ulttikKyimder&ndash;&gt;-->
 <!--<div id="ulttikKyimder" class="tabcontent">-->
-    <!--<h3>Ұлттық киімдер</h3>-->
+<!--<h3>Ұлттық киімдер</h3>-->
 <!--</div>-->
 
 <!--<div id="ulltikAspaptar" class="tabcontent">-->
-    <!--<h3>Ұлттық аспаптар</h3>-->
+<!--<h3>Ұлттық аспаптар</h3>-->
 <!--</div>-->
 
 <!--<div id="ultiikAchekey-Buimdar" class="tabcontent">-->
-    <!--<h3>Улттык ашекей буйымдар</h3>-->
+<!--<h3>Улттык ашекей буйымдар</h3>-->
 <!--</div>-->
 
 <!--<div>-->
-    <!--<form method="get">-->
-        <!--<p th:field="${test}"></p>-->
-    <!--</form>-->
+<!--<form method="get">-->
+<!--<p th:field="${test}"></p>-->
+<!--</form>-->
 <!--</div>-->
 
 <!--<div class="container-fluid">-->
-    <!--<form method="post" enctype="multipart/form-data" th:object="${cap}">-->
-        <!--<p>Название: <label>-->
-            <!--<input type="text" th:field="*{name}"/>-->
-        <!--</label></p>-->
-        <!--<p>Цена: <label>-->
-            <!--<input type="text" th:field="*{price}"/>-->
-        <!--</label></p>-->
-        <!--<p>Тип: <label>-->
-            <!--<select th:field="*{propertyCap.gender}">-->
-                <!--<option th:each="gender : ${genderTypes}"-->
-                        <!--th:value="${gender}"-->
-                        <!--th:text="${gender.label}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label></p>-->
-        <!--<p>Цвет: <label>-->
-            <!--<select th:field="*{propertyCap.colorEnum}">-->
-                <!--<option th:each="color : ${colorEnum}"-->
-                        <!--th:value="${color}"-->
-                        <!--th:text="${color.label}">-->
-            <!--</select>-->
-        <!--</label></p>-->
-        <!--<p>Размер: <label>-->
-            <!--<select th:field="*{propertyCap.sizeEnum}">-->
-                <!--<option th:text="${size}"-->
-                        <!--th:each="size : ${sizeEnum}"-->
-                        <!--th:value="${size}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label></p>-->
-        <!--<p>Материал: <label>-->
-            <!--<select th:field="*{propertyCap.materialEnum}">-->
-                <!--<option th:text="${material.label}"-->
-                        <!--th:each="material : ${materialEnum}"-->
-                        <!--th:value="${material}">-->
-                <!--</option>-->
-            <!--</select>-->
-        <!--</label></p>-->
+<!--<form method="post" enctype="multipart/form-data" th:object="${cap}">-->
+<!--<p>Название: <label>-->
+<!--<input type="text" th:field="*{name}"/>-->
+<!--</label></p>-->
+<!--<p>Цена: <label>-->
+<!--<input type="text" th:field="*{price}"/>-->
+<!--</label></p>-->
+<!--<p>Тип: <label>-->
+<!--<select th:field="*{propertyCap.gender}">-->
+<!--<option th:each="gender : ${genderTypes}"-->
+<!--th:value="${gender}"-->
+<!--th:text="${gender.label}">-->
+<!--</option>-->
+<!--</select>-->
+<!--</label></p>-->
+<!--<p>Цвет: <label>-->
+<!--<select th:field="*{propertyCap.colorEnum}">-->
+<!--<option th:each="color : ${colorEnum}"-->
+<!--th:value="${color}"-->
+<!--th:text="${color.label}">-->
+<!--</select>-->
+<!--</label></p>-->
+<!--<p>Размер: <label>-->
+<!--<select th:field="*{propertyCap.sizeEnum}">-->
+<!--<option th:text="${size}"-->
+<!--th:each="size : ${sizeEnum}"-->
+<!--th:value="${size}">-->
+<!--</option>-->
+<!--</select>-->
+<!--</label></p>-->
+<!--<p>Материал: <label>-->
+<!--<select th:field="*{propertyCap.materialEnum}">-->
+<!--<option th:text="${material.label}"-->
+<!--th:each="material : ${materialEnum}"-->
+<!--th:value="${material}">-->
+<!--</option>-->
+<!--</select>-->
+<!--</label></p>-->
 
-        <!--<div class="file-field">-->
-            <!--<div class="btn btn-primary btn-sm float-left">-->
-                <!--<span>Выберите изображение</span>-->
-                <!--<input type="file" name="file" id="customFile">-->
-                <!--&lt;!&ndash;<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>&ndash;&gt;-->
-                <!--<p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>-->
-    <!--</form>-->
+<!--<div class="file-field">-->
+<!--<div class="btn btn-primary btn-sm float-left">-->
+<!--<span>Выберите изображение</span>-->
+<!--<input type="file" name="file" id="customFile">-->
+<!--&lt;!&ndash;<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>&ndash;&gt;-->
+<!--<p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--<p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>-->
+<!--</form>-->
 <!--</div>-->
 <script src="../../../js/admin_page.js"></script>
 </body>
