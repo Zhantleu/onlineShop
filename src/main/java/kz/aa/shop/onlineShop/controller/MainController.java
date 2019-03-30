@@ -53,7 +53,7 @@ public class MainController {
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
-        PageRequest pageable = PageRequest.of(page - 1, 2);
+        PageRequest pageable = PageRequest.of(page - 1, 6);
         Page<Cap> pageCapList = capService.findAll(pageable);
         model.addAttribute("products", pageCapList);
 
