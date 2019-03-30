@@ -42,24 +42,26 @@
 		</div>
 		<!--SLIDER-->
 		 <!--row -->
-		<div class="slider--new_products">
-			<div class="row">
-				<div class="container">
-					<div class="main">
-						<div class="sl" th:each="prod : ${products}">
-							<div class="sl__slide"><a href="#">
-                                <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
-								<div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
-                                    <input type="button" value="LikeButton"/>
-									<a href="#" class="card__button" th:value="LikeButton">Satip alu</a>
-									<a href="#" class="card__button">Karau</a>
-								</div>
-							</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="slider--new_products">
+            <div class="row">
+                <div class="container">
+                    <div class="main">
+                        <div class="sl">
+                            <div class="sliders__iterator" th:each="prod : ${products}">
+                            <div class="sl__slide">
+                            <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
+                            <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+                            <input class="card__button" type="button" value="LikeButton"/>
+                            <a href="#" class="card__button">Satip alu</a>
+                            <a href="#" class="card__button">Karau</a>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 		 <!--/row -->
 		 <!--/SLIDER-->
