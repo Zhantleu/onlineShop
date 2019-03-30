@@ -45,6 +45,7 @@ public class User {
     @Column(name = "active")
     private boolean isActive;
 
+    @Column(columnDefinition = "varchar(32) default 'USER'")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)

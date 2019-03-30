@@ -60,7 +60,7 @@ NAViGATION
 }
 
 .contacts .num{
-	top: -51px;
+	top: -30px;
 	left: 35px;
 	position: absolute;
 }
@@ -730,7 +730,7 @@ li{
 	text-decoration: none;
 }
 .fa-phone:before{
-	top: -46px;
+	top: -25px;
 	left: 15px;
 	position: absolute;
 }
