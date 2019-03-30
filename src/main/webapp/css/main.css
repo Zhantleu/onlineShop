@@ -60,7 +60,7 @@ NAViGATION
 }
 
 .contacts .num{
-	top: -51px;
+	top: -31px;
 	left: 35px;
 	position: absolute;
 }
@@ -708,7 +708,7 @@ li{
 }
 .sl__slide{
 	position: relative;
-
+	width: 400px;
 }
 
 .sl__img{
@@ -730,7 +730,7 @@ li{
 	text-decoration: none;
 }
 .fa-phone:before{
-	top: -46px;
+	top: -26px;
 	left: 15px;
 	position: absolute;
 }
