@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.model.base;
 
-import kz.aa.shop.onlineShop.model.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

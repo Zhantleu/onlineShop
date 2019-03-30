@@ -2,6 +2,10 @@ package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.property.enumeration.ColorEnum;
+import kz.aa.shop.onlineShop.model.property.enumeration.Gender;
+import kz.aa.shop.onlineShop.model.property.enumeration.MaterialEnum;
+import kz.aa.shop.onlineShop.model.property.enumeration.SizeEnum;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;

@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.repository;
+package kz.aa.shop.onlineShop.repository.base;
 
 import kz.aa.shop.onlineShop.model.order.Order;
 import kz.aa.shop.onlineShop.model.order.OrderItem;

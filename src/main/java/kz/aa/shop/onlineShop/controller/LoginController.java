@@ -1,10 +1,8 @@
 package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.service.impl.UserServiceImpl;
+import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,22 +16,22 @@ public class LoginController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//    public ModelAndView login() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("login");
+//        return modelAndView;
+//    }
 
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration() {
-        ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
-        return modelAndView;
-    }
+//    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+//    public ModelAndView registration() {
+//        ModelAndView modelAndView = new ModelAndView();
+//        User user = new User();
+//        modelAndView.addObject("user", user);
+//        modelAndView.setViewName("registration");
+//        return modelAndView;
+//    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {

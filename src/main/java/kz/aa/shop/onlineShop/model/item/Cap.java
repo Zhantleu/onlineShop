@@ -1,17 +1,18 @@
 package kz.aa.shop.onlineShop.model.item;
 
 
-import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
 import kz.aa.shop.onlineShop.model.property.PropertyCap;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity

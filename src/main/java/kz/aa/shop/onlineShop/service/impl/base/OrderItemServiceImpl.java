@@ -1,8 +1,8 @@
-package kz.aa.shop.onlineShop.service.impl;
+package kz.aa.shop.onlineShop.service.impl.base;
 
 import kz.aa.shop.onlineShop.model.order.Order;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.repository.OrderItemRepository;
+import kz.aa.shop.onlineShop.repository.base.OrderItemRepository;
 import kz.aa.shop.onlineShop.service.OrderItemService;
 import kz.aa.shop.onlineShop.service.base.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

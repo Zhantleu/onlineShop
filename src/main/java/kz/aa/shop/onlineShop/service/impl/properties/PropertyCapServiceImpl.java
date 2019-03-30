@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.service.impl;
+package kz.aa.shop.onlineShop.service.impl.properties;
 
 import kz.aa.shop.onlineShop.model.property.PropertyCap;
 import kz.aa.shop.onlineShop.service.PropertyCapService;

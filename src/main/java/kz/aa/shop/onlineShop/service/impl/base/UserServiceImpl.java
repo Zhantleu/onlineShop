@@ -1,8 +1,8 @@
-package kz.aa.shop.onlineShop.service.impl;
+package kz.aa.shop.onlineShop.service.impl.base;
 
 import kz.aa.shop.onlineShop.model.Role;
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.repository.UserRepository;
+import kz.aa.shop.onlineShop.repository.base.UserRepository;
 import kz.aa.shop.onlineShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;

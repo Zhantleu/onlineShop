@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.enumeration;
 
 public enum ColorEnum {
     BLACK("Черный"), WHITE("Белый"), GREEN("Зеленый"), RED("Красный"), BLUE("Синий");

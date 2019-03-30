@@ -2,8 +2,10 @@ package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.item.Dombra;
+import kz.aa.shop.onlineShop.service.DombraService;
 import kz.aa.shop.onlineShop.service.UserService;
-import kz.aa.shop.onlineShop.service.impl.CapServiceImpl;
+import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,13 +24,16 @@ public class CategoryController {
 
     private final CapServiceImpl capService;
     private UserService userService;
+    private DombraService dombraService;
 
     @Autowired
-    public CategoryController(CapServiceImpl capService, UserService userService) {
+    public CategoryController(CapServiceImpl capService, UserService userService, DombraService dombraService) {
         this.capService = capService;
         this.userService = userService;
+        this.dombraService = dombraService;
     }
 
+//    Will be change to another method for category list (switch)
     @RequestMapping(value = "/dombra")
     public String dombraPage(Model model,
                              @RequestParam(value = "page", defaultValue = "1") int page) {
@@ -38,12 +43,12 @@ public class CategoryController {
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
         PageRequest pageable = PageRequest.of(page - 1, 12);
-        Page<Cap> pageCapList = capService.findAll(pageable);
-        model.addAttribute("products", pageCapList);
+        Page<Dombra> pageList = dombraService.findAll(pageable);
+        model.addAttribute("products", pageList);
 
-        model.addAttribute("products", pageCapList);
+        model.addAttribute("products", pageList );
 
-        int totalPages = pageCapList.getTotalPages();
+        int totalPages = pageList.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);

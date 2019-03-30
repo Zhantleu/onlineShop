@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.controller;
 
-import kz.aa.shop.onlineShop.model.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.order.Order;

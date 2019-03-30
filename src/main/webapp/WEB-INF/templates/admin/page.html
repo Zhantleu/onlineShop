@@ -24,14 +24,9 @@
     <!-- TAB 1 BEGIN -->
     <div class="tabContent">
         <h3>Ұлттық киімдер</h3>
-        <div>
-            <form method="get">
-                <p th:field="${test}"></p>
-            </form>
-        </div>
 
         <div class="container-fluid">
-            <form method="post" enctype="multipart/form-data" th:object="${cap}">
+            <form method="post" enctype="multipart/form-data" th:object="${cap}" th:action="@{/admin/create-cap}">
                 <p>Название: <label>
                     <input type="text" th:field="*{name}"/>
                 </label></p>
@@ -73,13 +68,12 @@
                 <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
                         <span>Выберите изображение</span>
-                        <input type="file" name="file" id="customFile">
-                        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
+                        <input type="file" name="file" id="imgCap">
                         <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
                     </div>
                 </div>
 
-                <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
+                <p><input type="submit" value="Создать"/></p>
             </form>
         </div>
     </div>
@@ -88,44 +82,25 @@
 
     <!-- TAB 2 BEGIN -->
     <div class="tabContent">
-        <h3>Ұлттық аспаптар</h3>
-        <div>
-            <form method="get">
-                <p th:field="${test}"></p>
-            </form>
-        </div>
+        <h3>Домбра</h3>
 
         <div class="container-fluid">
-            <form method="post" enctype="multipart/form-data" th:object="${cap}">
+            <form method="post" enctype="multipart/form-data" th:action="@{/admin/create-dombra}" th:object="${dombra}">
                 <p>Название: <label>
                     <input type="text" th:field="*{name}"/>
                 </label></p>
                 <p>Цена: <label>
                     <input type="text" th:field="*{price}"/>
                 </label></p>
-                <p>Тип: <label>
-                    <select th:field="*{propertyCap.gender}">
-                        <option th:each="gender : ${genderTypes}"
-                                th:value="${gender}"
-                                th:text="${gender.label}">
-                        </option>
-                    </select>
+                <p>Длина: <label>
+                    <input type="text" th:field="*{propertyDombra.length}"/>
                 </label></p>
-                <p>Цвет: <label>
-                    <select th:field="*{propertyCap.colorEnum}">
-                        <option th:each="color : ${colorEnum}"
-                                th:value="${color}"
-                                th:text="${color.label}">
-                    </select>
-                </label></p>
-
 
                 <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
                         <span>Выберите изображение</span>
-                        <input type="file" name="file" id="customFile2">
-                        <!--<td th:if="${#fields.hasErrors('url')}" th:errors="*{url}">Error</td>-->
-                        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
+                        <input type="file" name="file" id="imgDombra">
+                        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}"></p>
                     </div>
                 </div>
                 <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>

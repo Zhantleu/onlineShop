@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.service.impl;
+package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.ItemDto;
-import kz.aa.shop.onlineShop.model.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.ItemDtoService;
 import org.springframework.stereotype.Service;
 
