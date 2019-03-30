@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -44,58 +45,27 @@ public class MainController {
         this.itemDtoService = itemDtoService;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
     public String home(Model model,
                        @RequestParam(value = "page", defaultValue = "1") int page) {
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        user = userService.findCurrentUser();
 
-        if (auth != null) {
-            user = userService.findUserByEmail(auth.getName());
+        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
-            PageRequest pageable = PageRequest.of(page - 1, 2);
-            Page<Cap> pageCapList = capService.findAll(pageable);
-            model.addAttribute("products", pageCapList);
+        PageRequest pageable = PageRequest.of(page - 1, 2);
+        Page<Cap> pageCapList = capService.findAll(pageable);
+        model.addAttribute("products", pageCapList);
 
-            int totalPages = pageCapList.getTotalPages();
-            if (totalPages > 0) {
-                List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-                model.addAttribute("pageNumbers", pageNumbers);
-            }
-
-            return "view/index";
-        }
-
-        return "/login";
-    }
-
-    @RequestMapping(value = "/addItem",
-            method = RequestMethod.POST)
-    public String addItem(@RequestParam(name = "itemId") Long itemId,
-                          @RequestParam(name = "categoryType") String typeCategory) {
-
-        TypeCategory category = TypeCategory.valueOf(typeCategory);
-        Order order = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user);
-        OrderItem orderItem = new OrderItem();
-
-        if (order == null)
-            order = new Order(user, LocalDateTime.now(), false);
-
-        orderService.saveOrUpdate(order);
-        orderItem.setOrder(order);
-
-        switch (category) {
-            case CAP:
-                setOrderItem(orderItem, capService.findById(itemId));
-                break;
+        int totalPages = pageCapList.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
         }
 
         return "view/index";
+
     }
 
-    private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity) {
-        orderItem.setTypeCategory(TypeCategory.CAP);
-        orderItem.setIdItem(baseEntity.getId());
-        orderItemService.saveOrUpdate(orderItem);
-    }
+
 }

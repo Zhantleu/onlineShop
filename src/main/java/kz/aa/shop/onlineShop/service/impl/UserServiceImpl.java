@@ -5,6 +5,10 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.repository.UserRepository;
 import kz.aa.shop.onlineShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +45,19 @@ public class UserServiceImpl implements UserService {
         user.setActive(true);
         user.setRoles(new HashSet<>(Collections.singletonList(Role.USER)));
         return userRepository.save(user);
+    }
+
+    @Override
+    public User findCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated()) {
+            UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (details != null) {
+                String email = details.getUsername();
+                return findUserByEmail(email);
+            }
+        }
+        return null;
     }
 
 }

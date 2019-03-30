@@ -60,7 +60,7 @@ NAViGATION
 }
 
 .contacts .num{
-	top: -31px;
+	top: -30px;
 	left: 35px;
 	position: absolute;
 }
@@ -372,7 +372,7 @@ CONTENT
 	margin-bottom: 12px;
 	text-align: center;
 }
-.card__button:hover, .card__button:focus, .card__button:active{
+.card__button:hover{
 	background-color: #da0f4d;
 	text-decoration: none;
 	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.6);
@@ -708,7 +708,7 @@ li{
 }
 .sl__slide{
 	position: relative;
-	width: 400px;
+
 }
 
 .sl__img{
@@ -730,7 +730,7 @@ li{
 	text-decoration: none;
 }
 .fa-phone:before{
-	top: -26px;
+	top: -25px;
 	left: 15px;
 	position: absolute;
 }
