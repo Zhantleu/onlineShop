@@ -19,4 +19,6 @@ public class BaseItemEntity extends BaseEntity implements Serializable{
 
     @Enumerated(EnumType.STRING)
     private TypeCategory typeCategory;
+
+    private String articul;
 }

@@ -34,15 +34,6 @@ public class LoginController {
         this.userService = userService;
     }
 
-//    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-//    public ModelAndView registration() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        User user = new User();
-//        modelAndView.addObject("user", user);
-//        modelAndView.setViewName("registration");
-//        return modelAndView;
-//    }
-
     @PostMapping(value="login",produces="application/json")
     public @ResponseBody
     ValidationResponse loginViaAjax(Model model,

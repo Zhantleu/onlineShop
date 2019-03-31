@@ -11,7 +11,7 @@ $(document).ready(function () {
         $.ajax({
 
             type: "POST",
-            url: "ModalLogin",
+            url: "login",
             data: {
                 email: EMAIL,
                 password: PASSWORD
