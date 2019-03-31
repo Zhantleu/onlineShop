@@ -149,21 +149,33 @@
                                         <div class="container-fluid">
                                             <form th:object="${user}" method="post" th:action="@{/registration}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Имя,фамилия,отчество</label>
-                                                    <input type="email" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
-                                                           placeholder="Иванов И.И">
-                                                    <small id="emailHelp2" class="form-text text-muted">Введите имя</small>
+                                                    <label for="exampleInputName">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                           placeholder="Иван">
+                                                    <small id="nameHelp" class="form-text text-muted">Введите имя</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Иванов">
+                                                    <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Cтрана,Город</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Казахстан,Костанай">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите имя страны и города</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputEmail">Email adress</label>
                                                     <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
                                                            placeholder="Email">
-                                                    <small id="emailHelpReg" class="form-text text-muted">Enter your email</small>
+                                                    <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Password</label>
+                                                    <label for="exampleInputPass">Пароль</label>
                                                     <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
-                                                           placeholder="Password">
+                                                           placeholder="Пароль">
                                                     <small id="passHelpReg" class="form-text text-muted">Минимум 6 символов</small>
                                                 </div>
                                                 <br>
@@ -193,12 +205,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1">
-                    <div class="contacts">
-                        <i class="fas fa-phone"></i>
-                        <div class="num">+77086892990</div>
-                    </div>
-                </div>
+
+
+
 
             </div>
         </div>
