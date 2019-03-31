@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,9 +47,13 @@ public class MainController {
 //    Should add a more flexible for new items iteration
     @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
     public String home(Model model,
-                       @RequestParam(value = "page", defaultValue = "1") int page) {
+                       @RequestParam(value = "page", defaultValue = "1") int page,
+                       HttpServletRequest request) {
 
-        user = userService.findCurrentUser();
+        if (request.getSession().getAttribute("loggedInUser") != null)
+            user = (Optional<User>) request.getSession().getAttribute("loggedInUser");
+        else
+            user = userService.findCurrentUser();
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 

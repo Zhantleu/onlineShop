@@ -43,7 +43,7 @@ public class LoginController {
 //        return modelAndView;
 //    }
 
-    @PostMapping(value="ModalLogin",produces="application/json")
+    @PostMapping(value="login",produces="application/json")
     public @ResponseBody
     ValidationResponse loginViaAjax(Model model,
                                     @ModelAttribute(value="user") User user,
@@ -109,9 +109,6 @@ public class LoginController {
     }
 
     private void uploadUserAttributesToSession(Optional<User> theUser, HttpServletRequest request) {
-
-        request.getSession().setAttribute("loggedInUserId", theUser.get().getId());
-        request.getSession().setAttribute("loggedInUserNickname", theUser.get().getEmail());
-        request.getSession().setAttribute("loggedInUserRegDate", theUser.get().getRegistrationDate());
+        request.getSession().setAttribute("loggedInUser", theUser);
     }
 }

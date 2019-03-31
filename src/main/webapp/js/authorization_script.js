@@ -22,7 +22,7 @@ $(document).ready(function () {
                     showFormError(response.errorMessageList);
                 } else {
                     //everything is O.K. user logged in successfully.
-                    $('#exampleModal').modal('hide');
+                    $('#exampleModal').hide();
                     window.location.reload();
                 }
             },
