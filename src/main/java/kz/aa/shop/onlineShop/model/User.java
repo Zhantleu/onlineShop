@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
@@ -44,6 +45,8 @@ public class User {
 
     @Column(name = "active")
     private boolean isActive;
+
+    private LocalDateTime registrationDate;
 
     @Column(columnDefinition = "varchar(32) default 'USER'")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)

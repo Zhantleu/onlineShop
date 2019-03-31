@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class UtilController {
@@ -37,14 +38,14 @@ public class UtilController {
     public String addItem(@RequestParam(name = "itemId") Long itemId,
                           @RequestParam(name = "categoryType") String typeCategory) {
 
-        User user = userService.findCurrentUser();
+        Optional<User> user = userService.findCurrentUser();
 
         TypeCategory category = TypeCategory.valueOf(typeCategory);
-        Order order = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user);
+        Order order = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user.get());
         OrderItem orderItem = new OrderItem();
 
         if (order == null)
-            order = new Order(user, LocalDateTime.now(), false);
+            order = new Order(user.get(), LocalDateTime.now(), false);
 
         orderService.saveOrUpdate(order);
         orderItem.setOrder(order);

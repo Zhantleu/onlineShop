@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 @PreFilter("authentication.principal.username != null")
@@ -56,7 +57,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/page", method = RequestMethod.GET)
     public String mainForAdmin(Model model) {
 
-        User user = userService.findCurrentUser();
+        Optional<User> user = userService.findCurrentUser();
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
         model.addAttribute("dombra", new Dombra());

@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login","/","/registration","/static/**","/libs/**","/css/**","/images/**","/img_src/**").permitAll()
 
                 .and().csrf().disable().formLogin()
-//                .loginPage("/login")
+                .loginPage("/login")
                 .defaultSuccessUrl("/home",true)
                 .usernameParameter("email")
                 .passwordParameter("password")

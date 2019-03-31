@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
 public class MainController {
 
-    private User user;
+    private Optional<User> user;
 
     private final CapServiceImpl capService;
     private final UserServiceImpl userService;

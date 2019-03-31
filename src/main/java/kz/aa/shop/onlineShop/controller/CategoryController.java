@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -38,7 +39,7 @@ public class CategoryController {
     public String dombraPage(Model model,
                              @RequestParam(value = "page", defaultValue = "1") int page) {
 
-        User user = userService.findCurrentUser();
+        Optional<User> user = userService.findCurrentUser();
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 

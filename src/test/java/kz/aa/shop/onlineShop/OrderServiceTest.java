@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrderServiceTest {
@@ -29,15 +30,15 @@ public class OrderServiceTest {
 
     @Test
     public void addToDb() {
-        User user = userService.findUserByEmail("123@gmail.com");
+        Optional<User> user = userService.findUserByEmail("123@gmail.com");
         System.out.println(user);
-        Order order = new Order(user, LocalDateTime.now(), false);
+        Order order = new Order(user.get(), LocalDateTime.now(), false);
 
         OrderItem orderItem = new OrderItem(order, 1L, TypeCategory.CAP);
 
         mockOrderService.saveOrUpdate(order);
 
-        Assert.assertEquals(order, mockOrderService.findByUserAndIsConfirmedIsFalse(user));
+        Assert.assertEquals(order, mockOrderService.findByUserAndIsConfirmedIsFalse(user.get()));
 
         mockOrderItemService.saveOrUpdate(orderItem);
 
