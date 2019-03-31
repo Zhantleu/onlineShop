@@ -201,8 +201,10 @@
                 </div>
                 <div class="col-md-1">
                     <div class="cart">
+                        <a th:href="@{/shopping-cart}">
                         <img src="/images/icons/1-1.svg" alt="" height="28px">
                         <div class="cart__number">3</div>
+                        </a>
                         <div sec:authorize="isAuthenticated()">
                             <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
                             </li>

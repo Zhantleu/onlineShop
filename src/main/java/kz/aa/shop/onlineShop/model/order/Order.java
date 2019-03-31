@@ -12,10 +12,6 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-//@SecondaryTable(name = "order_items", pkJoinColumns = @PrimaryKeyJoinColumn(name = "authorId", referencedColumnName = "id"))
 @Table(name = "orders", schema = "public")
 public class Order extends BaseEntity {
 
@@ -26,4 +22,12 @@ public class Order extends BaseEntity {
     private LocalDateTime orderTime;
 
     private boolean isConfirmed;
+
+    public Order() {
+    }
+
+    public Order(User user, boolean isConfirmed) {
+        this.user = user;
+        this.isConfirmed = isConfirmed;
+    }
 }

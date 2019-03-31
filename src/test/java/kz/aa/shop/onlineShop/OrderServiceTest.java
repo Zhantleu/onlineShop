@@ -32,7 +32,7 @@ public class OrderServiceTest {
     public void addToDb() {
         Optional<User> user = userService.findUserByEmail("123@gmail.com");
         System.out.println(user);
-        Order order = new Order(user.get(), LocalDateTime.now(), false);
+        Order order = new Order(user.get(), false);
 
         OrderItem orderItem = new OrderItem(order, 1L, LocalDateTime.now(), TypeCategory.CAP);
 

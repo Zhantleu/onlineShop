@@ -43,7 +43,7 @@ public class UtilController {
         OrderItem orderItem = new OrderItem();
 
         if (order == null)
-            order = new Order(user.get(), LocalDateTime.now(), false);
+            order = new Order(user.get(), false);
 
         orderService.saveOrUpdate(order);
         orderItem.setOrder(order);
