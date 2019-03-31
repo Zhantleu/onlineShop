@@ -7,6 +7,7 @@ import kz.aa.shop.onlineShop.service.impl.base.OrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.dto.ItemDtoServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
+import kz.aa.shop.onlineShop.util.UtilControllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,11 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 public class MainController {
@@ -30,15 +27,17 @@ public class MainController {
 
     private final CapServiceImpl capService;
     private final UserServiceImpl userService;
+    private final UtilControllers utilControllers;
     private final OrderServiceImpl orderService;
     private final OrderItemServiceImpl orderItemService;
     private final ItemDtoServiceImpl itemDtoService;
 
 
     @Autowired
-    public MainController(CapServiceImpl capService, UserServiceImpl userService, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService) {
+    public MainController(CapServiceImpl capService, UserServiceImpl userService, UtilControllers utilControllers, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService) {
         this.capService = capService;
         this.userService = userService;
+        this.utilControllers = utilControllers;
         this.orderService = orderService;
         this.orderItemService = orderItemService;
         this.itemDtoService = itemDtoService;
@@ -50,22 +49,13 @@ public class MainController {
                        @RequestParam(value = "page", defaultValue = "1") int page,
                        HttpServletRequest request) {
 
-        if (request.getSession().getAttribute("loggedInUser") != null)
-            user = (Optional<User>) request.getSession().getAttribute("loggedInUser");
-        else
-            user = userService.findCurrentUser();
-
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+        UtilControllers.checkUserInSession(model, request,user, userService);
 
         PageRequest pageable = PageRequest.of(page - 1, 6);
         Page<Cap> pageCapList = capService.findAll(pageable);
         model.addAttribute("products", pageCapList);
 
-        int totalPages = pageCapList.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
+        utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
 
         return "view/index";
 
@@ -74,12 +64,8 @@ public class MainController {
     @RequestMapping(value = "/shopping-cart")
     private String customerBasket(Model model,
                                   HttpServletRequest request) {
-        if (request.getSession().getAttribute("loggedInUser") != null)
-            user = (Optional<User>) request.getSession().getAttribute("loggedInUser");
-        else
-            user = userService.findCurrentUser();
 
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+        UtilControllers.checkUserInSession(model, request,user, userService);
 
         return "view/cart";
     }

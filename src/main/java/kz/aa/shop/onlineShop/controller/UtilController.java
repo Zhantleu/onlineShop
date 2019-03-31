@@ -5,15 +5,11 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.order.Order;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.service.CapService;
-import kz.aa.shop.onlineShop.service.OrderItemService;
-import kz.aa.shop.onlineShop.service.OrderService;
-import kz.aa.shop.onlineShop.service.UserService;
+import kz.aa.shop.onlineShop.service.*;
+import kz.aa.shop.onlineShop.util.ValidationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -22,20 +18,22 @@ import java.util.Optional;
 public class UtilController {
     private final OrderService orderService;
     private final UserService userService;
+    private final DombraService dombraService;
     private final CapService capService;
     private final OrderItemService orderItemService;
 
     @Autowired
-    public UtilController(OrderService orderService, UserService userService, CapService capService, OrderItemService orderItemService) {
+    public UtilController(OrderService orderService, UserService userService, DombraService dombraService, CapService capService, OrderItemService orderItemService) {
         this.orderService = orderService;
         this.userService = userService;
+        this.dombraService = dombraService;
         this.capService = capService;
         this.orderItemService = orderItemService;
     }
 
-    @RequestMapping(value = "/addItem",
-            method = RequestMethod.POST)
-    public String addItem(@RequestParam(name = "itemId") Long itemId,
+    @PostMapping(value="addItem",produces="application/json")
+    public @ResponseBody
+    ValidationResponse addItem(@RequestParam(name = "itemId") Long itemId,
                           @RequestParam(name = "categoryType") String typeCategory) {
 
         Optional<User> user = userService.findCurrentUser();
@@ -54,9 +52,12 @@ public class UtilController {
             case CAP:
                 setOrderItem(orderItem, capService.findById(itemId));
                 break;
+            case DOMBRA:
+                setOrderItem(orderItem, dombraService.findById(itemId));
+                break;
         }
 
-        return "view/index";
+        return new ValidationResponse();
     }
 
     private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity) {

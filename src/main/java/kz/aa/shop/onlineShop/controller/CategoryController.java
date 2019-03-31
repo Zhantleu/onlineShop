@@ -1,11 +1,11 @@
 package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.item.Cap;
 import kz.aa.shop.onlineShop.model.item.Dombra;
 import kz.aa.shop.onlineShop.service.DombraService;
 import kz.aa.shop.onlineShop.service.UserService;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
+import kz.aa.shop.onlineShop.util.UtilControllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,11 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 public class CategoryController {
@@ -26,12 +23,14 @@ public class CategoryController {
     private final CapServiceImpl capService;
     private UserService userService;
     private DombraService dombraService;
+    private UtilControllers utilControllers;
 
     @Autowired
-    public CategoryController(CapServiceImpl capService, UserService userService, DombraService dombraService) {
+    public CategoryController(CapServiceImpl capService, UserService userService, DombraService dombraService, UtilControllers utilControllers) {
         this.capService = capService;
         this.userService = userService;
         this.dombraService = dombraService;
+        this.utilControllers = utilControllers;
     }
 
 //    Will be change to another method for category list (switch)
@@ -47,13 +46,7 @@ public class CategoryController {
         Page<Dombra> pageList = dombraService.findAll(pageable);
         model.addAttribute("products", pageList);
 
-        model.addAttribute("products", pageList );
-
-        int totalPages = pageList.getTotalPages();
-        if (totalPages > 0) {
-            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
-            model.addAttribute("pageNumbers", pageNumbers);
-        }
+        utilControllers.pageCountNumber(model, pageList.getTotalPages());
 
         return "view/dombra_category";
     }
