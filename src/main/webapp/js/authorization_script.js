@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     clearError();
 
-    $('#login').click(function(event) {
+    $('#login').click(function (event) {
 
         event.preventDefault();
         var EMAIL = $("#inputEmail").val();
@@ -10,12 +10,15 @@ $(document).ready(function() {
 
         $.ajax({
 
-            type : "POST",
-            url : "ModalLogin",
-            data : "EMAIL=" + EMAIL + "&PASSWORD=" + PASSWORD,
-            success : function(response) {
+            type: "POST",
+            url: "ModalLogin",
+            data: {
+                email: EMAIL,
+                password: PASSWORD
+            },
+            success: function (response) {
 
-                if(response.status === 'FAIL') {
+                if (response.status === 'FAIL') {
                     showFormError(response.errorMessageList);
                 } else {
                     //everything is O.K. user logged in successfully.
@@ -23,7 +26,7 @@ $(document).ready(function() {
                     window.location.reload();
                 }
             },
-            error : function(ex) {
+            error: function (ex) {
                 console.log(ex);
             }
         });
@@ -35,17 +38,14 @@ $(document).ready(function() {
 
     function showFormError(errorVal) {
         //show error messages that comming from backend and change border to red.
-        for(var i=0; i < errorVal.length; i++) {
-            if(errorVal[i].fieldName === 'EMAIL') {
+        for (var i = 0; i < errorVal.length; i++) {
+            if (errorVal[i].fieldName === 'EMAIL') {
                 clearForm();
                 EmailField.attr("placeholder", errorVal[i].message).css("border", " 1px solid red");
-            }
-
-            else if(errorVal[i].fieldName === 'PASSWORD'){
+            } else if (errorVal[i].fieldName === 'PASSWORD') {
                 PasswordField.val('');
                 PasswordField.attr("placeholder", errorVal[i].message).css("border", " 1px solid red");
-            }
-            else if(errorVal[i].fieldName === 'FORM FAIL'){
+            } else if (errorVal[i].fieldName === 'FORM FAIL') {
                 clearForm();
                 GeneralErrorField.css("display", "block").html(errorVal[i].message);
             }
@@ -55,17 +55,18 @@ $(document).ready(function() {
     //remove error warning tags and change tips
     function clearError() {
         //clear all and return it as default.
-        $('#inputEmail').focus(function() {
+        $('#inputEmail').focus(function () {
             clearForm();
             EmailField.css("border", "1px solid lightgrey");
             EmailField.attr("placeholder", "Email адресс");
         });
-        $('#inputPass').focus(function() {
+        $('#inputPass').focus(function () {
             PasswordField.val('');
             PasswordField.css("border", "1px solid lightgrey");
             PasswordField.attr("placeholder", "Пароль");
         });
     }
+
     //clear fields and hide error tag.
     function clearForm() {
         EmailField.val('');

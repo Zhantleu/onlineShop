@@ -26,22 +26,30 @@ public class User {
     private int id;
 
     @Column(name = "email")
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
+    @Email(message = "*Пожалуйста введите правильный Email")
+    @NotEmpty(message = "*Пожалуйста введите Email")
     private String email;
 
     @Column(name = "password")
-    @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
+    @Length(min = 5, message = "*Пароль должен содержать минимум 5 символов")
+    @NotEmpty(message = "*Пожалуйста введите пароль")
     private String password;
 
     @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
+    @NotEmpty(message = "*Пожалуйста введите ваше Имя")
     private String name;
 
     @Column(name = "last_name")
-    @NotEmpty(message = "*Please provide your last name")
+    @NotEmpty(message = "*Пожалуйста введите вашу Фамилию")
     private String lastName;
+
+    @Column(name = "country")
+    @NotEmpty(message = "*Пожалуйста введите вашу Страну")
+    private String country;
+
+    @Column(name = "city")
+    @NotEmpty(message = "*Пожалуйста введите ваш Город")
+    private String city;
 
     @Column(name = "active")
     private boolean isActive;

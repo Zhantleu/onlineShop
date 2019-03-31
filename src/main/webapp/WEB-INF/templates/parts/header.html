@@ -106,24 +106,22 @@
                                 <div class="modal-body">
                                     <div class="modal-body">
                                         <div class="container-fluid">
-                                            <form method="post" th:action="@{/login}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email</label>
+                                                    <label for="inputEmail">Email</label>
                                                     <input type="email" class="form-control" id="inputEmail" aria-describdby="emailHelp" name="email"
                                                            placeholder="Email адресс">
                                                     <small id="emailHelp" class="form-text text-muted">Enter your email</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Пароль</label>
+                                                    <label for="inputPass">Пароль</label>
                                                     <input type="password" class="form-control" id="inputPass" name="password"
                                                     placeholder="Пароль">
-                                                    <small id="passHelp" class="form-text text-muted">Минимум 6 символов</small>
+                                                    <small id="passHelp" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
                                                 <div id="generalErrorMessage" class="error-lbl" style="display:none;"></div>
                                                 <button class="btn btn-light" id="login">Войти</button>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal" aria-label="Close">Регистрация</button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -149,38 +147,44 @@
                                         <div class="container-fluid">
                                             <form th:object="${user}" method="post" th:action="@{/registration}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Имя</label>
-                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                    <label for="inputName">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="inputName" aria-describdby="emailHelp"
                                                            placeholder="Иван">
                                                     <small id="nameHelp" class="form-text text-muted">Введите имя</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">фамилия</label>
-                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="inputLastName">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{lastName}" id="inputLastName" aria-describdby="emailHelp"
                                                            placeholder="Иванов">
                                                     <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Cтрана,Город</label>
-                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputLastName" aria-describdby="emailHelp"
-                                                           placeholder="Казахстан,Костанай">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите имя страны и города</small>
+                                                    <label for="inputLastName">Cтрана</label>
+                                                    <input type="text" class="form-control" th:field="*{country}" id="inputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Казахстан">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите страну</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email adress</label>
-                                                    <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
+                                                    <label for="inputLastName">Город</label>
+                                                    <input type="text" class="form-control" th:field="*{city}" id="inputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Костанай">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="inputEmailReg">Email adress</label>
+                                                    <input type="email" class="form-control" th:field="*{email}" id="inputEmailReg" aria-describdby="emailHelp"
                                                            placeholder="Email">
                                                     <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Пароль</label>
-                                                    <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
+                                                    <label for="inputPass">Пароль</label>
+                                                    <input type="password" class="form-control" th:field="*{password}" id="inputPassReg"
                                                            placeholder="Пароль">
-                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 6 символов</small>
+                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">Войти</button>
-                                                <button class="btn btn-light" onclick="alertmsg('hello!');">Регистрация</button>
+                                                <button class="btn btn-light">Регистрация</button>
                                             </form>
                                         </div>
                                     </div>
@@ -343,21 +347,22 @@
                                 <div class="modal-body">
                                     <div class="modal-body">
                                         <div class="container-fluid">
-                                            <form>
+                                            <form method="post" th:action="@{/login}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email adress</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail" aria-describdby="emailHelp" name="email"
-                                                           placeholder="Email">
+                                                    <label for="exampleInputEmail">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail" aria-describdby="emailHelp" name="email"
+                                                           placeholder="Email адресс">
                                                     <small id="emailHelp" class="form-text text-muted">Enter your email</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Password</label>
-                                                    <input type="password" class="form-control" id="exampleInputPass" name="password"
-                                                           placeholder="Password">
-                                                    <small id="passHelp" class="form-text text-muted">Минимум 6 символов</small>
+                                                    <label for="exampleInputPass">Пароль</label>
+                                                    <input type="password" class="form-control" id="inputPass" name="password"
+                                                           placeholder="Пароль">
+                                                    <small id="passHelp" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
-                                                <button class="btn btn-light">Войти</button>
+                                                <div id="generalErrorMessage" class="error-lbl" style="display:none;"></div>
+                                                <button class="btn btn-light" id="login">Войти</button>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal" aria-label="Close">Регистрация</button>
                                             </form>
                                         </div>
@@ -385,22 +390,40 @@
                                         <div class="container-fluid">
                                             <form th:object="${user}" method="post" th:action="@{/registration}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Имя,фамилия,отчество</label>
-                                                    <input type="email" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
-                                                           placeholder="Иванов И.И">
-                                                    <small id="emailHelp2" class="form-text text-muted">Введите имя</small>
+                                                    <label for="exampleInputName">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                           placeholder="Иван">
+                                                    <small id="nameHelp" class="form-text text-muted">Введите имя</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{lastName}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Иванов">
+                                                    <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Cтрана</label>
+                                                    <input type="text" class="form-control" th:field="*{country}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Казахстан">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите страну</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Город</label>
+                                                    <input type="text" class="form-control" th:field="*{city}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Костанай">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputEmail">Email adress</label>
                                                     <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
                                                            placeholder="Email">
-                                                    <small id="emailHelpReg" class="form-text text-muted">Enter your email</small>
+                                                    <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Password</label>
+                                                    <label for="exampleInputPass">Пароль</label>
                                                     <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
-                                                           placeholder="Password">
-                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 6 символов</small>
+                                                           placeholder="Пароль">
+                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">Войти</button>

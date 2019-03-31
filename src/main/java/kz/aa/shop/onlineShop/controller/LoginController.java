@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class LoginController {
 //        return modelAndView;
 //    }
 
-    @PostMapping(value="ModalLogin")
+    @PostMapping(value="ModalLogin",produces="application/json")
     public @ResponseBody
     ValidationResponse loginViaAjax(Model model,
                                     @ModelAttribute(value="user") User user,
@@ -55,9 +56,7 @@ public class LoginController {
             res.setStatus("FAIL");
             List<FieldError> allErrors = result.getFieldErrors();
             final List<ErrorMessage> errorMessages = new ArrayList<>();
-            allErrors.forEach((objectError) -> {
-                errorMessages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage()));
-            });
+            allErrors.forEach((objectError) -> errorMessages.add(new ErrorMessage(objectError.getField(), objectError.getDefaultMessage())));
             res.setErrorMessageList(errorMessages);
 
         } else {
@@ -100,6 +99,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("redirect:/home");
         } else {
+            user.setRegistrationDate(LocalDateTime.now());
             userService.saveUser(user);
             modelAndView.addObject("user", new User());
 

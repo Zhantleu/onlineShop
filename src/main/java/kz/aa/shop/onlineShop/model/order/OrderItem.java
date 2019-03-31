@@ -5,6 +5,7 @@ import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -20,6 +21,8 @@ public class OrderItem extends BaseEntity {
     private Order order;
 
     private Long idItem;
+
+    private LocalDateTime orderItemTime;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 8)

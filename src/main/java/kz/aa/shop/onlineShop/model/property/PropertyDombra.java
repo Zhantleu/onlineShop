@@ -17,10 +17,26 @@ import javax.persistence.*;
 @DynamicInsert
 @Table(name = "property_cap")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public @Data class PropertyDombra extends BaseEntity {
+public class PropertyDombra extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dombra_id")
     private Dombra dombra;
 
     private String length;
+
+    public Dombra getDombra() {
+        return dombra;
+    }
+
+    public void setDombra(Dombra dombra) {
+        this.dombra = dombra;
+    }
+
+    public String getLength() {
+        return length;
+    }
+
+    public void setLength(String length) {
+        this.length = length;
+    }
 }
