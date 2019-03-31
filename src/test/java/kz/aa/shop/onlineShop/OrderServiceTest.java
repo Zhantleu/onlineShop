@@ -34,7 +34,7 @@ public class OrderServiceTest {
         System.out.println(user);
         Order order = new Order(user.get(), LocalDateTime.now(), false);
 
-        OrderItem orderItem = new OrderItem(order, 1L, TypeCategory.CAP);
+        OrderItem orderItem = new OrderItem(order, 1L, LocalDateTime.now(), TypeCategory.CAP);
 
         mockOrderService.saveOrUpdate(order);
 
