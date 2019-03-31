@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
-    <link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="../../../css/styles.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+    <div th:replace="parts/header :: header-css"></div>
 </head>
 <body>
-<div th:replace="parts/header :: header"></div>
+<div th:replace="parts/header :: header-for-category"></div>
 <!-- Start Shopping-Cart -->
 <div class="shopping-cart">
     <div class="row">
@@ -42,7 +43,6 @@
                         <td class="text-left">
                             <div class="btn-block cart-put">
                                 <input class="form-control" type="number" placeholder="1" id="sumOfTovar" value="1" onchange="countMoney('tovarPrice','sumOfTovar');" onclick="countMoney('tovarPrice','sumOfTovar');" />
->>>>>>> e8c0ad7a208f3533f910c911156191c709229736
                                 <div class="input-group-btn cart-buttons">
                                     <button class="btn btn-danger" data-toggle="tooltip" title="Remove">
                                         <span class="text--but">Alyp tastay</span>

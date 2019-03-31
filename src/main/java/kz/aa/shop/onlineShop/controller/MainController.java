@@ -71,5 +71,17 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/shopping-cart")
+    private String customerBasket(Model model,
+                                  HttpServletRequest request) {
+        if (request.getSession().getAttribute("loggedInUser") != null)
+            user = (Optional<User>) request.getSession().getAttribute("loggedInUser");
+        else
+            user = userService.findCurrentUser();
+
+        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+
+        return "view/cart";
+    }
 
 }
