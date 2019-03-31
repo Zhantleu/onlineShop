@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "caps")
+@Table(name = "dombra")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

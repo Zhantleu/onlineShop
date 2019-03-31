@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_cap")
+@Table(name = "property_dombra")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class PropertyDombra extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
