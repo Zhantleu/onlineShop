@@ -50,18 +50,18 @@ public class UtilController {
 
         switch (category) {
             case CAP:
-                setOrderItem(orderItem, capService.findById(itemId));
+                setOrderItem(orderItem, capService.findById(itemId),TypeCategory.CAP);
                 break;
             case DOMBRA:
-                setOrderItem(orderItem, dombraService.findById(itemId));
+                setOrderItem(orderItem, dombraService.findById(itemId), TypeCategory.DOMBRA);
                 break;
         }
 
         return new ValidationResponse();
     }
 
-    private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity) {
-        orderItem.setTypeCategory(TypeCategory.CAP);
+    private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity, TypeCategory typeCategory) {
+        orderItem.setTypeCategory(typeCategory);
         orderItem.setIdItem(baseEntity.getId());
         orderItemService.saveOrUpdate(orderItem);
     }
