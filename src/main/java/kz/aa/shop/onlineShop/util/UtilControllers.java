@@ -26,13 +26,13 @@ public class UtilControllers {
         return bindingResult.getFieldErrors().stream().collect(collector);
     }
 
-    public static void checkUserInSession(Model model, HttpServletRequest request, Optional<User> user, UserService userService) {
+    public Optional<User> checkUserInSession(Model model, HttpServletRequest request, Optional<User> user, UserService userService) {
         if (request.getSession().getAttribute("loggedInUser") != null)
             user = (Optional<User>) request.getSession().getAttribute("loggedInUser");
         else
             user = userService.findCurrentUser();
 
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+        return user;
     }
 
     public void pageCountNumber(Model model, int totalPages) {

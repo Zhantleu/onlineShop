@@ -31,18 +31,20 @@
                     </thead>
                     <!-- ORDERS -->
                     <tbody>
-                    <tr>
+                    <tr th:each="item : ${orderItemsDto}">
                         <td class="text-center">
-                            <a href="#"><img class="img-thumbnail" src="../../../images/slider/p1.jpg" alt="#" /></a>
-                            <li class="without--dot"><a href="#" class="text-center">Имя</a></li>
+                            <a href="#">
+                                <img class="img-thumbnail" th:src="@{'/img_src/' + ${item.urlImage}}" alt="product">
+                            </a>
+                            <li class="without--dot"><a href="#" class="text-center"><p th:text="${item.name}"></p></a></li>
 
                         </td>
                         <td class="text-left">
-                            <li class="without--dot"><label>1235291234</label></li>
+                            <li class="without--dot"><label th:text="${item.articul}"></label></li>
                         </td>
                         <td class="text-left">
                             <div class="btn-block cart-put">
-                                <input class="form-control" type="number" placeholder="1" id="sumOfTovar" value="1" onchange="countMoney('tovarPrice','sumOfTovar');" onclick="countMoney('tovarPrice','sumOfTovar');" />
+                                <input class="form-control" type="number" placeholder="1" id="sumOfTovar" th:value="${item.amount}" onchange="countMoney('tovarPrice','sumOfTovar');" onclick="countMoney('tovarPrice','sumOfTovar');" />
                                 <div class="input-group-btn cart-buttons">
                                     <button class="btn btn-danger" data-toggle="tooltip" title="Remove">
                                         <span class="text--but">Alyp tastay</span>
@@ -50,8 +52,8 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center" id="tovarPrice">4140</td>
-                        <td class="text-center" id="subT">sum</td>
+                        <td class="text-center" id="tovarPrice" th:text="${item.price}"></td>
+                        <td class="text-center" id="subT" th:text="${item.totalPrice}"></td>
                     </tr>
 
                     </tbody>

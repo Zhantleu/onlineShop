@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.service.impl.base;
 
-import kz.aa.shop.onlineShop.model.order.Order;
+import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.repository.base.OrderItemRepository;
 import kz.aa.shop.onlineShop.service.OrderItemService;
@@ -18,7 +18,7 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem, Long> imple
     private OrderItemRepository repository;
 
     @Override
-    public List<OrderItem> findByOrder(Order order) {
-        return repository.findByOrder(order);
+    public List<OrderItem> findByCustomerOrder(CustomerOrder customerOrder) {
+        return repository.findByCustomerOrder(customerOrder);
     }
 }

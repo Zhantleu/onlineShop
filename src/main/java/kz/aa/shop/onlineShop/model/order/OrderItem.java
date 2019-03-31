@@ -18,11 +18,16 @@ public class OrderItem extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="order_id", nullable=false)
-    private Order order;
+    private CustomerOrder customerOrder;
 
     private Long idItem;
 
     private LocalDateTime orderItemTime;
+
+    @Column(columnDefinition = "int default 1")
+    private Integer amount;
+
+    private Double totalPrice;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 8)

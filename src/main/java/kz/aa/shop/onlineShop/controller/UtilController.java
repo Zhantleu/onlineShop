@@ -2,7 +2,7 @@ package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.order.Order;
+import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.*;
@@ -22,6 +22,7 @@ public class UtilController {
     private final DombraService dombraService;
     private final CapService capService;
     private final OrderItemService orderItemService;
+    private CustomerOrder customerOrder;
 
     @Autowired
     public UtilController(OrderService orderService, UserService userService, DombraService dombraService, CapService capService, OrderItemService orderItemService) {
@@ -39,17 +40,19 @@ public class UtilController {
 
         Optional<User> user = userService.findCurrentUser();
 
-        TypeCategory category = TypeCategory.valueOf(typeCategory);
-        Order order = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user.get());
+        if (user != null)
+            customerOrder = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user.get());
+
         OrderItem orderItem = new OrderItem();
 
-        if (order == null)
-            order = new Order(user.get(), false);
+        if (customerOrder == null) {
+            customerOrder = new CustomerOrder(user.get(), false);
+        }
 
-        orderService.saveOrUpdate(order);
-        orderItem.setOrder(order);
+        orderService.saveOrUpdate(customerOrder);
+        orderItem.setCustomerOrder(customerOrder);
 
-        switch (category) {
+        switch (TypeCategory.valueOf(typeCategory)) {
             case CAP:
                 setOrderItem(orderItem, capService.findById(itemId),TypeCategory.CAP);
                 break;

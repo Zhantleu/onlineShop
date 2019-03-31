@@ -25,11 +25,10 @@ public class ItemDtoServiceImpl implements ItemDtoService {
 
         Query query = entityManager.createQuery("SELECT " + idParameter + ", " + imgUrlParameter + " from "
                 + tableName + " f", Object[].class);
-//        query.setParameter("medicalCardId", medicalCardId);
-        return parseBooleanWrapDto(query.getResultList(), clazz);
+        return parseItemDto(query.getResultList(), clazz);
     }
 
-    private List<ItemDto> parseBooleanWrapDto(List<Object[]> resultList, Class clazz) {
+    private List<ItemDto> parseItemDto(List<Object[]> resultList, Class clazz) {
         List<ItemDto> itemDtos = new ArrayList<>();
 
         for (Object[] objects : resultList) {

@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "orders", schema = "public")
-public class Order extends BaseEntity {
+public class CustomerOrder extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
@@ -23,10 +23,12 @@ public class Order extends BaseEntity {
 
     private boolean isConfirmed;
 
-    public Order() {
+    private Double totalPrice;
+
+    public CustomerOrder() {
     }
 
-    public Order(User user, boolean isConfirmed) {
+    public CustomerOrder(User user, boolean isConfirmed) {
         this.user = user;
         this.isConfirmed = isConfirmed;
     }
