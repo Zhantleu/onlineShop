@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div th:replace="parts/header :: header"></div>
+<!-- Start Shopping-Cart -->
+<div class="shopping-cart">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="cart-title">
+
+            </div>
+            <!-- Start Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td class="text-center">Onim</td> <!-- Картинка имя категория -->
+                        <td class="text-left">Sipattama</td>
+                        <td class="text-left">Category</td>
+                        <td class="text-left">Somasi</td>
+                        <td class="text-center">Bagasi</td>
+                        <td class="text-center">Barligy</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <a href="#"><img class="img-thumbnail" src="../img/p1.jpg" alt="#" /></a>
+                            <li class="without--dot"><a href="#" class="text-center">Имя</a></li>
+
+                        </td>
+                        <td class="text-left">
+                            <li class="without--dot"><label>Размер: L</label></li>
+                            <li class="without--dot"><label>Тип: Example</label></li>
+                            <li class="without--dot"><label>Цвет: Blue</label></li>
+                        </td>
+                        <td class="text-left">Ashekey buym</td>
+                        <td class="text-left">
+                            <div class="btn-block cart-put">
+                                <input class="form-control" type="number" placeholder="1" id="sumOfTovar" value="1" onchange="countMoney();" />
+                                <div class="input-group-btn cart-buttons">
+                                    <button class="btn btn-danger" data-toggle="tooltip" title="Remove">
+                                        <span class="text--but">Alyp tastay</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center" id="tovarPrice">4140.5</td>
+                        <td class="text-center" id="subT">sum</td>
+                    </tr>
+                    </tbody>
+                    <!-- SECOND ROW -->
+                </table>
+            </div>
+            <!-- End Table -->
+
+            <div class="row">
+
+            </div>
+
+            <div class="container float-right">
+                <div class="row">
+                    <div class="col">
+                        <div class="shopping-checkout float-right">
+                            <a href="#" class="btn btn-light pull-left">Kaita oraly</a>
+                            <a href="#" class="btn btn-primary pull-right">Satip aly</a>
+                        </div>
+                    </div>
+                    <div class="col-3 text-right no-padding">
+                        <table class="table table-bordered">
+                            <tbody style="width: 15px">
+                            <tr>
+                                <td width="140px" class="text-center">
+                                    <strong>Barligy:</strong>
+                                </td>
+                                <td  class="text-right">5145 KZT</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- End Shopping-Cart -->
+    <script type="text/javascript" src="../../../js/cart_js.js"></script>
+</body>
+</html>

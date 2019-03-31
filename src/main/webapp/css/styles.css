@@ -1,0 +1,346 @@
+
+/*========================
+ 22. Cart Page
+=========================*/
+.img-thumbnail {
+  border-radius: 0;
+  width: 150px;
+  height: 140px;
+}
+.cart-put input {
+  margin-bottom: 10px;
+  max-width: 200px;
+}
+.cart-buttons {
+  display: block;
+  margin-left: 2px;
+}
+.accordion-cart {
+  margin-bottom: 40px;
+}
+.panel-group .panel-heading {
+  border: 1px solid #26acce;
+  border-radius: 0;
+  color: #444;
+  display: block;
+  margin-top: 5px;
+  padding: 0;
+}
+.panel-title a {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.panel-group .panel-heading a.collapsed {
+  background: #fff none repeat scroll 0 0;
+  padding: 10px;
+  color: #444;
+}
+.panel-group .panel-heading a {
+  background: #26ACCE;
+  padding: 10px;
+  color: #fff;
+}
+.panel-heading i {
+  color: #444;
+  margin-left: 5px;
+}
+.panel-group .panel-heading a.collapsed i {
+  color: #444;
+}
+.panel-group .panel-heading a i {
+  color: #fff;
+}
+.panel-body {
+  border: 1px solid #ccc;
+}
+.accordion-cart button {
+  border-radius: 0;
+  margin-top: 10px;
+}
+.shopping-checkout {
+display: inline-flex;
+padding-top: 8px;
+padding-right: 15px;
+}
+.accordion-cart button, .shopping-checkout a {
+  font-size: 12px;
+}
+.checkout-collapse {
+  margin-top: 20px;
+}
+legend {
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 18px;
+  padding: 7px 0;
+}
+/* ===============================
+ 23. Contact-Page
+=================================*/
+.contact-message {
+  margin-top: 20px;
+}
+.contact-message legend {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.contact-message .buttons {
+  margin: 1em 0;
+}
+.contact-message .btn.btn-primary {
+  text-transform: uppercase;
+  font-family: 'roboto';
+}
+.thank-you {
+  color: #26ACCE;
+  font-weight: 700;
+  font-size: 16px;
+}
+/* ===============================
+ 24. Wishlist-Page
+=================================*/
+.Wishlist-area {
+  margin-top: 25px;
+}
+/* ===============================
+ 25. About-Page
+=================================*/
+.about-area {
+    padding-bottom: 50px;
+}
+.about-page-cntent h3 {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #232323;
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 0;
+  text-transform: uppercase;
+}
+blockquote {
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: medium none;
+  font-size: 14px;
+  font-style: italic;
+  margin: 20px 0;
+  padding: 30px 45px;
+}
+.our-services-info {
+  background: #f6f6f6 none repeat scroll 0 0;
+  margin: 0 0 60px;
+  padding: 60px 0;
+}
+.f-title h3 {
+  color: #232323;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 60px;
+  padding-bottom: 5px;
+  position: relative;
+}
+.f-title .title::before {
+  background: #232323 none repeat scroll 0 0;
+  border-radius: 3px;
+  bottom: 0;
+  content: "";
+  height: 3px;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 30px;
+  position: absolute;
+  right: 0;
+  width: 10%;
+}
+.our-team {
+    margin-bottom: 36px;
+}
+.our-team .single-service i {
+  background: #c2c2c2 none repeat scroll 0 0;
+  border: 3px solid #f6f6f6;
+  border-radius: 100%;
+  color: #ffffff;
+  font-size: 18px;
+  height: 45px;
+  line-height: 41px;
+  position: relative;
+  text-align: center;
+  transition: all 0.5s ease 0s;
+  width: 45px;
+}
+.our-team .single-service h4 {
+  color: #3f3f3f;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+}
+.our-team .single-service p {
+  color: #636363;
+  font-weight: 400;
+  margin: 0;
+}
+.our-team .single-service {
+    margin: 33px 0 0;
+}
+.team-info .mask {
+  background: rgba(11, 116, 191, 0.3) none repeat scroll 0 0;
+  border-radius: 100%;
+  height: 95%;
+  left: 0;
+  margin: auto;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 7px;
+  transition: all 0.5s ease 0s;
+  width: 95%;
+}
+.team-info .mask .mask-inner {
+  margin-top: -16px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+.team-info .mask .mask-inner i {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 100%;
+  color: #0B74BF;
+  height: 33px;
+  line-height: 33px;
+  transition: all 0.5s ease 0s;
+  width: 33px;
+}
+.team-img img {
+  border: 7px solid rgba(0, 0, 0, 0);
+  border-radius: 100%;
+  height: 100%;
+  width: 100%;
+}
+.item-team:hover .team-img .mask {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+.team-img {
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 100%;
+  display: inline-block;
+  height: auto;
+  margin: 0 auto 10px;
+  position: relative;
+  transition: all 0.4s ease 0s;
+  width: auto;
+}
+.item-team:hover .team-img {
+  border-color: #0B74BF;
+}
+.f-title h3.text-headss {
+  margin: 0 0 10px;
+}
+.item-team.text-center h4 {
+  color: #232323;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.item-team.text-center h5 {
+  font-weight: 400;
+  text-transform: capitalize;
+}
+/*----------------------------------- 
+26. Account-Create Page
+-------------------------------------*/
+.account-create-box {
+  border: 1px solid #ddd;
+  margin: 30px 0;
+  padding: 22px 25px 12px;
+  position: relative;
+}
+.entry-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  padding: 30px 0;
+  text-transform: uppercase;
+}
+.box-info {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  font-style: italic;
+  padding: 4px 10px;
+  position: absolute;
+  top: -10px;
+}
+.single-create {
+  margin-bottom: 10px;
+}
+.single-create > p, .for-newsletter {
+  color: #000;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+.single-create sup {
+  color: #f22e3b;
+  top: 0.1em;
+}
+.single-create .form-control {
+  background: #f2f2f2 none repeat scroll 0 0;
+  border: 0 none;
+}
+.submit-area {
+  border-top: 1px solid #ddd;
+  overflow: hidden;
+}
+.required {
+  color: #e95668;
+  font-family: arial;
+  font-size: 11px;
+}
+.submit-area .btn-primary {
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 30px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+
+.text--but{
+  font-size: 15px;
+}
+
+.shopping-cart{
+ padding: 35px;
+}
+
+.table--buy{
+width: 400px;
+position: relative; 
+left: 50%;
+margin-left: -200px; 
+}
+.without--dot{
+   list-style-type: none;
+   line-height: 2.665;
+}
+.col.text-right{
+  padding-right: 0px;
+}
+.text-right.testing{
+  width: 50%;
+}
+.table.table-bordered.some
+{
+  width: 50%;
+}
+.col.text-right.short{
+  width: 100px;
+}
+.col-3.text-right.no-padding{
+padding-right: 0;
+padding-left: 5px;
+}
+.btn.btn-light.pull-left{
+  margin-right: 15px;
+}
