@@ -1,13 +1,16 @@
-function countMoney(id_item_price, id_sum_of_item) {
+function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
     var priceTovar = parseFloat(document.getElementById(id_item_price).innerHTML);
     var sumTovar = parseInt(document.getElementById(id_sum_of_item).value);
-    var subTotal = document.getElementById("subT");
+    var subTotal = document.getElementById(id_sub_total);
+    var sumTest = document.getElementById('sumTest').innerText;
+
     if (sumTovar < 0) {
         subTotal.innerHTML = "Teris san!";
     } else {
-        var priceTotal = (priceTovar * sumTovar);
-        var subT = priceTotal;
-        subTotal.innerHTML = subT;
-
+        subTotal.innerHTML = (priceTovar * sumTovar);
+        var asdsad;
+        asdsad = + sumTest + (priceTovar * sumTovar);
+        document.getElementById('sumTest').innerHTML = asdsad;
     }
+
 }
