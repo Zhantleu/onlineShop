@@ -19,7 +19,9 @@ NAViGATION
 	text-transform: uppercase;
 	text-decoration: none;
 }
-
+.logo--head{
+	padding-top: 20px;
+}
 .logo:hover ,.logo:focus ,.logo:active{
 	font-size: 23px;
 	color: #f72464;

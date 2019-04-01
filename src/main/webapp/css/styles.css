@@ -344,3 +344,41 @@ padding-left: 5px;
 .btn.btn-light.pull-left{
   margin-right: 15px;
 }
+.logo{
+  font-size: 23px;
+  color: #041122;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.logo--head{
+  padding-top: 20px;
+}
+.logo:hover ,.logo:focus ,.logo:active{
+  font-size: 23px;
+  color: #f72464;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-wrapper{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.navigation__link{
+  color: #52575D;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.navigation__link:hover, .navigation__link:active, .navigation__link:focus{
+  color: #f72464;
+  text-decoration: none;
+  margin-right: 30px;
+}
+.navigation{
+  font-size: 15px;
+  font-weight: 600;
+  padding-top: 5px
+}

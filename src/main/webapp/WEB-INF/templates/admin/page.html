@@ -8,8 +8,11 @@
     <script src="../../../libs/bootstrap/js/ajax_libs_jquery_3.3.1_jquery.js"></script>
     <script src="../../../libs/bootstrap/js/bootstrap.js"></script>
     <script src="../../../libs/bootstrap/js/bootstrap_3.4.0_js_bootstrap.js"></script>
-    <div th:replace="parts/header :: header-css"></div>
+
     <link rel="stylesheet" href="../../../css/main_admin.css"/>
+    <link rel="stylesheet" href="../../../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 
 </head>
@@ -20,11 +23,10 @@
     <div class="tab whiteborder">Ұлттық киімдер</div>
     <div class="tab">Ұлттық аспаптар</div>
     <div class="tab">Ұлттық әшекей- бұйымдар</div>
-    <div class="tab">Ewe</div>
+    <div class="tab">Берiлiстер</div>
     <!-- TAB 1 BEGIN -->
     <div class="tabContent">
-        <h3>Ұлттық киімдер</h3>
-
+        <h3>Киiмдер</h3>
         <div class="container-fluid">
             <form method="post" enctype="multipart/form-data" th:object="${cap}" th:action="@{/admin/create-cap}">
                 <p>Название: <label>
@@ -109,7 +111,50 @@
     </div>
     <!-- TAB 2 BEGIN -->
     <div class="tabContent">3</div>
-    <div class="tabContent">4</div>
+    <!-- TAB 1 BEGIN -->
+    <div class="tabContent">
+        <h3>Берiлiстер</h3>
+
+        <div class="container-fluid">
+            <!-- Start Table -->
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <td class="text-center">ID</td> <!-- Картинка имя категория -->
+                        <td class="text-left">DATA</td>
+                        <td class="text-left">ORDER_BY</td>
+                        <td class="text-center">CLICK</td>
+                    </tr>
+                    </thead>
+                    <!-- ORDERS -->
+                    <tbody>
+                    <tr>
+                        <td class="text-center">
+                            <li class="without--dot"><label>1235291234</label></li>
+
+                        </td>
+                        <td class="text-left">
+                            <li class="without--dot"><label>04/05/2019</label></li>
+                        </td>
+                        <td class="text-left">
+                            <li class="without--dot"><label>Azamat Uspanov</label></li>
+                        </td>
+                        <td class="text-center" id="tovarPrice"><a href="#">Click</a></td>
+
+                    </tr>
+
+                    </tbody>
+                    <!-- ORDERS END -- >
+
+                    <!-- SECOND ROW -->
+                </table>
+            </div>
+            <!-- End Table -->
+</div>
+</div>
+<!-- TAB 1 END -->
+
 </div>
 <!--<div class="tab">-->
 <!--<button class="tablinks" onclick="openTab(event, 'ulttikKyimder')">Ұлттық киімдер</button>-->
