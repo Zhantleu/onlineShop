@@ -8,6 +8,10 @@ function countMoney(id_item_price, id_sum_of_item) {
         var priceTotal = (priceTovar * sumTovar);
         var subT = priceTotal;
         subTotal.innerHTML = subT;
-
     }
+    return subT;
+}
+function deleteElem(elem){
+    var element = document.getElementById(elem);
+    element.parentNode.removeChild(element);
 }

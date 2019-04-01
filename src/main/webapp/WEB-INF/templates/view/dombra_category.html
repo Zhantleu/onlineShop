@@ -11,8 +11,8 @@
 
 <div class="section">
     <div class="container">
-        <h2 class="title">Zhana kelim</h2>
-        <div class="subtitle">Decription</div>
+        <h2 class="title">Dobralar</h2>
+        <div class="subtitle2">Zhana dobralar qol zhetimdi bagada</div>
         <!-- row -->
         <div class="row">
             <!-- FIRTS LINE -->
@@ -20,11 +20,10 @@
             <div class="col-md-3" th:each="prod : ${products}">
                 <div class="card" th:id="${prod.urlImage}"
                      data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
-                    <input type="button" class='like' value="LikeButton"/>
                     <div class="card__image">
                         <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
                         <div class="card__hover">
-                            <a href="#" class="card__button">Satip alu</a>
+                            <input type="button" class='card__button-btn' value="SatipAly"/>
                             <a href="#" class="card__button">Karau</a>
                         </div>
                     </div>
@@ -40,13 +39,15 @@
     </div>
 
     <div th:fragment="pagination">
-        <div class="mt-3">
-            <ul class="pagination">
-                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                    <a class="page-link" th:href="@{|/dombra?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
-                </li>
-            </ul>
-        </div>
+
+          <div class="pagination--class">
+                <ul class="pagination">
+                    <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                        <a class="page-link" th:href="@{|/dombra?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
+                    </li>
+                </ul>
+            </div>
+
     </div>
 
 </div>

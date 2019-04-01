@@ -23,6 +23,8 @@
     <div class="tab whiteborder">Ұлттық киімдер</div>
     <div class="tab">Ұлттық аспаптар</div>
     <div class="tab">Ұлттық әшекей- бұйымдар</div>
+    <div class="tab">Ұлттық ыдыс- аяқтар</div>
+    <div class="tab">Қазіргі таңдағы ұлтттық бұйымдар</div>
     <div class="tab">Берiлiстер</div>
     <!-- TAB 1 BEGIN -->
     <div class="tabContent">
@@ -73,9 +75,10 @@
                         <input type="file" name="file" id="imgCap">
                         <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}">Error en el dato ingresado</p>
                     </div>
+                    <input class="button--admins_pane" type="submit" value="Создать"/>
                 </div>
 
-                <p><input type="submit" value="Создать"/></p>
+
             </form>
         </div>
     </div>
@@ -109,9 +112,25 @@
             </form>
         </div>
     </div>
+    <!-- TAB BYIMDAR BEGIN -->
+    <div class="tabContent">
+        <h3>Буимдар</h3>
+    </div>
+    <!-- TAB BYIMDAR BEGIN -->
+
+    <!-- TAB KAZ. TAN ULLT BYUM BEGIN -->
+    <div class="tabContent">
+        <h3>Ыдыс аяк</h3>
+    </div>
     <!-- TAB 2 BEGIN -->
-    <div class="tabContent">3</div>
-    <!-- TAB 1 BEGIN -->
+
+    <!-- TAB BYIMDAR BEGIN -->
+    <div class="tabContent">
+        <h3>Қазіргі таңдағы ұлтттық бұйымда</h3>
+    </div>
+    <!-- TAB BYIMDAR BEGIN -->
+
+    <!-- TAB ORDERS BEGIN -->
     <div class="tabContent">
         <h3>Берiлiстер</h3>
 
@@ -153,7 +172,7 @@
             <!-- End Table -->
 </div>
 </div>
-<!-- TAB 1 END -->
+<!-- TAB ORDERS END -->
 
 </div>
 <!--<div class="tab">-->
