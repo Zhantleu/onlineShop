@@ -23,25 +23,36 @@ public class OrderDtoServiceImpl implements OrderDtoService {
         OrderDto orderDto = new OrderDto();
         orderDto.setOrderItemDtos(new ArrayList<>());
 
-        Query query;
         for (OrderItemDto orderItemDto : itemDtoList) {
             switch (orderItemDto.getTypeCategory()) {
                 case CAP:
-                    query = entityManager.createQuery("SELECT f.id,f.urlImage,f.name,f.price,f.articul from "
-                            + "Cap f where f.id = :id", Object[].class);
-                    query.setParameter("id",orderItemDto.getId());
-                    parseOrderDto(query.getResultList(), TypeCategory.CAP, orderDto);
+                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.CAP, orderDto);
                     break;
                 case DOMBRA:
-                    query = entityManager.createQuery("SELECT f.id,f.urlImage,f.name,f.price,f.articul from "
-                            + "Dombra f where f.id = :id", Object[].class);
-                    query.setParameter("id",orderItemDto.getId());
-                    parseOrderDto(query.getResultList(), TypeCategory.DOMBRA, orderDto);
+                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.DOMBRA, orderDto);
                     break;
             }
         }
 
         return orderDto;
+    }
+
+    private List<Object[]> returnResultList(OrderItemDto orderItemDto) {
+        Query query;
+        switch (orderItemDto.getTypeCategory()) {
+            case CAP:
+                query = entityManager.createQuery("SELECT f.id,f.urlImage,f.name,f.price,f.articul from "
+                        + "Cap f where f.id = :id", Object[].class);
+                query.setParameter("id", orderItemDto.getId());
+                return query.getResultList();
+            case DOMBRA:
+                query = entityManager.createQuery("SELECT f.id,f.urlImage,f.name,f.price,f.articul from "
+                        + "Dombra f where f.id = :id", Object[].class);
+                query.setParameter("id", orderItemDto.getId());
+                return query.getResultList();
+            default:
+                return null;
+        }
     }
 
     private void parseOrderDto(List<Object[]> resultList, TypeCategory typeCategory, OrderDto orderDto) {
