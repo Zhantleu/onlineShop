@@ -73,7 +73,7 @@ NAViGATION
 }
 
 .cart{
-	padding-top: 5px;
+	padding-top: 20px;
 	color: #52575D;
 	position: relative;
 }
@@ -90,7 +90,7 @@ NAViGATION
 	padding-top: 1px;
 	position: absolute;
 	left: 7px;
-	top: 18px;
+	top: 36px;
 }
 
 /*
@@ -373,6 +373,42 @@ CONTENT
 	transition: all 0.2s ease-in;
 	margin-bottom: 12px;
 	text-align: center;
+}
+.card__button-btn{
+	background-color: #F72464;
+	font-size: 14px;
+	font-family: 'Lora', serif;
+	color: #fff;
+	width: 120px;
+	height: 40px;
+	border-radius: 3px;
+	display: inline-block;
+	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.4);
+	transition: all 0.2s ease-in;
+	margin-bottom: 12px;
+	text-align: center;
+	border: none;
+	line-height: 1.66;
+}
+.card__button-btn:hover{
+	background-color: #da0f4d;
+	text-decoration: none;
+	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.6);
+	color: #FFF;
+}
+.card__button-btn:focus{
+	background-color: #da0f4d;
+	text-decoration: none;
+	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.6);
+	color: #FFF;
+	outline: 0;
+	box-shadow: none!important;
+}
+.card__button-btn:active{
+	background-color: #da0f4d;
+	text-decoration: none;
+	box-shadow: 0px 5px 30px 0px rgba(31, 35, 37, 0.6);
+	color: #FFF;
 }
 .card__button:hover{
 	background-color: #da0f4d;
@@ -748,6 +784,12 @@ li{
 /* УДАЛИТЬ ЕСЛИ НАДО ДРОПДАУН ПО КЛИКУ */
 .dropdown:hover>.dropdown-menu {
 	display: block;
+}
+.button--admins_pane{
+	margin-top: 15px;
+}
+.pagination--class{
+	text-align: center;
 }
 /*
 font-family: 'Muli', sans-serif;

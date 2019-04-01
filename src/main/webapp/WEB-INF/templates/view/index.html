@@ -22,12 +22,11 @@
 				<!-- first col -->
 				<div class="col-md-3" th:each="prod : ${products}">
 					<div class="card" th:id="${prod.urlImage}" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
-						<input type="button" class='like' value="LikeButton"/>
 						<div class="card__image">
-							<img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
-							<div class="card__hover">
-								<a href="#" class="card__button">Satip alu</a>
-								<a href="#" class="card__button">Karau</a>
+                            <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
+                            <div class="card__hover">
+                                <input type="button" class='card__button-btn' value="Satip alu"/>
+                                <a href="#" class="card__button">Karau</a>
 							</div>
 						</div>
 						<div class="card__title">
@@ -51,8 +50,7 @@
                             <div class="sl__slide">
                             <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
                             <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
-                            <input class="card__button" type="button" value="LikeButton"/>
-                            <a href="#" class="card__button">Satip alu</a>
+                            <input class="card__button-btn" type="button" value="Satip alu"/>
                             <a href="#" class="card__button">Karau</a>
                             </div>
                             </div>

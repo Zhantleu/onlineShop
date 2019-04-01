@@ -12,5 +12,9 @@ function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
         asdsad = + sumTest + (priceTovar * sumTovar);
         document.getElementById('sumTest').innerHTML = asdsad;
     }
+}
 
+function deleteElem(elem){
+    var element = document.getElementById(elem);
+    element.parentNode.removeChild(element);
 }

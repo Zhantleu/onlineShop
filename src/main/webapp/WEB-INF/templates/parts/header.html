@@ -433,11 +433,211 @@
                     </div>
 
                     <!-- navigation end -->
+
+                </div>
+                <div class="col-md-1">
+                    <div class="cart">
+                        <a th:href="@{/shopping-cart}">
+                            <img src="/images/icons/1-1.svg" alt="" height="28px">
+                            <div class="cart__number">3</div>
+                        </a>
+                        <div sec:authorize="isAuthenticated()">
+                            <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
+                            </li>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 </div>
 
+<div th:fragment="header-for-cart">
+    <!-- navigation -->
+    <nav class="nav-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="logo--head">
+                    <div class="col-md-2">
+                        <a th:href="@{/home}" class="logo">kazsauda</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <!-- navigation begin -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <!-- DROPDOWN BEGIN -->
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="dropdown">Colection</a>
+                                <ul class="dropdown-menu">
+                                    <li><a th:href="@{/dombra}" class="submenu--link">Dombra</a></li>
+                                    <li><a href="#" class="submenu--link">Second</a></li>
+                                    <li><a href="#" class="submenu--link">Third</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="dropdown">Zhanalyq</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="submenu--link">1</a></li>
+                                    <li><a href="#" class="submenu--link">2</a></li>
+                                    <li><a href="#" class="submenu--link">3</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="dropdown">Ylttiq kyimder</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="submenu--link">First</a></li>
+                                    <li><a href="#" class="submenu--link">Second</a></li>
+                                    <li><a href="#" class="submenu--link">Third</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="dropdown">Erler</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="submenu--link">First</a></li>
+                                    <li><a href="#" class="submenu--link">Second</a></li>
+                                    <li><a href="#" class="submenu--link">Third</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="dropdown">Ayelder</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" class="submenu--link">First</a></li>
+                                    <li><a href="#" class="submenu--link">Second</a></li>
+                                    <li><a href="#" class="submenu--link">Third</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="navigation__link" data-toggle="modal" data-target="#exampleModal" sec:authorize="!isAuthenticated()">Autorization</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/admin/page}" class="navigation__link" sec:authorize="hasAuthority('ADMIN')">Для Администратора</a>
+                            </li>
+                            <!-- DROPDOWN END -->
+                        </ul>
+                    </div>
+
+                    <!-- MODAL WINDOW -->
+                    <div class="modal" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <!-- <span aria-hidden="true">&times;</span> -->
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form method="post" th:action="@{/login}">
+                                                <div class="form-froup">
+                                                    <label for="exampleInputEmail">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail" aria-describdby="emailHelp" name="email"
+                                                           placeholder="Email адресс">
+                                                    <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputPass">Пароль</label>
+                                                    <input type="password" class="form-control" id="inputPass" name="password"
+                                                           placeholder="Пароль">
+                                                    <small id="passHelp" class="form-text text-muted">Минимум 5 символов</small>
+                                                </div>
+                                                <br>
+                                                <div id="generalErrorMessage" class="error-lbl" style="display:none;"></div>
+                                                <button class="btn btn-light" id="login">Войти</button>
+                                                <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal" aria-label="Close">Регистрация</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL 2 -->
+                    <div class="modal" id="exampleModal2" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModal2" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel2">Регистрация</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <!-- <span aria-hidden="true">&times;</span> -->
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <form th:object="${user}" method="post" th:action="@{/registration}">
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                           placeholder="Иван">
+                                                    <small id="nameHelp" class="form-text text-muted">Введите имя</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{lastName}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Иванов">
+                                                    <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Cтрана</label>
+                                                    <input type="text" class="form-control" th:field="*{country}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Казахстан">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите страну</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputName">Город</label>
+                                                    <input type="text" class="form-control" th:field="*{city}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                           placeholder="Костанай">
+                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputEmail">Email adress</label>
+                                                    <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
+                                                           placeholder="Email">
+                                                    <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
+                                                </div>
+                                                <div class="form-froup">
+                                                    <label for="exampleInputPass">Пароль</label>
+                                                    <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
+                                                           placeholder="Пароль">
+                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
+                                                </div>
+                                                <br>
+                                                <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">Войти</button>
+                                                <button class="btn btn-light" onclick="alertmsg('hello!');">Регистрация</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- navigation end -->
+                </div>
+                <div class="col-md-1">
+                    <div class="cart">
+
+                        <div sec:authorize="isAuthenticated()">
+                          <a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
 </body>
 </html>
