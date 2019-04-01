@@ -31,12 +31,9 @@
                     </thead>
                     <!-- ORDERS -->
                     <tbody>
-<<<<<<< HEAD
+
                     <tr th:each="item,index : ${orderItemsDto}">
-=======
-                    <tr th:each="item : ${orderItemsDto}" th:id="${item.name}">
->>>>>>> 4dc92783ddba48c433c3f5df40194f4610697f53
-                        <td class="text-center">
+                    <td class="text-center">
                             <a href="#">
                                 <img class="img-thumbnail" th:src="@{'/img_src/' + ${item.urlImage}}" alt="product">
                             </a>
