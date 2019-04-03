@@ -1,17 +1,17 @@
 $(function () {
-    $('.like').click(function () { likeFunction(this); });
-    $('.dislike').click(function () { dislikeFunction(this);});
+    $('.card__button-btn').click(function () { likeFunction(this); });
+    $('.card__button').click(function () { dislikeFunction(this);});
 });
 
 
 function likeFunction(caller) {
-    var itemId = caller.parentElement.getAttribute('itemId');
-    var typeCategory = caller.parentElement.getAttribute('categoryType');
+
+    var ITEM_ID = caller.parentElement.getAttribute('itemId');
+    var TYPE_CATEGORY = caller.parentElement.getAttribute('categoryType');
+
     $.ajax({
         type: "POST",
-        url: "addItem?itemId=" + itemId + "&categoryType=" + typeCategory,
-        // Here were a two params which send to server
-        // data: ""
+        url: "cartFunction?action=LIKE&itemId=" + ITEM_ID + "&categoryType=" + TYPE_CATEGORY,
         success: function () {
             console.log(itemId);
             console.log(typeCategory);
@@ -19,11 +19,20 @@ function likeFunction(caller) {
     });
 }
 function dislikeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
+
+    var ITEM_ID = caller.parentElement.getAttribute('itemId');
+    var TYPE_CATEGORY = caller.parentElement.getAttribute('categoryType');
+
     $.ajax({
         type: "POST",
-        url: "addItem",
-        data: 'Action=DISLIKE&PostID=' + postId,
-        success: function () {}
+        url: "cartFunction?action=DISLIKE&itemId=" + ITEM_ID + "&categoryType=" + TYPE_CATEGORY,
+        data: {
+            itemId: ITEM_ID,
+            typeCategory: TYPE_CATEGORY
+        },
+        success: function () {
+            console.log(itemId);
+            console.log(typeCategory);
+        }
     });
 }

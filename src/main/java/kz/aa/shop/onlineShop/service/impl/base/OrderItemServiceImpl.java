@@ -2,6 +2,7 @@ package kz.aa.shop.onlineShop.service.impl.base;
 
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
+import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.repository.base.OrderItemRepository;
 import kz.aa.shop.onlineShop.service.OrderItemService;
 import kz.aa.shop.onlineShop.service.base.BaseServiceImpl;
@@ -20,5 +21,10 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem, Long> imple
     @Override
     public List<OrderItem> findByCustomerOrder(CustomerOrder customerOrder) {
         return repository.findByCustomerOrder(customerOrder);
+    }
+
+    @Override
+    public OrderItem findByTypeCategoryAndIdItem(TypeCategory typeCategory, Long id) {
+        return repository.findByTypeCategoryAndIdItem(typeCategory,id);
     }
 }

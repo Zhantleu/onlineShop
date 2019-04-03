@@ -33,16 +33,29 @@ public class UtilController {
         this.orderItemService = orderItemService;
     }
 
-    @PostMapping(value="addItem",produces="application/json")
+    @PostMapping(value = "cartFunction", produces = "application/json")
     public @ResponseBody
-    ValidationResponse addItem(@RequestParam(name = "itemId") Long itemId,
-                          @RequestParam(name = "categoryType") String typeCategory) {
+    ValidationResponse cartFunction(@RequestParam(name = "action") String action,
+                                    @RequestParam(name = "itemId") Long itemId,
+                                    @RequestParam(name = "categoryType") String typeCategory) {
 
         Optional<User> user = userService.findCurrentUser();
 
-        if (user != null)
-            customerOrder = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user.get());
+        user.ifPresent(user1 -> customerOrder = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user1));
 
+        switch (action) {
+            case "LIKE":
+                likeFunction(itemId, typeCategory, user);
+                break;
+            case "DISLIKE":
+                dislikeAction(itemId,typeCategory);
+                break;
+        }
+
+        return new ValidationResponse();
+    }
+
+    private void likeFunction(@RequestParam(name = "itemId") Long itemId, @RequestParam(name = "categoryType") String typeCategory, Optional<User> user) {
         OrderItem orderItem = new OrderItem();
 
         if (customerOrder == null) {
@@ -54,14 +67,24 @@ public class UtilController {
 
         switch (TypeCategory.valueOf(typeCategory)) {
             case CAP:
-                setOrderItem(orderItem, capService.findById(itemId),TypeCategory.CAP);
+                setOrderItem(orderItem, capService.findById(itemId), TypeCategory.CAP);
                 break;
             case DOMBRA:
                 setOrderItem(orderItem, dombraService.findById(itemId), TypeCategory.DOMBRA);
                 break;
         }
+    }
 
-        return new ValidationResponse();
+    private void dislikeAction(@RequestParam(name = "itemId") Long itemId, @RequestParam(name = "categoryType") String typeCategory) {
+
+        switch (TypeCategory.valueOf(typeCategory)) {
+            case CAP:
+                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItem(TypeCategory.CAP,itemId));
+                break;
+            case DOMBRA:
+                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItem(TypeCategory.DOMBRA,itemId));
+                break;
+        }
     }
 
     private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity, TypeCategory typeCategory) {

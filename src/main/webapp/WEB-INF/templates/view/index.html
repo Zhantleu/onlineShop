@@ -21,12 +21,12 @@
 				<!-- FIRTS LINE -->
 				<!-- first col -->
 				<div class="col-md-3" th:each="prod : ${products}">
-					<div class="card" th:id="${prod.urlImage}" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+					<div class="card" th:id="${prod.urlImage}" >
 						<div class="card__image">
                             <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
-                            <div class="card__hover">
+                            <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
                                 <input type="button" class='card__button-btn' value="Satip alu"/>
-                                <a href="#" class="card__button">Karau</a>
+                                <input type="button" class="card__button">Karau</input>
 							</div>
 						</div>
 						<div class="card__title">
