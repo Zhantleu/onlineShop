@@ -1,5 +1,5 @@
 $(function () {
-    $('.like').click(function () { likeFunction(this); });
+    $('.card__button-btn').click(function () { likeFunction(this); });
     $('.dislike').click(function () { dislikeFunction(this);});
 });
 

@@ -33,12 +33,11 @@
                     <tbody>
 
                     <tr th:each="item,index : ${orderItemsDto}">
-                    <td class="text-center">
+                        <td class="text-center">
                             <a href="#">
                                 <img class="img-thumbnail" th:src="@{'/img_src/' + ${item.urlImage}}" alt="product">
                             </a>
                             <li class="without--dot"><a href="#" class="text-center"><p th:text="${item.name}"></p></a></li>
-
                         </td>
                         <td class="text-left">
                             <li class="without--dot"><label th:text="${item.articul}"></label></li>
@@ -47,7 +46,7 @@
                             <div class="btn-block cart-put">
                                 <input class="form-control" type="number" placeholder="1" id="" th:id="${'sumOfTovar' + index.index}"
                                        th:value="${item.amount}"
-                                        th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + index.index} +'\',\'' + ${'sumOfTovar' + index.index} +'\',\'' + ${'subTotal' + index.index} +'\');'"/>
+                                       th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + index.index} +'\',\'' + ${'sumOfTovar' + index.index} +'\',\'' + ${'subTotal' + index.index} +'\');'"/>
 
                                 <!--onchange="countMoney('tovarPrice','sumOfTovar');"-->
                                 <!--th:onclick="'countMoney(\''+ ${'tovarPrice' + index.index} +'\',\'' + ${'sumOfTovar' + index.index} +'\');'"-->
@@ -103,7 +102,7 @@
         </div>
     </div>
 </div>
-    <!-- End Shopping-Cart -->
-    <script type="text/javascript" src="../../../js/cart_js.js"></script>
+<!-- End Shopping-Cart -->
+<script type="text/javascript" src="../../../js/cart_js.js"></script>
 </body>
 </html>
