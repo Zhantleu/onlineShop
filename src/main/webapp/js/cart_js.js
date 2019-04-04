@@ -9,7 +9,7 @@ function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
     } else {
         subTotal.innerHTML = (priceTovar * sumTovar);
         var asdsad;
-        asdsad = + sumTest + (priceTovar * sumTovar);
+        asdsad = sumTest + subTotal;
         document.getElementById('sumTest').innerHTML = asdsad;
     }
 }

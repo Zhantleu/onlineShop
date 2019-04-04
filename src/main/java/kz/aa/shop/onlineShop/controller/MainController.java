@@ -104,4 +104,12 @@ public class MainController {
 
         return "redirect:home";
     }
+
+    @RequestMapping(value = "/test-product", method = RequestMethod.GET)
+    public String testMethod(Model model, HttpServletRequest request) {
+
+        user = utilControllers.checkUserInSession(model, request, user, userService);
+
+        return "view/product_info";
+    }
 }

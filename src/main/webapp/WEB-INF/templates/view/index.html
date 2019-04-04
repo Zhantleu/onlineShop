@@ -17,28 +17,35 @@
 			<h2 class="title">Zhana kelim</h2>
 			<div class="subtitle2">Decription</div>
 			<!-- row -->
-			<div class="row">
-				<!-- FIRTS LINE -->
-				<!-- first col -->
-				<div class="col-md-3" th:each="prod : ${products}">
-					<div class="card" th:id="${prod.urlImage}" >
-						<div class="card__image">
-                            <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
-                            <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
-                                <input type="button" class='card__button-btn' value="Satip alu"/>
-                                <input type="button" class="card__button">Karau</input>
-							</div>
-						</div>
-						<div class="card__title">
-							<p th:text="${prod.name}"></p>
-						</div>
-						<div class="card__price">
-							<span th:text="@{prod.price}"></span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+			<!--<div class="row">-->
+				<!--&lt;!&ndash; FIRTS LINE &ndash;&gt;-->
+				<!--&lt;!&ndash; first col &ndash;&gt;-->
+				<!--<div class="col-md-3" th:each="prod : ${products}">-->
+					<!--<div class="card" th:id="${prod.urlImage}" >-->
+						<!--<div class="card__image">-->
+<!--<<<<<<< HEAD-->
+                            <!--<img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">-->
+                            <!--<div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">-->
+                                <!--<input type="button" class='card__button-btn' value="Satip alu"/>-->
+                                <!--<input type="button" class="card__button">Karau</input>-->
+<!--=======-->
+							<!--<img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">-->
+							<!--<div class="card__hover"  data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">-->
+								<!--<input type="button" class='card__button-btn' value="Satip alu"/>-->
+								<!--<a href="#" class="card__button">Karau</a>-->
+<!--&gt;>>>>>> b63f3d32470219fdb0e3b8ee52dde85a45bfc1dd-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="card__title">-->
+							<!--<p th:text="${prod.name}"></p>-->
+						<!--</div>-->
+						<!--<div class="card__price">-->
+							<!--<label th:text="${prod.price}"></label>-->
+						<!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
 		<!--SLIDER-->
 		 <!--row -->
         <div class="slider--new_products">
