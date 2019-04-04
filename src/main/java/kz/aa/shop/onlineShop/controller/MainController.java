@@ -60,7 +60,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, user, userService);
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
-        PageRequest pageable = PageRequest.of(page - 1, 6);
+        PageRequest pageable = PageRequest.of(page - 1, 12);
         Page<Cap> pageCapList = capService.findAll(pageable);
         model.addAttribute("products", pageCapList);
 
@@ -89,12 +89,19 @@ public class MainController {
     @PostMapping(value = "/create-order")
     public String createOrder(@ModelAttribute OrderDto order,
                               Model model,
+                              @RequestParam(value = "page", defaultValue = "1") int page,
                               HttpServletRequest request) {
 
         user = utilControllers.checkUserInSession(model, request, user, userService);
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
-        model.addAttribute("order", order);
 
-        return "view/cart";
+        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+
+        PageRequest pageable = PageRequest.of(page - 1, 6);
+        Page<Cap> pageCapList = capService.findAll(pageable);
+        model.addAttribute("products", pageCapList);
+
+        utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
+
+        return "redirect:home";
     }
 }
