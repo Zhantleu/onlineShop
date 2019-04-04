@@ -18,9 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -53,8 +51,8 @@ public class MainController {
         this.orderDtoService = orderDtoService;
     }
 
-//    Should add a more flexible for new items iteration
-    @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
+    //    Should add a more flexible for new items iteration
+    @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
     public String home(Model model,
                        @RequestParam(value = "page", defaultValue = "1") int page,
                        HttpServletRequest request) {
@@ -74,8 +72,7 @@ public class MainController {
 
     @RequestMapping(value = "/shopping-cart")
     public String customerBasket(Model model,
-                                  HttpServletRequest request) {
-//        orderDtoService.findItemOfOrder();
+                                 HttpServletRequest request) {
 
         user = utilControllers.checkUserInSession(model, request, user, userService);
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
@@ -83,11 +80,21 @@ public class MainController {
         if (user.isPresent()) {
             List<OrderItemDto> orderItemDtoList = orderItemDtoService.findByOrder(orderService.findByUserAndIsConfirmedIsFalse(user.get()));
             OrderDto orderDto = orderDtoService.findItemOfOrder(orderItemDtoList);
-            model.addAttribute("orderItemsDto", orderDto.getOrderItemDtos());
-            model.addAttribute("totalPrice", orderDto.getTotalPrice());
+            model.addAttribute("order", orderDto);
         }
 
         return "view/cart";
     }
 
+    @PostMapping(value = "/create-order")
+    public String createOrder(@ModelAttribute OrderDto order,
+                              Model model,
+                              HttpServletRequest request) {
+
+        user = utilControllers.checkUserInSession(model, request, user, userService);
+        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+        model.addAttribute("order", order);
+
+        return "view/cart";
+    }
 }

@@ -7,9 +7,23 @@ import java.util.List;
 @Data
 @EqualsAndHashCode()
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderDto {
     private List<OrderItemDto> orderItemDtos;
-    private Double totalPrice;
+
+    public OrderDto() {
+    }
+
+    public OrderDto(List<OrderItemDto> orderItemDtos) {
+        this.orderItemDtos = orderItemDtos;
+    }
+
+    public List<OrderItemDto> getOrderItemDtos() {
+        return orderItemDtos;
+    }
+
+    public void setOrderItemDtos(List<OrderItemDto> orderItemDtos) {
+        this.orderItemDtos = orderItemDtos;
+    }
+
+    //    private Double pr
 }
