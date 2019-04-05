@@ -3,6 +3,7 @@ $(function () {
     $('.card__button').click(function () { dislikeFunction(this);});
 });
 
+var countItem = 0;
 
 function likeFunction(caller) {
 
@@ -13,8 +14,10 @@ function likeFunction(caller) {
         type: "POST",
         url: "cartFunction?action=LIKE&itemId=" + ITEM_ID + "&categoryType=" + TYPE_CATEGORY,
         success: function () {
-            console.log(itemId);
-            console.log(typeCategory);
+            countItem += 1;
+            $('.cart__number').html(countItem);
+            console.log(ITEM_ID + ' ' + TYPE_CATEGORY);
+            console.log(countItem);
         }
     });
 }
@@ -31,8 +34,9 @@ function dislikeFunction(caller) {
             typeCategory: TYPE_CATEGORY
         },
         success: function () {
-            console.log(itemId);
-            console.log(typeCategory);
+            countItem -= 1;
+            $('.cart__number').html(countItem);
+            console.log(ITEM_ID + ' ' + TYPE_CATEGORY);
         }
     });
 }
