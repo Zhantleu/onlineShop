@@ -6,6 +6,7 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.Cap;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
+import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.impl.base.CustomerOrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.OrderItemServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
@@ -18,6 +19,7 @@ import kz.aa.shop.onlineShop.util.UtilConvertFromDtoToEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -138,10 +140,15 @@ public class MainController {
         return "redirect:home";
     }
 
-    @RequestMapping(value = "/test-product", method = RequestMethod.GET)
-    public String testMethod(Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/product-view", method = RequestMethod.GET)
+    public String testMethod(Model model,
+                             @Param("typeCategory") TypeCategory typeCategory,
+                             @Param("idItem") String id,
+                             HttpServletRequest request) {
 
         model.addAttribute("user", utilControllers.checkUserInSession(model, request, user, userService));
+
+
 
         return "view/product_info";
     }
