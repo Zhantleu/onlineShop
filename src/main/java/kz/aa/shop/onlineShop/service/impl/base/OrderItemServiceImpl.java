@@ -1,5 +1,6 @@
 package kz.aa.shop.onlineShop.service.impl.base;
 
+import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
@@ -25,6 +26,16 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem, Long> imple
 
     @Override
     public OrderItem findByTypeCategoryAndIdItem(TypeCategory typeCategory, Long id) {
-        return repository.findByTypeCategoryAndIdItem(typeCategory,id);
+        return repository.findByTypeCategoryAndIdItem(typeCategory, id);
+    }
+
+    @Override
+    public Long countByCustomerOrder_UserAndCustomerOrder_Confirmed(User user, Boolean confirmed) {
+        return repository.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user, confirmed);
+    }
+
+    @Override
+    public void saveAll(List<OrderItem> orderItems) {
+        repository.saveAll(orderItems);
     }
 }

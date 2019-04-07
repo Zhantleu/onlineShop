@@ -1,4 +1,5 @@
 function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
+
     var priceTovar = parseFloat(document.getElementById(id_item_price).innerHTML);
     var sumTovar = parseInt(document.getElementById(id_sum_of_item).value);
     var subTotal = document.getElementById(id_sub_total);

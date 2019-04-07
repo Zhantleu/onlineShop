@@ -1,6 +1,8 @@
 package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.ItemDto;
+import kz.aa.shop.onlineShop.dto.OrderDto;
+import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.ItemDtoService;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,27 @@ public class ItemDtoServiceImpl implements ItemDtoService {
                 + tableName + " f", Object[].class);
         return parseItemDto(query.getResultList(), clazz);
     }
+
+    @Override
+    public void findByIdAndCategory(List<OrderItemDto> orderItemDtos) {
+        Query query;
+
+        for (OrderItemDto orderItemDto : orderItemDtos) {
+            switch (orderItemDto.getTypeCategory()) {
+                case CAP:
+                    query = entityManager.createQuery("SELECT oi.price from " + "Cap oi where oi.id = :id", Object[].class);
+                    query.setParameter("id", orderItemDto.getId());
+                    orderItemDto.setPrice((Double) query.getResultList().get(0));
+                    break;
+                case DOMBRA:
+                    query = entityManager.createQuery("SELECT oi.price from " + "Dombra oi where oi.id = :id", Object[].class);
+                    query.setParameter("id", orderItemDto.getId());
+                    orderItemDto.setPrice((Double) query.getResultList().get(0));
+                    break;
+            }
+        }
+    }
+
 
     private List<ItemDto> parseItemDto(List<Object[]> resultList, Class clazz) {
         List<ItemDto> itemDtos = new ArrayList<>();

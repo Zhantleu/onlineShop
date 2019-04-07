@@ -23,9 +23,9 @@ public class OrderItemDtoServiceImpl implements OrderItemDtoService {
         String idParameter = "oi.idItem";
         String typeCategoryParameter = "oi.typeCategory";
         String amountParameter = "oi.amount";
-        String totalPriceParameter = "oi.totalPrice";
+        String idOrderItemParameter = "oi.id";
 
-        Query query = entityManager.createQuery("SELECT " + idParameter + ", " + typeCategoryParameter + ", " + amountParameter + ", " + totalPriceParameter +
+        Query query = entityManager.createQuery("SELECT " + idParameter + ", " + typeCategoryParameter + ", " + amountParameter + ", " + idOrderItemParameter +
                 " from " + "OrderItem oi where oi.customerOrder = :customerOrder", Object[].class);
         query.setParameter("customerOrder", customerOrder);
         return parseOrderItemDto(query.getResultList());
@@ -35,7 +35,7 @@ public class OrderItemDtoServiceImpl implements OrderItemDtoService {
         List<OrderItemDto> itemDtos = new ArrayList<>();
 
         for (Object[] objects : resultList) {
-            itemDtos.add(new OrderItemDto((Long) objects[0],(TypeCategory) objects[1], (Integer) objects[2], (Double) objects[3]));
+            itemDtos.add(new OrderItemDto((Long) objects[0],(TypeCategory) objects[1], (Long) objects[2], (Long) objects[3]));
         }
 
         return itemDtos;

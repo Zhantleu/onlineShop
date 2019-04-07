@@ -5,6 +5,7 @@ import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,11 +30,25 @@ public class OrderItem extends BaseEntity {
     private LocalDateTime orderItemTime;
 
     @Column(columnDefinition = "int default 1")
-    private Integer amount;
+    private Long amount;
 
+    @Column
     private Double totalPrice;
+
+    private Double price;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 8)
     private TypeCategory typeCategory;
+
+    public OrderItem(CustomerOrder customerOrder, Long id, Long idItem, LocalDateTime orderItemTime, Long amount, Double price, TypeCategory typeCategory,Double totalPrice) {
+        setId(id);
+        this.totalPrice = totalPrice;
+        this.customerOrder = customerOrder ;
+        this.idItem = idItem;
+        this.orderItemTime = orderItemTime;
+        this.amount = amount;
+        this.price = price;
+        this.typeCategory = typeCategory;
+    }
 }

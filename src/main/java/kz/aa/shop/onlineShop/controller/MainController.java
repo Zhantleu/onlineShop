@@ -4,15 +4,17 @@ import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.order.CustomerOrder;
+import kz.aa.shop.onlineShop.model.order.OrderItem;
+import kz.aa.shop.onlineShop.service.impl.base.CustomerOrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.OrderItemServiceImpl;
-import kz.aa.shop.onlineShop.service.impl.base.OrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.dto.ItemDtoServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.dto.OrderDtoServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.dto.OrderItemDtoServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
 import kz.aa.shop.onlineShop.util.UtilControllers;
-import org.hibernate.criterion.Order;
+import kz.aa.shop.onlineShop.util.UtilConvertFromDtoToEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,14 +36,15 @@ public class MainController {
     private final CapServiceImpl capService;
     private final UserServiceImpl userService;
     private final UtilControllers utilControllers;
-    private final OrderServiceImpl orderService;
+    private final CustomerOrderServiceImpl orderService;
     private final OrderItemServiceImpl orderItemService;
     private final ItemDtoServiceImpl itemDtoService;
     private final OrderItemDtoServiceImpl orderItemDtoService;
     private final OrderDtoServiceImpl orderDtoService;
+    private final UtilConvertFromDtoToEntity convertFromDtoToEntity;
 
     @Autowired
-    public MainController(CapServiceImpl capService, UserServiceImpl userService, UtilControllers utilControllers, OrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService, OrderItemDtoServiceImpl orderItemDtoService, OrderDtoServiceImpl orderDtoService) {
+    public MainController(CapServiceImpl capService, UserServiceImpl userService, UtilControllers utilControllers, CustomerOrderServiceImpl orderService, OrderItemServiceImpl orderItemService, ItemDtoServiceImpl itemDtoService, OrderItemDtoServiceImpl orderItemDtoService, OrderDtoServiceImpl orderDtoService, UtilConvertFromDtoToEntity convertFromDtoToEntity) {
         this.capService = capService;
         this.userService = userService;
         this.utilControllers = utilControllers;
@@ -49,6 +53,7 @@ public class MainController {
         this.itemDtoService = itemDtoService;
         this.orderItemDtoService = orderItemDtoService;
         this.orderDtoService = orderDtoService;
+        this.convertFromDtoToEntity = convertFromDtoToEntity;
     }
 
     //    Should add a more flexible for new items iteration
@@ -60,14 +65,23 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, user, userService);
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
+
         PageRequest pageable = PageRequest.of(page - 1, 12);
         Page<Cap> pageCapList = capService.findAll(pageable);
         model.addAttribute("products", pageCapList);
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
 
+        insertValueCartInMainPage(model);
         return "view/index";
 
+    }
+
+    private void insertValueCartInMainPage(Model model) {
+        if (!user.isEmpty())
+            model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(),false));
+        else
+            model.addAttribute("amountItems", "0");
     }
 
     @RequestMapping(value = "/shopping-cart")
@@ -75,12 +89,13 @@ public class MainController {
                                  HttpServletRequest request) {
 
         user = utilControllers.checkUserInSession(model, request, user, userService);
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
         if (user.isPresent()) {
-            List<OrderItemDto> orderItemDtoList = orderItemDtoService.findByOrder(orderService.findByUserAndIsConfirmedIsFalse(user.get()));
-            OrderDto orderDto = orderDtoService.findItemOfOrder(orderItemDtoList);
+            CustomerOrder order = orderService.findByUserAndIsConfirmedIsFalse(user.get());
+            List<OrderItemDto> orderItemDtoList = orderItemDtoService.findByOrder(order);
+            OrderDto orderDto = orderDtoService.findItemOfOrder(orderItemDtoList, order);
             model.addAttribute("order", orderDto);
+            request.getSession().setAttribute("order", order);
         }
 
         return "view/cart";
@@ -91,10 +106,28 @@ public class MainController {
                               Model model,
                               @RequestParam(value = "page", defaultValue = "1") int page,
                               HttpServletRequest request) {
+        order.setCustomerOrder((CustomerOrder) request.getSession().getAttribute("order"));
+
+        order.getCustomerOrder().setOrderTime(LocalDateTime.now());
+        order.getCustomerOrder().setConfirmed(true);
+
+        itemDtoService.findByIdAndCategory(order.getOrderItemDtos());
+
+        Double totalPriceForOrderItem = 0D;
+        Double totalPriceForOrder = 0D;
+
+        for (OrderItemDto orderItemDto : order.getOrderItemDtos()) {
+            totalPriceForOrderItem = orderItemDto.getAmount() * orderItemDto.getPrice();
+            totalPriceForOrder += totalPriceForOrderItem;
+            orderItemDto.setTotalPrice(totalPriceForOrderItem);
+        }
+
+        order.getCustomerOrder().setTotalPrice(totalPriceForOrder);
+
+        orderService.saveOrUpdate(order.getCustomerOrder());
+        orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
 
         user = utilControllers.checkUserInSession(model, request, user, userService);
-
-        model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
         PageRequest pageable = PageRequest.of(page - 1, 6);
         Page<Cap> pageCapList = capService.findAll(pageable);
@@ -108,7 +141,7 @@ public class MainController {
     @RequestMapping(value = "/test-product", method = RequestMethod.GET)
     public String testMethod(Model model, HttpServletRequest request) {
 
-        user = utilControllers.checkUserInSession(model, request, user, userService);
+        model.addAttribute("user", utilControllers.checkUserInSession(model, request, user, userService));
 
         return "view/product_info";
     }

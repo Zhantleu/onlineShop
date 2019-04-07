@@ -11,32 +11,43 @@ import lombok.EqualsAndHashCode;
 @Builder
 @AllArgsConstructor
 public class OrderItemDto {
+    private Long idOrderItem;
     private TypeCategory typeCategory;
     private Long id;
     private String urlImage;
     private String name;
     private Double price;
     private Double totalPrice;
-    private Integer amount;
+    private Long amount;
     private String articul;
 
     public OrderItemDto() {
     }
 
-    public OrderItemDto(Long id, TypeCategory typeCategory, Integer amount, Double totalPrice) {
+    public OrderItemDto(Long id, TypeCategory typeCategory, Long amount, Long idOrderItem) {
         this.typeCategory = typeCategory;
         this.id = id;
         this.amount = amount;
-        this.totalPrice = totalPrice;
+        this.idOrderItem = idOrderItem;
     }
 
-    public OrderItemDto(TypeCategory typeCategory, Long id, String urlImage, String name, Double price, String articul) {
+    public OrderItemDto(TypeCategory typeCategory, Long id, String urlImage, String name, Double price, String articul, Long amount, Long idOrderItem) {
         this.typeCategory = typeCategory;
         this.id = id;
         this.urlImage = urlImage;
         this.name = name;
         this.price = price;
         this.articul = articul;
+        this.amount = amount;
+        this.idOrderItem = idOrderItem;
+    }
+
+    public Long getIdOrderItem() {
+        return idOrderItem;
+    }
+
+    public void setIdOrderItem(Long idOrderItem) {
+        this.idOrderItem = idOrderItem;
     }
 
     public TypeCategory getTypeCategory() {
@@ -85,14 +96,6 @@ public class OrderItemDto {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Integer amount) {
-        this.amount = amount;
     }
 
     public String getArticul() {

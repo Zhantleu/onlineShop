@@ -32,6 +32,8 @@ public class UtilControllers {
         else
             user = userService.findCurrentUser();
 
+        model.addAttribute("user", user);
+
         return user;
     }
 

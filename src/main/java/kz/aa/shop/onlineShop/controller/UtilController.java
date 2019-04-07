@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 public class UtilController {
-    private final OrderService orderService;
+    private final CustomerOrderService customerOrderService;
     private final UserService userService;
     private final DombraService dombraService;
     private final CapService capService;
@@ -25,8 +25,8 @@ public class UtilController {
     private CustomerOrder customerOrder;
 
     @Autowired
-    public UtilController(OrderService orderService, UserService userService, DombraService dombraService, CapService capService, OrderItemService orderItemService) {
-        this.orderService = orderService;
+    public UtilController(CustomerOrderService customerOrderService, UserService userService, DombraService dombraService, CapService capService, OrderItemService orderItemService) {
+        this.customerOrderService = customerOrderService;
         this.userService = userService;
         this.dombraService = dombraService;
         this.capService = capService;
@@ -41,7 +41,7 @@ public class UtilController {
 
         Optional<User> user = userService.findCurrentUser();
 
-        user.ifPresent(user1 -> customerOrder = orderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user1));
+        user.ifPresent(user1 -> customerOrder = customerOrderService.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user1));
 
         switch (action) {
             case "LIKE":
@@ -62,7 +62,7 @@ public class UtilController {
             customerOrder = new CustomerOrder(user.get(), false);
         }
 
-        orderService.saveOrUpdate(customerOrder);
+        customerOrderService.saveOrUpdate(customerOrder);
         orderItem.setCustomerOrder(customerOrder);
 
         switch (TypeCategory.valueOf(typeCategory)) {

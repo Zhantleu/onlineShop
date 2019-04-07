@@ -2,6 +2,7 @@ package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
+import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.OrderDtoService;
 import org.springframework.stereotype.Service;
@@ -19,22 +20,30 @@ public class OrderDtoServiceImpl implements OrderDtoService {
     private EntityManager entityManager;
 
     @Override
-    public OrderDto findItemOfOrder(List<OrderItemDto> itemDtoList) {
+    public OrderDto findItemOfOrder(List<OrderItemDto> itemDtoList, CustomerOrder customerOrder) {
         OrderDto orderDto = new OrderDto();
+        orderDto.setCustomerOrder(customerOrder);
         orderDto.setOrderItemDtos(new ArrayList<>());
 
         for (OrderItemDto orderItemDto : itemDtoList) {
             switch (orderItemDto.getTypeCategory()) {
                 case CAP:
-                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.CAP, orderDto);
+                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.CAP, orderDto, orderItemDto.getIdOrderItem(), orderItemDto.getAmount());
                     break;
                 case DOMBRA:
-                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.DOMBRA, orderDto);
+                    parseOrderDto(returnResultList(orderItemDto), TypeCategory.DOMBRA, orderDto, orderItemDto.getIdOrderItem(), orderItemDto.getAmount());
                     break;
             }
         }
 
         return orderDto;
+    }
+
+    private void parseOrderDto(List<Object[]> resultList, TypeCategory typeCategory, OrderDto orderDto, Long idOrderItem, Long amount) {
+        for (Object[] object : resultList) {
+            orderDto.getOrderItemDtos().add(new OrderItemDto(typeCategory, (Long) object[0], (String) object[1], (String) object[2],
+                    (Double) object[3], (String) object[4], amount, idOrderItem));
+        }
     }
 
     private List<Object[]> returnResultList(OrderItemDto orderItemDto) {
@@ -53,12 +62,5 @@ public class OrderDtoServiceImpl implements OrderDtoService {
             default:
                 return null;
         }
-    }
-
-    private void parseOrderDto(List<Object[]> resultList, TypeCategory typeCategory, OrderDto orderDto) {
-            for (Object[] object : resultList) {
-                orderDto.getOrderItemDtos().add(new OrderItemDto(typeCategory,(Long) object[0],(String) object[1],(String) object[2],
-                        (Double) object[3],(String) object[4]));
-            }
     }
 }
