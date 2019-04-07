@@ -3,7 +3,9 @@ package kz.aa.shop.onlineShop.controller;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.Cap;
 import kz.aa.shop.onlineShop.model.item.Dombra;
+import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.*;
+import kz.aa.shop.onlineShop.service.CustomerOrderService;
 import kz.aa.shop.onlineShop.service.DombraService;
 import kz.aa.shop.onlineShop.service.PropertyCapService;
 import kz.aa.shop.onlineShop.service.UserService;
@@ -25,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -34,6 +37,7 @@ import java.util.Optional;
 public class AdminController {
 
     private final CapServiceImpl capService;
+    private final CustomerOrderService customerOrderService;
     private final PropertyCapService propertyCapService;
     private final UtilImage utilImage;
 
@@ -42,8 +46,9 @@ public class AdminController {
     private DombraService dombraService;
 
     @Autowired
-    public AdminController(CapServiceImpl capService, UtilImage utilImage, ApplicationContext applicationContext, PropertyCapService propertyCapService, UserService userService, DombraService dombraService) throws IOException {
+    public AdminController(CapServiceImpl capService, CustomerOrderService customerOrderService, UtilImage utilImage, ApplicationContext applicationContext, PropertyCapService propertyCapService, UserService userService, DombraService dombraService) throws IOException {
         this.capService = capService;
+        this.customerOrderService = customerOrderService;
         this.utilImage = utilImage;
         this.propertyCapService = propertyCapService;
         this.userService = userService;
@@ -59,6 +64,9 @@ public class AdminController {
 
         Optional<User> user = userService.findCurrentUser();
 
+        List<CustomerOrder> customerOrderList = customerOrderService.findAllByConfirmedIsTrue();
+
+        model.addAttribute("orders",customerOrderList);
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
         model.addAttribute("dombra", new Dombra());
         model.addAttribute("cap", new Cap());

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 public class CustomerOrderServiceImpl extends BaseServiceImpl<CustomerOrder, Long> implements CustomerOrderService {
@@ -19,6 +21,11 @@ public class CustomerOrderServiceImpl extends BaseServiceImpl<CustomerOrder, Lon
     @Override
     public CustomerOrder findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(User user) {
         return customerOrderRepository.findTopByUserAndIsConfirmedIsFalseOrderByOrderTimeDesc(user);
+    }
+
+    @Override
+    public List<CustomerOrder> findAllByConfirmedIsTrue() {
+        return customerOrderRepository.findByIsConfirmedIsTrue();
     }
 
     @Override

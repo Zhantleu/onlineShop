@@ -148,16 +148,16 @@
                     </thead>
                     <!-- ORDERS -->
                     <tbody>
-                    <tr>
+                    <tr th:each="order : ${orders}">
                         <td class="text-center">
-                            <li class="without--dot"><label>1235291234</label></li>
+                            <li class="without--dot"><label th:text="*{order.id}"></label></li>
 
                         </td>
                         <td class="text-left">
-                            <li class="without--dot"><label>04/05/2019</label></li>
+                            <li class="without--dot"><label th:text="*{order.orderTime}"></label></li>
                         </td>
                         <td class="text-left">
-                            <li class="without--dot"><label>Azamat Uspanov</label></li>
+                            <li class="without--dot"><label th:text="*{order.user.name + ' ' + order.user.lastName}"></label></li>
                         </td>
                         <td class="text-center" id="tovarPrice"><a href="#">Click</a></td>
 
