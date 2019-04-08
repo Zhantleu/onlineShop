@@ -296,6 +296,7 @@ CONTENT
 	text-decoration: none;
 	transition: all 0.2s ease-in;
 
+
 }
 .button-outline__margin:hover {
 	background-color: #F72464;
@@ -762,6 +763,7 @@ li{
 }
 .slider--new_products{
 	margin-top: 50px;
+	margin-bottom: 100px;
 }
 .dropdown-menu>li>a:hover{
 	color: #da0f4d;
@@ -790,6 +792,9 @@ li{
 }
 .pagination--class{
 	text-align: center;
+}
+.idAmount{
+	text-align: center !important;
 }
 /*
 font-family: 'Muli', sans-serif;

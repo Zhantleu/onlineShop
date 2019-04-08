@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>Cart</title>
     <link rel="stylesheet" href="../../../css/styles.css">
+    <script src="//code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
     <div th:replace="parts/header :: header-css"></div>
 </head>
 <body>
 <div th:replace="parts/header :: header-for-cart"></div>
 <!-- Start Shopping-Cart -->
-<div class="shopping-cart">
+<div class="shopping-cart" >
     <div class="row">
         <div class="col-md-12">
             <div class="cart-title">
@@ -52,7 +53,7 @@
                                     <div class="btn-block cart-put">
                                         <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].id}">
                                         <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].typeCategory}">
-                                        <input class="form-control" type="number" id=""
+                                        <input class="form-control" type="number" id="" min="1"
                                                th:id="${'sumOfTovar' + itemStat.index}"
                                                th:field="*{orderItemDtos[__${itemStat.index}__].amount}"
                                                th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + itemStat.index} +'\',\'' + ${'sumOfTovar' + itemStat.index} +'\',\'' + ${'subTotal' + itemStat.index} +'\');'"/>
@@ -66,7 +67,7 @@
                                 </td>
                                 <td class="text-center" th:id="${'tovarPrice' + itemStat.index}"
                                     th:text="*{orderItemDtos[__${itemStat.index}__].price}"></td>
-                                <td class="text-center" th:id="${'subTotal' + itemStat.index}"
+                                <td class="idAmount" th:id="${'subTotal' + itemStat.index}"
                                     th:text="*{orderItemDtos[__${itemStat.index}__].totalPrice}"></td>
                             </tr>
 
@@ -75,40 +76,37 @@
 
                             <!-- SECOND ROW -->
                         </table>
-                        <button type="submit" value="submit" class="btn btn-success">Submit</button>
+
+                        <div class="container float-right">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="shopping-checkout float-right">
+                                        <a href="#" class="btn btn-light pull-left">Kaita oraly</a>
+                                        <button type="submit" value="submit" class="btn btn-success">Satip Aly</button>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-right no-padding">
+                                    <table class="table table-bordered">
+                                        <tbody style="width: 15px">
+                                        <tr>
+                                            <td width="140px" class="text-center">
+                                                <strong>Barligy:</strong>
+                                            </td>
+                                            <td class="text-right" id="sumTest"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                        </div>
                     </fieldset>
                 </form>
             </div>
             <!-- End Table -->
 
-            <div class="row">
 
-            </div>
-
-            <div class="container float-right">
-                <div class="row">
-                    <div class="col">
-                        <div class="shopping-checkout float-right">
-                            <a href="#" class="btn btn-light pull-left">Kaita oraly</a>
-                            <a href="#" class="btn btn-primary pull-right">Satip aly</a>
-                        </div>
-                    </div>
-                    <div class="col-3 text-right no-padding">
-                        <table class="table table-bordered">
-                            <tbody style="width: 15px">
-                            <tr>
-                                <td width="140px" class="text-center">
-                                    <strong>Barligy:</strong>
-                                </td>
-                                <td class="text-right" id="sumTest"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
         </div>
     </div>
 </div>
