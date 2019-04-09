@@ -13,14 +13,14 @@ $(document).ready(function() {
 });
 
 $( window ).on( "load", function() {
-    var cikl = 0;
+     var cikl = 0;
     for (var b = 0;b<99;b++){
         var a = parseInt(document.getElementById("subTotal"+b).innerHTML);
         cikl = cikl + a;
         document.getElementById('sumTest').innerHTML = cikl;
-        console.log("AA")
     }
 });
+
 function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
 
     var priceTovar = parseFloat(document.getElementById(id_item_price).innerHTML);
@@ -44,6 +44,13 @@ function countMoney(id_item_price, id_sum_of_item, id_sub_total) {
 }
 
 function deleteElem(elem){
+    var money = 0;
     var element = document.getElementById(elem);
     element.parentNode.removeChild(element);
+    for (var as = 0;as<10;as++){
+        var subAfterLog = parseInt(document.getElementById("subTotal"+as).innerHTML);
+        money = subAfterLog+money;
+    }
+
+
 }

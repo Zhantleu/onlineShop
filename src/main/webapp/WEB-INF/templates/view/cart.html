@@ -33,7 +33,7 @@
                             <!-- ORDERS -->
                             <tbody>
 
-                            <tr th:each="item, itemStat : *{orderItemDtos}">
+                            <tr th:each="item, itemStat : *{orderItemDtos}" th:id="${'tableID' + itemStat.index}">
                                 <td class="text-center">
                                     <a href="#">
                                         <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].idOrderItem}">
@@ -58,10 +58,11 @@
                                                th:field="*{orderItemDtos[__${itemStat.index}__].amount}"
                                                th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + itemStat.index} +'\',\'' + ${'sumOfTovar' + itemStat.index} +'\',\'' + ${'subTotal' + itemStat.index} +'\');'"/>
                                         <div class="input-group-btn cart-buttons">
-                                            <button class="btn btn-danger" data-toggle="tooltip" title="Remove">
+                                            <a class="btn btn-danger">
                                             <span class="text--but"
-                                                  onclick="deleteElem('sumOfTovar')">Alyp tastay</span>
-                                            </button>
+                                                  th:attr="onclick='javascript:deleteElem(\''+ ${'tableID' + itemStat.index} +'\');'"
+                                            >Alyp tastay</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
