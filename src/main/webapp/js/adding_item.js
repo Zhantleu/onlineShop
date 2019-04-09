@@ -1,6 +1,6 @@
 $(function () {
     $('.card__button-btn').click(function () { likeFunction(this); });
-    $('.card__button').click(function () { dislikeFunction(this);});
+    // $('.card__button').click(function () { dislikeFunction(this);});
 });
 
 var countItem = 0;

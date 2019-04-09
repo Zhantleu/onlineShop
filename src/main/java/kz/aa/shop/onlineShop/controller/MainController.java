@@ -64,7 +64,7 @@ public class MainController {
                        @RequestParam(value = "page", defaultValue = "1") int page,
                        HttpServletRequest request) {
 
-        user = utilControllers.checkUserInSession(model, request, user, userService);
+        user = utilControllers.checkUserInSession(model, request, userService);
 
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
@@ -80,7 +80,7 @@ public class MainController {
     }
 
     private void insertValueCartInMainPage(Model model) {
-        if (!user.isEmpty())
+        if (user.isPresent())
             model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(),false));
         else
             model.addAttribute("amountItems", "0");
@@ -90,7 +90,7 @@ public class MainController {
     public String customerBasket(Model model,
                                  HttpServletRequest request) {
 
-        user = utilControllers.checkUserInSession(model, request, user, userService);
+        user = utilControllers.checkUserInSession(model, request, userService);
 
         if (user.isPresent()) {
             CustomerOrder order = orderService.findByUserAndIsConfirmedIsFalse(user.get());
@@ -129,7 +129,7 @@ public class MainController {
         orderService.saveOrUpdate(order.getCustomerOrder());
         orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
 
-        user = utilControllers.checkUserInSession(model, request, user, userService);
+        user = utilControllers.checkUserInSession(model, request, userService);
 
         PageRequest pageable = PageRequest.of(page - 1, 6);
         Page<Cap> pageCapList = capService.findAll(pageable);
@@ -142,13 +142,15 @@ public class MainController {
 
     @RequestMapping(value = "/product-view", method = RequestMethod.GET)
     public String testMethod(Model model,
-                             @Param("typeCategory") TypeCategory typeCategory,
-                             @Param("idItem") String id,
+                             @RequestParam("typeCategory") TypeCategory typeCategory,
+                             @RequestParam("idItem") Long id,
                              HttpServletRequest request) {
 
-        model.addAttribute("user", utilControllers.checkUserInSession(model, request, user, userService));
 
-
+        user = utilControllers.checkUserInSession(model, request, userService);
+        model.addAttribute("user", user);
+        insertValueCartInMainPage(model);
+        utilControllers.checkTypeCategory(model,typeCategory, Long.valueOf(id));
 
         return "view/product_info";
     }

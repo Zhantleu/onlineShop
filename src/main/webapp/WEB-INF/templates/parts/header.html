@@ -439,7 +439,7 @@
                     <div class="cart">
                         <a th:href="@{/shopping-cart}">
                             <img src="/images/icons/1-1.svg" alt="" height="28px">
-                            <div class="cart__number" th:field="${amountItem}"></div>
+                            <div class="cart__number" th:text="${amountItems}"></div>
                         </a>
                         <div sec:authorize="isAuthenticated()">
                             <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
@@ -599,13 +599,13 @@
                                                     <small id="countryHelp" class="form-text text-muted">Введите город</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email adress</label>
+                                                    <label for="exampleInputEmailReg">Email adress</label>
                                                     <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
                                                            placeholder="Email">
                                                     <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Пароль</label>
+                                                    <label for="exampleInputPassReg">Пароль</label>
                                                     <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
                                                            placeholder="Пароль">
                                                     <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
@@ -628,10 +628,13 @@
                 </div>
                 <div class="col-md-1">
                     <div class="cart">
-
+                        <a th:href="@{/shopping-cart}">
+                            <img src="/images/icons/1-1.svg" alt="" height="28px">
+                            <div class="cart__number" th:text="${amountItems}"></div>
+                        </a>
                         <div sec:authorize="isAuthenticated()">
-                          <a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
-
+                            <li><a th:href="@{/logout}">Выйти (<span sec:authentication="principal.username"></span>)</a>
+                            </li>
                         </div>
                     </div>
                 </div>
