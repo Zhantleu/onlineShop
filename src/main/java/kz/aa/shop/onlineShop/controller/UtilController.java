@@ -48,7 +48,7 @@ public class UtilController {
                 likeFunction(itemId, typeCategory, user);
                 break;
             case "DISLIKE":
-                dislikeAction(itemId,typeCategory);
+                dislikeAction(itemId, typeCategory);
                 break;
         }
 
@@ -79,10 +79,11 @@ public class UtilController {
 
         switch (TypeCategory.valueOf(typeCategory)) {
             case CAP:
-                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItem(TypeCategory.CAP,itemId));
+                System.out.println(orderItemService.findByTypeCategoryAndIdItemAndCustomerOrder(itemId, customerOrder));
+                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItemAndCustomerOrder(itemId, customerOrder));
                 break;
             case DOMBRA:
-                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItem(TypeCategory.DOMBRA,itemId));
+                orderItemService.delete(orderItemService.findByTypeCategoryAndIdItemAndCustomerOrder(itemId, customerOrder));
                 break;
         }
     }

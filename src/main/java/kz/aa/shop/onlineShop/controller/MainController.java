@@ -81,7 +81,7 @@ public class MainController {
 
     private void insertValueCartInMainPage(Model model) {
         if (user.isPresent())
-            model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(),false));
+            model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(), false));
         else
             model.addAttribute("amountItems", "0");
     }
@@ -113,21 +113,23 @@ public class MainController {
         order.getCustomerOrder().setOrderTime(LocalDateTime.now());
         order.getCustomerOrder().setConfirmed(true);
 
-        itemDtoService.findByIdAndCategory(order.getOrderItemDtos());
+        if (order.getOrderItemDtos() != null) {
+            itemDtoService.findByIdAndCategory(order.getOrderItemDtos());
 
-        Double totalPriceForOrderItem = 0D;
-        Double totalPriceForOrder = 0D;
+            Double totalPriceForOrderItem = 0D;
+            Double totalPriceForOrder = 0D;
 
-        for (OrderItemDto orderItemDto : order.getOrderItemDtos()) {
-            totalPriceForOrderItem = orderItemDto.getAmount() * orderItemDto.getPrice();
-            totalPriceForOrder += totalPriceForOrderItem;
-            orderItemDto.setTotalPrice(totalPriceForOrderItem);
+            for (OrderItemDto orderItemDto : order.getOrderItemDtos()) {
+                totalPriceForOrderItem = orderItemDto.getAmount() * orderItemDto.getPrice();
+                totalPriceForOrder += totalPriceForOrderItem;
+                orderItemDto.setTotalPrice(totalPriceForOrderItem);
+            }
+
+            order.getCustomerOrder().setTotalPrice(totalPriceForOrder);
+
+            orderService.saveOrUpdate(order.getCustomerOrder());
+            orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
         }
-
-        order.getCustomerOrder().setTotalPrice(totalPriceForOrder);
-
-        orderService.saveOrUpdate(order.getCustomerOrder());
-        orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
 
         user = utilControllers.checkUserInSession(model, request, userService);
 
@@ -150,7 +152,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, userService);
         model.addAttribute("user", user);
         insertValueCartInMainPage(model);
-        utilControllers.checkTypeCategory(model,typeCategory, Long.valueOf(id));
+        utilControllers.checkTypeCategory(model, typeCategory, Long.valueOf(id));
 
         return "view/product_info";
     }

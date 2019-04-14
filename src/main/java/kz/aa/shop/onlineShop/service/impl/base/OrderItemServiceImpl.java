@@ -25,8 +25,8 @@ public class OrderItemServiceImpl extends BaseServiceImpl<OrderItem, Long> imple
     }
 
     @Override
-    public OrderItem findByTypeCategoryAndIdItem(TypeCategory typeCategory, Long id) {
-        return repository.findByTypeCategoryAndIdItem(typeCategory, id);
+    public OrderItem findByTypeCategoryAndIdItemAndCustomerOrder( Long id, CustomerOrder order) {
+        return repository.findByTypeCategoryAndIdItemAndCustomerOrder(id, order);
     }
 
     @Override

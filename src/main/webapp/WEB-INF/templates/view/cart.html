@@ -58,7 +58,7 @@
                                                th:field="*{orderItemDtos[__${itemStat.index}__].amount}"
                                                th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + itemStat.index} +'\',\'' + ${'sumOfTovar' + itemStat.index} +'\',\'' + ${'subTotal' + itemStat.index} +'\');'"/>
                                         <div class="input-group-btn cart-buttons">
-                                            <a class="btn btn-danger">
+                                            <a class="btn btn-danger" data-th-attr="itemId=${item.idOrderItem} ,categoryType=${item.typeCategory}">
                                             <span class="text--but"
                                                   th:attr="onclick='javascript:deleteElem(\''+ ${'tableID' + itemStat.index} +'\');'"
                                             >Alyp tastay</span>
