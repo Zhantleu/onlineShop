@@ -3,8 +3,9 @@ package kz.aa.shop.onlineShop.controller;
 import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.item.clothes.Cap;
+import kz.aa.shop.onlineShop.model.item.Cap;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
+import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
 import kz.aa.shop.onlineShop.service.impl.base.CustomerOrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.OrderItemServiceImpl;
@@ -18,6 +19,7 @@ import kz.aa.shop.onlineShop.util.UtilConvertFromDtoToEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,15 +74,14 @@ public class MainController {
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
 
-//        insertValueCartInMainPage(model);
+        insertValueCartInMainPage(model);
         return "view/index";
 
     }
 
     private void insertValueCartInMainPage(Model model) {
         if (user.isPresent())
-
-            model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(),false));
+            model.addAttribute("amountItems", orderItemService.countByCustomerOrder_UserAndCustomerOrder_Confirmed(user.get(), false));
         else
             model.addAttribute("amountItems", "0");
     }
@@ -112,21 +113,23 @@ public class MainController {
         order.getCustomerOrder().setOrderTime(LocalDateTime.now());
         order.getCustomerOrder().setConfirmed(true);
 
-        itemDtoService.findByIdAndCategory(order.getOrderItemDtos());
+        if (order.getOrderItemDtos() != null) {
+            itemDtoService.findByIdAndCategory(order.getOrderItemDtos());
 
-        Double totalPriceForOrderItem = 0D;
-        Double totalPriceForOrder = 0D;
+            Double totalPriceForOrderItem = 0D;
+            Double totalPriceForOrder = 0D;
 
-        for (OrderItemDto orderItemDto : order.getOrderItemDtos()) {
-            totalPriceForOrderItem = orderItemDto.getAmount() * orderItemDto.getPrice();
-            totalPriceForOrder += totalPriceForOrderItem;
-            orderItemDto.setTotalPrice(totalPriceForOrderItem);
+            for (OrderItemDto orderItemDto : order.getOrderItemDtos()) {
+                totalPriceForOrderItem = orderItemDto.getAmount() * orderItemDto.getPrice();
+                totalPriceForOrder += totalPriceForOrderItem;
+                orderItemDto.setTotalPrice(totalPriceForOrderItem);
+            }
+
+            order.getCustomerOrder().setTotalPrice(totalPriceForOrder);
+
+            orderService.saveOrUpdate(order.getCustomerOrder());
+            orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
         }
-
-        order.getCustomerOrder().setTotalPrice(totalPriceForOrder);
-
-        orderService.saveOrUpdate(order.getCustomerOrder());
-        orderItemService.saveAll(convertFromDtoToEntity.convertFromDtoToOrderItem(order));
 
         user = utilControllers.checkUserInSession(model, request, userService);
 
@@ -145,10 +148,11 @@ public class MainController {
                              @RequestParam("idItem") Long id,
                              HttpServletRequest request) {
 
+
         user = utilControllers.checkUserInSession(model, request, userService);
         model.addAttribute("user", user);
         insertValueCartInMainPage(model);
-        utilControllers.checkTypeCategory(model,typeCategory, Long.valueOf(id));
+        utilControllers.checkTypeCategory(model, typeCategory, Long.valueOf(id));
 
         return "view/product_info";
     }
