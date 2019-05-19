@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.property.enumeration.ColorEnum;
 import kz.aa.shop.onlineShop.model.property.enumeration.Gender;
 import kz.aa.shop.onlineShop.model.property.enumeration.MaterialEnum;

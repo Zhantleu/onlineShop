@@ -1,13 +1,11 @@
-package kz.aa.shop.onlineShop.model.item;
+package kz.aa.shop.onlineShop.model.item.music;
 
-
-import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyCap;
+import kz.aa.shop.onlineShop.model.base.BaseEntity;
+import kz.aa.shop.onlineShop.model.property.PropertyDabyl;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -18,28 +16,20 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "caps")
+@Table(name = "dabyl")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Cap extends BaseItemEntity {
-
-    @OneToOne(mappedBy = "cap", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
-    private PropertyCap propertyCap;
-
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Dabyl extends BaseEntity {
     private String name;
 
     private Double price;
 
-    public PropertyCap getPropertyCap() {
-        return propertyCap;
-    }
 
-    public void setPropertyCap(PropertyCap propertyCap) {
-        this.propertyCap = propertyCap;
-    }
+    @OneToOne(mappedBy = "dabyl", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private PropertyDabyl propertyDabyl;
 
     public String getName() {
         return name;
@@ -55,5 +45,13 @@ public class Cap extends BaseItemEntity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public PropertyDabyl getPropertyDabyl() {
+        return propertyDabyl;
+    }
+
+    public void setPropertyDabyl(PropertyDabyl propertyDabyl) {
+        this.propertyDabyl = propertyDabyl;
     }
 }

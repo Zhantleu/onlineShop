@@ -1,9 +1,8 @@
 package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Dombra;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Shaspay;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -14,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_dombra")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyDombra extends BaseEntity {
+@Table(name = "property_shaspay")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertyShaspay extends BaseEntity{
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dombra_id")
-    private Dombra dombra;
+    @JoinColumn(name = "shaspay_id")
+    private Shaspay shaspay;
 
     private String length;
 
-    public Dombra getDombra() {
-        return dombra;
+    public Shaspay getShaspay() {
+        return shaspay;
     }
 
-    public void setDombra(Dombra dombra) {
-        this.dombra = dombra;
+    public void setShaspay(Shaspay shaspay) {
+        this.shaspay = shaspay;
     }
 
     public String getLength() {
@@ -38,4 +37,5 @@ public class PropertyDombra extends BaseEntity {
     public void setLength(String length) {
         this.length = length;
     }
+
 }

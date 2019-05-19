@@ -5,7 +5,7 @@
 //import org.mockito.junit.MockitoJUnitRunner;
 //
 //@RunWith(MockitoJUnitRunner.class)
-//class OrderService {
+//class CustomerOrderService {
 //    @InjectMocks
 //    private
 //}

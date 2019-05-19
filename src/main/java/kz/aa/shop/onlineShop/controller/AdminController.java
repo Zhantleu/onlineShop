@@ -1,8 +1,8 @@
 package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.item.Cap;
-import kz.aa.shop.onlineShop.model.item.Dombra;
+import kz.aa.shop.onlineShop.model.item.clothes.Cap;
+import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.*;
 import kz.aa.shop.onlineShop.service.CustomerOrderService;

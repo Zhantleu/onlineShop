@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.repository.item;
 
-import kz.aa.shop.onlineShop.model.item.Dombra;
+import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
