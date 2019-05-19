@@ -1,9 +1,8 @@
 package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Dombra;
+import kz.aa.shop.onlineShop.model.item.clothes.Ayaqkiym;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -14,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_dombra")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyDombra extends BaseEntity {
+@Table(name = "property_ayaqkiym")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertyAyaqkiym extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dombra_id")
-    private Dombra dombra;
+    @JoinColumn(name = "ayaqkiym_id")
+    private Ayaqkiym ayaqkiym;
 
     private String length;
 
-    public Dombra getDombra() {
-        return dombra;
+    public Ayaqkiym getAyaqkiym() {
+        return ayaqkiym;
     }
 
-    public void setDombra(Dombra dombra) {
-        this.dombra = dombra;
+    public void setAyaqkiym(Ayaqkiym ayaqkiym) {
+        this.ayaqkiym = ayaqkiym;
     }
 
     public String getLength() {

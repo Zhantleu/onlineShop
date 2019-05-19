@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.controller;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.item.Dombra;
+import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import kz.aa.shop.onlineShop.service.DombraService;
 import kz.aa.shop.onlineShop.service.UserService;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;

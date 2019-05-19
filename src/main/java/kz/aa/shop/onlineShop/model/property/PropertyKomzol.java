@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.property;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Dombra;
+import kz.aa.shop.onlineShop.model.item.clothes.Komzol;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -14,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_dombra")
+@Table(name = "property_komzol")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyDombra extends BaseEntity {
+public class PropertyKomzol extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dombra_id")
-    private Dombra dombra;
+    @JoinColumn(name = "komzol_id")
+    private Komzol komzol;
 
     private String length;
 
-    public Dombra getDombra() {
-        return dombra;
+    public Komzol getKomzol() {
+        return komzol;
     }
 
-    public void setDombra(Dombra dombra) {
-        this.dombra = dombra;
+    public void setKomzol(Komzol komzol) {
+        this.komzol = komzol;
     }
 
     public String getLength() {
@@ -38,4 +38,5 @@ public class PropertyDombra extends BaseEntity {
     public void setLength(String length) {
         this.length = length;
     }
+
 }
