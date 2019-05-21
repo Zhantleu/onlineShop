@@ -115,6 +115,39 @@
     <!-- TAB BYIMDAR BEGIN -->
     <div class="tabContent">
         <h3>Буимдар</h3>
+        <div class="container-fluid">
+            <form method="post" enctype="multipart/form-data" th:action="@{/admin/create-dombra}" th:object="${dombra}">
+                <p>Категория: <label>
+                    <select name="ashekey_cat">
+                        <option value="alqa">Alqa</option>
+                        <option value="bilezik">Bilezik</option>
+                        <option value="saqina">Saqina</option>
+                        <option value="shaspay">Shaspay</option>
+                        <option value="sholpy">Sholpy</option>
+                        <option value="syrga">Syrga</option>
+                    </select>
+                </label></p>
+                <p>Название: <label>
+                    <input type="text" th:field="*{name}"/>
+                </label></p>
+                <p>Цена: <label>
+                    <input type="text" th:field="*{price}"/>
+                </label></p>
+                <p>Длина: <label>
+                    <input type="text" th:field="*{propertyDombra.length}"/>
+                </label></p>
+
+                <div class="file-field">
+                    <div class="btn btn-primary btn-sm float-left">
+                        <span>Выберите изображение</span>
+                        <input type="file" name="file" id="imgDombra">
+                        <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}"></p>
+                    </div>
+                </div>
+                <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
+            </form>
+        </div>
+    </div>
     </div>
     <!-- TAB BYIMDAR BEGIN -->
 
