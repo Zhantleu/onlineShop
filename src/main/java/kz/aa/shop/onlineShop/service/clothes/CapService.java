@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.service;
+package kz.aa.shop.onlineShop.service.clothes;
 
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.service.base.BaseService;

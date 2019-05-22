@@ -3,7 +3,7 @@ package kz.aa.shop.onlineShop.service.impl.dto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import kz.aa.shop.onlineShop.service.OrderItemDtoService;
+import kz.aa.shop.onlineShop.service.dto.OrderItemDtoService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;

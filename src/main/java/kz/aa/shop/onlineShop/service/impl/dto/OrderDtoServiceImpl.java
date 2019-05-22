@@ -4,7 +4,7 @@ import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import kz.aa.shop.onlineShop.service.OrderDtoService;
+import kz.aa.shop.onlineShop.service.dto.OrderDtoService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;

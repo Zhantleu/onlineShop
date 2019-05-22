@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.repository.item;
+package kz.aa.shop.onlineShop.repository.clothes;
 
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,10 +1,9 @@
 package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.ItemDto;
-import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import kz.aa.shop.onlineShop.service.ItemDtoService;
+import kz.aa.shop.onlineShop.service.dto.ItemDtoService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -30,6 +29,7 @@ public class ItemDtoServiceImpl implements ItemDtoService {
         return parseItemDto(query.getResultList(), clazz);
     }
 
+//    todo
     @Override
     public void findByIdAndCategory(List<OrderItemDto> orderItemDtos) {
         Query query;

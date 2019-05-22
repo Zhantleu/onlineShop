@@ -4,8 +4,8 @@
 //import kz.aa.shop.onlineShop.model.User;
 //import kz.aa.shop.onlineShop.model.customerOrder.CustomerOrder;
 //import kz.aa.shop.onlineShop.model.customerOrder.OrderItem;
-//import kz.aa.shop.onlineShop.service.OrderItemService;
-//import kz.aa.shop.onlineShop.service.CustomerOrderService;
+//import kz.aa.shop.onlineShop.service.order.OrderItemService;
+//import kz.aa.shop.onlineShop.service.order.CustomerOrderService;
 //import kz.aa.shop.onlineShop.service.UserService;
 //import org.junit.Assert;
 //import org.junit.Test;

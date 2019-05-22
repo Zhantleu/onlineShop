@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.repository.item;
+package kz.aa.shop.onlineShop.repository.music;
 
 import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import org.springframework.data.jpa.repository.JpaRepository;
