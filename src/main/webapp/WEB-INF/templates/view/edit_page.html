@@ -17,7 +17,7 @@
 
                     <div class="preview-pic tab-content">
                         <div class="tab-pane active" id="pic-1"><img class="active" th:src="@{'/img_src/' + *{urlImage}}" alt="$id"></div>
-
+                        <input type="file">
                     </div>
 
                 </div>
@@ -25,17 +25,18 @@
                     <h2 class="product-title" th:text="*{name}"></h2>
                    <span>Category: </span> <label th:text="*{typeCategory}"></label>
                     <p class="product-description">Bul zherde tayar malimety bolu kerek.</p>
-                    <h4 class="price">Bagasy: <span th:text="*{price}"></span> KZT</h4>
+                    <p class="price">Bagasy: <input type="text"> KZT</p>
 
 
                    <div class="chars--about">
-                     <li><span>Tysi: </span><span th:text="*{propertyCap.colorEnum.getLabel()}"></span></li>
-                      <li> <span>Molsheri: </span><span th:text="*{propertyCap.sizeEnum}"></span></li>
-                      <li><span>Materialy: </span><span th:text="*{propertyCap.materialEnum.getLabel()}"></span></li>
+                     <li><span>Tysi: </span> <input type="text"></span></li>
+                      <li> <span>Molsheri: </span> <input type="text"></span></li>
+                      <li><span>Materialy: </span> <input type="text"></li>
                    </div>
 
                     <div class="action">
-                       <li> <button class="add-to-cart btn btn-default" type="button">Satip aly</button>
+                       <li> <button class="add-to-cart btn btn-default" type="button">Save</button>
+                       <li> <button class="add-to-cart btn btn-default" type="button">Delete</button>
                     </div>
                 </div>
             </div>

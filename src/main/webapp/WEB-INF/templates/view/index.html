@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.springframework.org/schema/security" xmlns:h="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.springframework.org/schema/security" xmlns:h="http://www.w3.org/1999/html"
+	  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<title>KAZ SAUDA</title>
@@ -30,6 +31,8 @@
                             <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
                             <input class="card__button-btn" type="button" value="Satip alu"/>
                             <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" class="card__button">Karau</a>
+                            <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Edit</a>
+                            <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Delete</a>
                             </div>
                             </div>
                             </div>
