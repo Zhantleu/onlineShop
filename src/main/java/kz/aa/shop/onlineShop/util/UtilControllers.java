@@ -2,9 +2,8 @@ package kz.aa.shop.onlineShop.util;
 
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import kz.aa.shop.onlineShop.service.CapService;
+import kz.aa.shop.onlineShop.service.clothes.CapService;
 import kz.aa.shop.onlineShop.service.UserService;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import org.springframework.validation.FieldError;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
