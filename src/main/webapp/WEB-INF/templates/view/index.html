@@ -32,7 +32,8 @@
                             <input class="card__button-btn" type="button" value="Satip alu"/>
                             <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" class="card__button">Karau</a>
                             <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Edit</a>
-                            <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Delete</a>
+                            <a id="delete-item-id" sec:authorize="hasAuthority('ADMIN')" class="card__button">Delete</a>
+								<!--th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}"-->
                             </div>
                             </div>
                             </div>
