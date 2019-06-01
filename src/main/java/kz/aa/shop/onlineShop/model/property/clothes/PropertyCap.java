@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.clothes;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;

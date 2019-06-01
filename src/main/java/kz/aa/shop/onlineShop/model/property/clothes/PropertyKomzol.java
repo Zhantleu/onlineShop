@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.clothes;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Zhetygen;
+import kz.aa.shop.onlineShop.model.item.clothes.Komzol;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -14,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_zhetygen")
+@Table(name = "property_komzol")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyZhetygen extends BaseEntity{
+public class PropertyKomzol extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "zhetygen_id")
-    private Zhetygen zhetygen;
+    @JoinColumn(name = "komzol_id")
+    private Komzol komzol;
 
     private String length;
 
-    public Zhetygen getZhetygen() {
-        return zhetygen;
+    public Komzol getKomzol() {
+        return komzol;
     }
 
-    public void setZhetygen(Zhetygen zhetygen) {
-        this.zhetygen = zhetygen;
+    public void setKomzol(Komzol komzol) {
+        this.komzol = komzol;
     }
 
     public String getLength() {
@@ -38,4 +38,5 @@ public class PropertyZhetygen extends BaseEntity{
     public void setLength(String length) {
         this.length = length;
     }
+
 }

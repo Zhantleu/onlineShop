@@ -1,8 +1,9 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.clothes.Ayaqkiym;
+import kz.aa.shop.onlineShop.model.item.music.Tyaqtas;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -13,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_ayaqkiym")
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyAyaqkiym extends BaseEntity {
+@Table(name = "property_tyaqtas")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertyTyaqtas extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ayaqkiym_id")
-    private Ayaqkiym ayaqkiym;
+    @JoinColumn(name = "tyaqtas_id")
+    private Tyaqtas tyaqtas;
 
     private String length;
 
-    public Ayaqkiym getAyaqkiym() {
-        return ayaqkiym;
+    public Tyaqtas getTyaqtas() {
+        return tyaqtas;
     }
 
-    public void setAyaqkiym(Ayaqkiym ayaqkiym) {
-        this.ayaqkiym = ayaqkiym;
+    public void setTyaqtas(Tyaqtas tyaqtas) {
+        this.tyaqtas = tyaqtas;
     }
 
     public String getLength() {

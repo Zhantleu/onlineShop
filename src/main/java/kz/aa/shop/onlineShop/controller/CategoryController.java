@@ -48,6 +48,6 @@ public class CategoryController {
 
         utilControllers.pageCountNumber(model, pageList.getTotalPages());
 
-        return "view/dombra_category";
+        return "view/music/dombra_category";
     }
 }

@@ -1,9 +1,8 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.clothes.Komzol;
+import kz.aa.shop.onlineShop.model.item.music.Dabyl;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -14,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_komzol")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyKomzol extends BaseEntity {
+@Table(name = "property_dabyl")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertyDabyl extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "komzol_id")
-    private Komzol komzol;
+    @JoinColumn(name = "dabyl_id")
+    private Dabyl dabyl;
 
     private String length;
 
-    public Komzol getKomzol() {
-        return komzol;
+    public Dabyl getDabyl() {
+        return dabyl;
     }
 
-    public void setKomzol(Komzol komzol) {
-        this.komzol = komzol;
+    public void setDabyl(Dabyl dabyl) {
+        this.dabyl = dabyl;
     }
 
     public String getLength() {
@@ -38,5 +37,4 @@ public class PropertyKomzol extends BaseEntity {
     public void setLength(String length) {
         this.length = length;
     }
-
 }

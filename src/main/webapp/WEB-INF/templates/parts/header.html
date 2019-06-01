@@ -167,15 +167,15 @@
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="inputLastName">Cтрана</label>
-                                                    <input type="text" class="form-control" th:field="*{country}" id="inputLastName" aria-describdby="emailHelp"
+                                                    <input type="text" class="form-control" th:field="*{country}" id="inputCountry" aria-describdby="emailHelp"
                                                            placeholder="Казахстан">
                                                     <small id="countryHelp" class="form-text text-muted">Введите страну</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="inputLastName">Город</label>
-                                                    <input type="text" class="form-control" th:field="*{city}" id="inputLastName" aria-describdby="emailHelp"
+                                                    <input type="text" class="form-control" th:field="*{city}" id="inputCity" aria-describdby="emailHelp"
                                                            placeholder="Костанай">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
+                                                    <small id="cityHelp" class="form-text text-muted">Введите город</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="inputEmailReg">Email adress</label>
@@ -277,7 +277,7 @@
               </div>
                 <div class="col-md-9">
                     <!-- navigation begin -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1-admin-panel">
                         <ul class="nav navbar-nav">
                             <!-- DROPDOWN BEGIN -->
                             <li class="dropdown">
@@ -332,12 +332,12 @@
                     </div>
 
                     <!-- MODAL WINDOW -->
-                    <div class="modal" id="exampleModal" tabindex="-1" role="dialog"
+                    <div class="modal" id="exampleModal-admin-panel" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModal" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel-admin-panel">Авторизация</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <!-- <span aria-hidden="true">&times;</span> -->
                                     </button>
@@ -347,20 +347,20 @@
                                         <div class="container-fluid">
                                             <form method="post" th:action="@{/login}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email</label>
-                                                    <input type="email" class="form-control" id="inputEmail" aria-describdby="emailHelp" name="email"
+                                                    <label for="InputEmail-admin-panel">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail-admin-panel" aria-describdby="emailHelp" name="email"
                                                            placeholder="Email адресс">
-                                                    <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+                                                    <small id="emailHelp-admin-panel" class="form-text text-muted">Enter your email</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Пароль</label>
-                                                    <input type="password" class="form-control" id="inputPass" name="password"
+                                                    <label for="InputPass-admin-panel">Пароль</label>
+                                                    <input type="password" class="form-control" id="inputPass-admin-panel" name="password"
                                                            placeholder="Пароль">
-                                                    <small id="passHelp" class="form-text text-muted">Минимум 5 символов</small>
+                                                    <small id="passHelp-admin-panel" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
-                                                <div id="generalErrorMessage" class="error-lbl" style="display:none;"></div>
-                                                <button class="btn btn-light" id="login">Войти</button>
+                                                <div id="generalErrorMessage-admin-panel" class="error-lbl" style="display:none;"></div>
+                                                <button class="btn btn-light" id="login-admin-panel">Войти</button>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal" aria-label="Close">Регистрация</button>
                                             </form>
                                         </div>
@@ -373,12 +373,12 @@
                         </div>
                     </div>
                     <!-- MODAL 2 -->
-                    <div class="modal" id="exampleModal2" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModal2" aria-hidden="true">
+                    <div class="modal" id="exampleModal2-admin-panel" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModal2-admin-panel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel2">Регистрация</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel2-admin-panel">Регистрация</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <!-- <span aria-hidden="true">&times;</span> -->
                                     </button>
@@ -388,40 +388,40 @@
                                         <div class="container-fluid">
                                             <form th:object="${user}" method="post" th:action="@{/registration}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Имя</label>
-                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                    <label for="InputName-admin-panel">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="InputName-admin-panel" aria-describdby="emailHelp"
                                                            placeholder="Иван">
-                                                    <small id="nameHelp" class="form-text text-muted">Введите имя</small>
+                                                    <small id="nameHelp-admin-panel" class="form-text text-muted">Введите имя</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">фамилия</label>
-                                                    <input type="text" class="form-control" th:field="*{lastName}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="InputLastName-admin-panel">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{lastName}" id="InputLastName-admin-panel" aria-describdby="emailHelp"
                                                            placeholder="Иванов">
-                                                    <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
+                                                    <small id="lastNameHelp-admin-panel" class="form-text text-muted">Введите фамилию</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Cтрана</label>
-                                                    <input type="text" class="form-control" th:field="*{country}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="InputCountry-admin-panel">Cтрана</label>
+                                                    <input type="text" class="form-control" th:field="*{country}" id="InputCountry-admin-panel" aria-describdby="emailHelp"
                                                            placeholder="Казахстан">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите страну</small>
+                                                    <small id="countryHelp-admin-panel" class="form-text text-muted">Введите страну</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Город</label>
-                                                    <input type="text" class="form-control" th:field="*{city}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="InputCity-admin-panel">Город</label>
+                                                    <input type="text" class="form-control" th:field="*{city}" id="InputCity-admin-panel" aria-describdby="emailHelp"
                                                            placeholder="Костанай">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
+                                                    <small id="cityHelp-admin-panel" class="form-text text-muted">Введите город</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputEmailReg">Email adress</label>
-                                                    <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
+                                                    <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg-admin-panel" aria-describdby="emailHelp"
                                                            placeholder="Email">
-                                                    <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
+                                                    <small id="emailHelpReg-admin-panel" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputPassReg">Пароль</label>
-                                                    <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
+                                                    <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg-admin-panel"
                                                            placeholder="Пароль">
-                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
+                                                    <small id="passHelpReg-admin-panel" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">Войти</button>
@@ -469,7 +469,7 @@
                 </div>
                 <div class="col-md-9">
                     <!-- navigation begin -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1-for-cart">
                         <ul class="nav navbar-nav">
                             <!-- DROPDOWN BEGIN -->
                             <li class="dropdown">
@@ -524,12 +524,12 @@
                     </div>
 
                     <!-- MODAL WINDOW -->
-                    <div class="modal" id="exampleModal" tabindex="-1" role="dialog"
+                    <div class="modal" id="exampleModal-for-cart" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModal" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Авторизация</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel-for-cart">Авторизация</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <!-- <span aria-hidden="true">&times;</span> -->
                                     </button>
@@ -539,20 +539,20 @@
                                         <div class="container-fluid">
                                             <form method="post" th:action="@{/login}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputEmail">Email</label>
-                                                    <input type="email" class="form-control" id="inputEmail" aria-describdby="emailHelp" name="email"
+                                                    <label for="InputEmail-for-cart">Email</label>
+                                                    <input type="email" class="form-control" id="inputEmail-for-cart" aria-describdby="emailHelp" name="email"
                                                            placeholder="Email адресс">
-                                                    <small id="emailHelp" class="form-text text-muted">Enter your email</small>
+                                                    <small id="emailHelp-for-cart" class="form-text text-muted">Enter your email</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputPass">Пароль</label>
-                                                    <input type="password" class="form-control" id="inputPass" name="password"
+                                                    <label for="InputPass-for-cart">Пароль</label>
+                                                    <input type="password" class="form-control" id="inputPass-for-cart" name="password"
                                                            placeholder="Пароль">
-                                                    <small id="passHelp" class="form-text text-muted">Минимум 5 символов</small>
+                                                    <small id="passHelp-for-cart" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
-                                                <div id="generalErrorMessage" class="error-lbl" style="display:none;"></div>
-                                                <button class="btn btn-light" id="login">Войти</button>
+                                                <div id="generalErrorMessage-for-cart" class="error-lbl" style="display:none;"></div>
+                                                <button class="btn btn-light" id="login-for-cart">Войти</button>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal2" data-dismiss="modal" aria-label="Close">Регистрация</button>
                                             </form>
                                         </div>
@@ -565,12 +565,12 @@
                         </div>
                     </div>
                     <!-- MODAL 2 -->
-                    <div class="modal" id="exampleModal2" tabindex="-1" role="dialog"
+                    <div class="modal" id="exampleModal2-for-cart" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModal2" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel2">Регистрация</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel2-for-cart">Регистрация</h5>
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                         <!-- <span aria-hidden="true">&times;</span> -->
                                     </button>
@@ -580,44 +580,44 @@
                                         <div class="container-fluid">
                                             <form th:object="${user}" method="post" th:action="@{/registration}">
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Имя</label>
-                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName" aria-describdby="emailHelp"
+                                                    <label for="exampleInputName-for-cart">Имя</label>
+                                                    <input type="text" class="form-control" th:field="*{name}" id="exampleInputName-for-cart" aria-describdby="emailHelp"
                                                            placeholder="Иван">
-                                                    <small id="nameHelp" class="form-text text-muted">Введите имя</small>
+                                                    <small id="nameHelp-for-cart" class="form-text text-muted">Введите имя</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">фамилия</label>
-                                                    <input type="text" class="form-control" th:field="*{lastName}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="exampleInputLastName-for-cart">фамилия</label>
+                                                    <input type="text" class="form-control" th:field="*{lastName}" id="exampleInputLastName-for-cart" aria-describdby="emailHelp"
                                                            placeholder="Иванов">
-                                                    <small id="lastNameHelp" class="form-text text-muted">Введите фамилию</small>
+                                                    <small id="lastNameHelp-for-cart" class="form-text text-muted">Введите фамилию</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Cтрана</label>
-                                                    <input type="text" class="form-control" th:field="*{country}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="exampleInputCountry-for-cart">Cтрана</label>
+                                                    <input type="text" class="form-control" th:field="*{country}" id="exampleInputCountry-for-cart" aria-describdby="emailHelp"
                                                            placeholder="Казахстан">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите страну</small>
+                                                    <small id="countryHelp-for-cart" class="form-text text-muted">Введите страну</small>
                                                 </div>
                                                 <div class="form-froup">
-                                                    <label for="exampleInputName">Город</label>
-                                                    <input type="text" class="form-control" th:field="*{city}" id="exampleInputLastName" aria-describdby="emailHelp"
+                                                    <label for="exampleInputCity-for-cart">Город</label>
+                                                    <input type="text" class="form-control" th:field="*{city}" id="exampleInputCity-for-cart" aria-describdby="emailHelp"
                                                            placeholder="Костанай">
-                                                    <small id="countryHelp" class="form-text text-muted">Введите город</small>
+                                                    <small id="cityHelp-for-cart" class="form-text text-muted">Введите город</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputEmailReg">Email adress</label>
                                                     <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmailReg" aria-describdby="emailHelp"
                                                            placeholder="Email">
-                                                    <small id="emailHelpReg" class="form-text text-muted">Введите ваш существующий e-mail</small>
+                                                    <small id="emailHelpReg-for-cart" class="form-text text-muted">Введите ваш существующий e-mail</small>
                                                 </div>
                                                 <div class="form-froup">
                                                     <label for="exampleInputPassReg">Пароль</label>
                                                     <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassReg"
                                                            placeholder="Пароль">
-                                                    <small id="passHelpReg" class="form-text text-muted">Минимум 5 символов</small>
+                                                    <small id="passHelpReg-for-cart" class="form-text text-muted">Минимум 5 символов</small>
                                                 </div>
                                                 <br>
                                                 <button class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal" aria-label="Close">Войти</button>
-                                                <button class="btn btn-light" onclick="alertmsg('hello!');">Регистрация</button>
+                                                <button class="btn btn-light">Регистрация</button>
                                             </form>
                                         </div>
                                     </div>

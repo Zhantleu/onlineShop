@@ -2,7 +2,7 @@ package kz.aa.shop.onlineShop.model.item.clothes;
 
 
 import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyCap;
+import kz.aa.shop.onlineShop.model.property.clothes.PropertyCap;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

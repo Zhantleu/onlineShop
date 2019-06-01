@@ -1,9 +1,8 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.buym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Kobiz;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Syrga;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -14,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_kobiz")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyKobiz extends BaseEntity{
+@Table(name = "property_syrga")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertySyrga extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "kobiz_id")
-    private Kobiz kobiz;
+    @JoinColumn(name = "syrga_id")
+    private Syrga syrga;
 
     private String length;
 
-    public Kobiz getKobiz() {
-        return kobiz;
+    public Syrga getSyrga() {
+        return syrga;
     }
 
-    public void setKobiz(Kobiz kobiz) {
-        this.kobiz = kobiz;
+    public void setSyrga(Syrga syrga) {
+        this.syrga = syrga;
     }
 
     public String getLength() {

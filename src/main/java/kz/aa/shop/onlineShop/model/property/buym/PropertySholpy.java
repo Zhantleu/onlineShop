@@ -1,8 +1,9 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.buym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.ashekey_biym.Alqa;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Sholpy;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -13,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_alqa")
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyAlqa extends BaseEntity {
+@Table(name = "property_sholpy")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertySholpy extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "alqa_id")
-    private Alqa alqa;
+    @JoinColumn(name = "sholpy_id")
+    private Sholpy sholpy;
 
     private String length;
 
-    public Alqa getAlqa() {
-        return alqa;
+    public Sholpy getSholpy() {
+        return sholpy;
     }
 
-    public void setAlqa(Alqa alqa) {
-        this.alqa = alqa;
+    public void setSholpy(Sholpy sholpy) {
+        this.sholpy = sholpy;
     }
 
     public String getLength() {

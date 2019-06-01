@@ -1,8 +1,8 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.buym;
+
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Sazsyrnai;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Shaspay;
 import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -13,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_sazsyrnai")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertySazsyrnai extends BaseEntity {
+@Table(name = "property_shaspay")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class PropertyShaspay extends BaseEntity{
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sazsyrnai_id")
-    private Sazsyrnai sazsyrnai;
+    @JoinColumn(name = "shaspay_id")
+    private Shaspay shaspay;
 
     private String length;
 
-    public Sazsyrnai getSazsyrnai() {
-        return sazsyrnai;
+    public Shaspay getShaspay() {
+        return shaspay;
     }
 
-    public void setSazsyrnai(Sazsyrnai sazsyrnai) {
-        this.sazsyrnai = sazsyrnai;
+    public void setShaspay(Shaspay shaspay) {
+        this.shaspay = shaspay;
     }
 
     public String getLength() {
@@ -37,4 +37,5 @@ public class PropertySazsyrnai extends BaseEntity {
     public void setLength(String length) {
         this.length = length;
     }
+
 }

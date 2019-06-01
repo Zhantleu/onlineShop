@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.clothes;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyAyaqkiym;
+import kz.aa.shop.onlineShop.model.property.clothes.PropertyAyaqkiym;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

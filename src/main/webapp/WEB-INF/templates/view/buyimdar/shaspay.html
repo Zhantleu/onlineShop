@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <title>KAZ SAUDA</title>
     <div th:replace="parts/header :: header-css"></div>
-    <script src="../../../js/adding_item.js"></script>
+    <script src="../../../../js/adding_item.js"></script>
 </head>
 <body>
 <div th:replace="parts/header :: header-for-category"></div>
 
 <div class="section">
     <div class="container">
-        <h2 class="title">Dobralar</h2>
-        <div class="subtitle2">Zhana dobralar qol zhetimdi bagada</div>
+        <h2 class="title">Shashpay</h2>
+        <div class="subtitle2">Ashekey buyim</div>
         <!-- row -->
         <div class="row">
             <!-- FIRTS LINE -->
@@ -40,13 +40,13 @@
 
     <div th:fragment="pagination">
 
-          <div class="pagination--class">
-                <ul class="pagination">
-                    <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                        <a class="page-link" th:href="@{|/dombra?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="pagination--class">
+            <ul class="pagination">
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                    <a class="page-link" th:href="@{|/dombra?page=${pageNumber}|}" th:text=${pageNumber}>1</a>
+                </li>
+            </ul>
+        </div>
 
     </div>
 

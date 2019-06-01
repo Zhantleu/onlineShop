@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
-import kz.aa.shop.onlineShop.model.property.PropertySazsyrnai;
+import kz.aa.shop.onlineShop.model.property.music.PropertySazsyrnai;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

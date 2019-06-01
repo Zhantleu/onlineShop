@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.ashekey_biym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertySaqina;
+import kz.aa.shop.onlineShop.model.property.buym.PropertySaqina;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

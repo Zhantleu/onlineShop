@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyDabyl;
+import kz.aa.shop.onlineShop.model.property.music.PropertyDabyl;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

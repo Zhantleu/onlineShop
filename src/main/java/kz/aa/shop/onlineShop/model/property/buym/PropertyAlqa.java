@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.buym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.ashekey_biym.Syrga;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Alqa;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
@@ -13,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_syrga")
+@Table(name = "property_alqa")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertySyrga extends BaseEntity {
+public class PropertyAlqa extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "syrga_id")
-    private Syrga syrga;
+    @JoinColumn(name = "alqa_id")
+    private Alqa alqa;
 
     private String length;
 
-    public Syrga getSyrga() {
-        return syrga;
+    public Alqa getAlqa() {
+        return alqa;
     }
 
-    public void setSyrga(Syrga syrga) {
-        this.syrga = syrga;
+    public void setAlqa(Alqa alqa) {
+        this.alqa = alqa;
     }
 
     public String getLength() {

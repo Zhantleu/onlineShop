@@ -3,7 +3,7 @@ package kz.aa.shop.onlineShop.controller;
 import kz.aa.shop.onlineShop.dto.OrderDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.item.Cap;
+import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
 import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
@@ -74,7 +74,7 @@ public class MainController {
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
 
-        insertValueCartInMainPage(model);
+//        insertValueCartInMainPage(model);
         return "view/index";
 
     }

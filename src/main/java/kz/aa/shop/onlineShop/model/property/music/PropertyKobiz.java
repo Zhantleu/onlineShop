@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.ashekey_biym.Saqina;
+import kz.aa.shop.onlineShop.model.item.music.Kobiz;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -14,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_saqina")
+@Table(name = "property_kobiz")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertySaqina extends BaseEntity {
+public class PropertyKobiz extends BaseEntity{
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "saqina_id")
-    private Saqina saqina;
+    @JoinColumn(name = "kobiz_id")
+    private Kobiz kobiz;
 
     private String length;
 
-    public Saqina getSaqina() {
-        return saqina;
+    public Kobiz getKobiz() {
+        return kobiz;
     }
 
-    public void setSaqina(Saqina saqina) {
-        this.saqina = saqina;
+    public void setKobiz(Kobiz kobiz) {
+        this.kobiz = kobiz;
     }
 
     public String getLength() {

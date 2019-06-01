@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.clothes;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.music.Dabyl;
+import kz.aa.shop.onlineShop.model.item.clothes.Ayaqkiym;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
@@ -13,21 +13,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_dabyl")
+@Table(name = "property_ayaqkiym")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyDabyl extends BaseEntity {
+public class PropertyAyaqkiym extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dabyl_id")
-    private Dabyl dabyl;
+    @JoinColumn(name = "ayaqkiym_id")
+    private Ayaqkiym ayaqkiym;
 
     private String length;
 
-    public Dabyl getDabyl() {
-        return dabyl;
+    public Ayaqkiym getAyaqkiym() {
+        return ayaqkiym;
     }
 
-    public void setDabyl(Dabyl dabyl) {
-        this.dabyl = dabyl;
+    public void setAyaqkiym(Ayaqkiym ayaqkiym) {
+        this.ayaqkiym = ayaqkiym;
     }
 
     public String getLength() {

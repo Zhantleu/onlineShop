@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.buym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.ashekey_biym.Bilezik;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Saqina;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -14,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_bilezik")
+@Table(name = "property_saqina")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertyBilezik extends BaseEntity {
+public class PropertySaqina extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bilezik_id")
-    private Bilezik bilezik;
+    @JoinColumn(name = "saqina_id")
+    private Saqina saqina;
 
     private String length;
 
-    public Bilezik getBilezik() {
-        return bilezik;
+    public Saqina getSaqina() {
+        return saqina;
     }
 
-    public void setBilezik(Bilezik bilezik) {
-        this.bilezik = bilezik;
+    public void setSaqina(Saqina saqina) {
+        this.saqina = saqina;
     }
 
     public String getLength() {
@@ -38,5 +38,4 @@ public class PropertyBilezik extends BaseEntity {
     public void setLength(String length) {
         this.length = length;
     }
-
 }

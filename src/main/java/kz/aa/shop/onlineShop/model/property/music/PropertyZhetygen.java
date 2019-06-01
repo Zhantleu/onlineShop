@@ -1,7 +1,7 @@
-package kz.aa.shop.onlineShop.model.property;
+package kz.aa.shop.onlineShop.model.property.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.item.ashekey_biym.Sholpy;
+import kz.aa.shop.onlineShop.model.item.music.Zhetygen;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -14,21 +14,21 @@ import javax.persistence.*;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "property_sholpy")
+@Table(name = "property_zhetygen")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class PropertySholpy extends BaseEntity {
+public class PropertyZhetygen extends BaseEntity{
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sholpy_id")
-    private Sholpy sholpy;
+    @JoinColumn(name = "zhetygen_id")
+    private Zhetygen zhetygen;
 
     private String length;
 
-    public Sholpy getSholpy() {
-        return sholpy;
+    public Zhetygen getZhetygen() {
+        return zhetygen;
     }
 
-    public void setSholpy(Sholpy sholpy) {
-        this.sholpy = sholpy;
+    public void setZhetygen(Zhetygen zhetygen) {
+        this.zhetygen = zhetygen;
     }
 
     public String getLength() {
