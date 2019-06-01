@@ -48,32 +48,32 @@ public class CategoryController {
             case "ashekey_biym":
                 switch (subcategory) {
                     case "alqa":
-                        Page<Alqa> pageAlgaList = alqaService.findAll(pageable);
+                        Page<Alqa> pageAlgaList = alqaService.findAllByIsUsedTrue(pageable);
                         model.addAttribute("products", pageAlgaList);
                         utilControllers.pageCountNumber(model, pageAlgaList.getTotalPages());
                         return "view/alqa";
                     case "bilezik":
-                        Page<Bilezik> pageList = bilezikService.findAll(pageable);
+                        Page<Bilezik> pageList = bilezikService.findAllByIsUsedTrue(pageable);
                         model.addAttribute("products", pageList);
                         utilControllers.pageCountNumber(model, pageList.getTotalPages());
                         return "view/bilezik";
                     case "saqina":
-//                        Page<Dombra> pageList = dombraService.findAll(pageable);
+//                        Page<Dombra> pageList = dombraService.findAllByIsUsedTrue(pageable);
 //                        model.addAttribute("products", pageList);
 //                        utilControllers.pageCountNumber(model, pageList.getTotalPages());
                         break;
                     case "shaspay":
-//                        Page<Dombra> pageList = dombraService.findAll(pageable);
+//                        Page<Dombra> pageList = dombraService.findAllByIsUsedTrue(pageable);
 //                        model.addAttribute("products", pageList);
 //                        utilControllers.pageCountNumber(model, pageList.getTotalPages());
                         break;
                     case "sholpy":
-//                        Page<Dombra> pageList = dombraService.findAll(pageable);
+//                        Page<Dombra> pageList = dombraService.findAllByIsUsedTrue(pageable);
 //                        model.addAttribute("products", pageList);
 //                        utilControllers.pageCountNumber(model, pageList.getTotalPages());
                         break;
                     case "syrga":
-//                        Page<Dombra> pageList = dombraService.findAll(pageable);
+//                        Page<Dombra> pageList = dombraService.findAllByIsUsedTrue(pageable);
 //                        model.addAttribute("products", pageList);
 //                        utilControllers.pageCountNumber(model, pageList.getTotalPages());
                         break;

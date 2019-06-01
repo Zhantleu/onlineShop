@@ -67,7 +67,7 @@ public class MainController {
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
         PageRequest pageable = PageRequest.of(page - 1, 12);
-        Page<Cap> pageCapList = capService.findAll(pageable);
+        Page<Cap> pageCapList = capService.findAllByIsUsedTrue(pageable);
         model.addAttribute("products", pageCapList);
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
@@ -132,7 +132,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, userService);
 
         PageRequest pageable = PageRequest.of(page - 1, 6);
-        Page<Cap> pageCapList = capService.findAll(pageable);
+        Page<Cap> pageCapList = capService.findAllByIsUsedTrue(pageable);
         model.addAttribute("products", pageCapList);
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
