@@ -2,8 +2,8 @@ package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import kz.aa.shop.onlineShop.service.OrderItemDtoService;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
+import kz.aa.shop.onlineShop.service.dto.OrderItemDtoService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -21,7 +21,7 @@ public class OrderItemDtoServiceImpl implements OrderItemDtoService {
     @Override
     public List<OrderItemDto> findByOrder(CustomerOrder customerOrder) {
         String idParameter = "oi.idItem";
-        String typeCategoryParameter = "oi.typeCategory";
+        String typeCategoryParameter = "oi.subTypeCategory";
         String amountParameter = "oi.amount";
         String idOrderItemParameter = "oi.id";
 
@@ -35,7 +35,7 @@ public class OrderItemDtoServiceImpl implements OrderItemDtoService {
         List<OrderItemDto> itemDtos = new ArrayList<>();
 
         for (Object[] objects : resultList) {
-            itemDtos.add(new OrderItemDto((Long) objects[0],(TypeCategory) objects[1], (Long) objects[2], (Long) objects[3]));
+            itemDtos.add(new OrderItemDto((Long) objects[0],(SubTypeCategory) objects[1], (Long) objects[2], (Long) objects[3]));
         }
 
         return itemDtos;

@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.service;
+package kz.aa.shop.onlineShop.service.dto;
 
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;

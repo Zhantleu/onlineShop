@@ -10,12 +10,12 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
+@Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "dombra")
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -24,32 +24,9 @@ public class Dombra extends BaseItemEntity {
 
     private Double price;
 
+    private Boolean isUsed = true;
 
     @OneToOne(mappedBy = "dombra", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private PropertyDombra propertyDombra;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public PropertyDombra getPropertyDombra() {
-        return propertyDombra;
-    }
-
-    public void setPropertyDombra(PropertyDombra propertyDombra) {
-        this.propertyDombra = propertyDombra;
-    }
 }

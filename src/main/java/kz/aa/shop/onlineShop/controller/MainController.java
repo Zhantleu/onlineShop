@@ -5,8 +5,7 @@ import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
-import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.service.impl.base.CustomerOrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.OrderItemServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
@@ -19,7 +18,6 @@ import kz.aa.shop.onlineShop.util.UtilConvertFromDtoToEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +67,7 @@ public class MainController {
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
 
         PageRequest pageable = PageRequest.of(page - 1, 12);
-        Page<Cap> pageCapList = capService.findAll(pageable);
+        Page<Cap> pageCapList = capService.findAllByIsUsedTrue(pageable);
         model.addAttribute("products", pageCapList);
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
@@ -134,7 +132,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, userService);
 
         PageRequest pageable = PageRequest.of(page - 1, 6);
-        Page<Cap> pageCapList = capService.findAll(pageable);
+        Page<Cap> pageCapList = capService.findAllByIsUsedTrue(pageable);
         model.addAttribute("products", pageCapList);
 
         utilControllers.pageCountNumber(model, pageCapList.getTotalPages());
@@ -144,7 +142,7 @@ public class MainController {
 
     @RequestMapping(value = "/product-view", method = RequestMethod.GET)
     public String testMethod(Model model,
-                             @RequestParam("typeCategory") TypeCategory typeCategory,
+                             @RequestParam("subTypeCategory") SubTypeCategory subTypeCategory,
                              @RequestParam("idItem") Long id,
                              HttpServletRequest request) {
 
@@ -152,7 +150,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, userService);
         model.addAttribute("user", user);
         insertValueCartInMainPage(model);
-        utilControllers.checkTypeCategory(model, typeCategory, Long.valueOf(id));
+        utilControllers.checkTypeCategory(model, subTypeCategory, id);
 
         return "view/product_info";
     }

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:h="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../../../css/product_info.css">
+    <div th:replace="parts/header :: header-css"></div>
+</head>
+<body>
+<div th:replace="parts/header :: header-for-category"></div>
+<div class="container">
+    <!--<h:form method="post" th:action="@{/admin/edit-page/save-item}" enctype="multipart/form-data" th:object="${product}">-->
+    <form method="post" enctype="multipart/form-data" th:object="${product}" th:action="@{/admin/edit-page/edit}">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic tab-content">
+                            <div class="tab-pane active" id="pic-1">
+                                <img class="active" th:src="@{'/img_src/' + ${product.urlImage}}" alt="$id">
+                            </div>
+                            <input type="file" name="file" id="imgCap">
+                        </div>
+                    </div>
+                    <label>
+                        <input hidden th:field="*{id}">
+                        <input hidden th:field="*{propertyCap.id}">
+                        <input hidden th:field="*{urlImage}">
+                        <input hidden th:field="*{propertyCap.cap}">
+                    </label>
+                    <div class="details col-md-6">
+                        <input class="product-title" th:field="*{name}"/>
+                        <span>Category: </span>
+                        <label>
+                            <input th:field="*{subTypeCategory}">
+                        </label>
+                        <p class="product-description">Bul zherde tayar malimety bolu kerek.</p>
+                        <p class="price">Bagasy: <label>
+                            <input th:field="*{price}"
+                                   type="text"/>
+                        </label> KZT</p>
+
+
+                        <div class="chars--about">
+                            <li><span>Tysi: </span>
+                                <label>
+                                    <select th:field="*{propertyCap.colorEnum}">
+                                        <option th:each="color : ${colorEnum}"
+                                                th:value="${color}"
+                                                th:text="${color.label}">
+                                        </option>
+                                    </select>
+                                </label>
+                            </li>
+                            <li><span>Molsheri: </span>
+                                <label>
+                                    <select th:field="*{propertyCap.gender}">
+                                        <option th:each="gender : ${genderTypes}"
+                                                th:value="${gender}"
+                                                th:text="${gender.label}">
+                                        </option>
+                                    </select>
+                                </label>
+                            </li>
+                            <li><span>Materialy: </span>
+                                <label>
+                                    <select th:field="*{propertyCap.materialEnum}">
+                                        <option th:each="material : ${materialEnum}"
+                                                th:value="${material}"
+                                                th:text="${material.label}">
+                                        </option>
+                                    </select>
+                                </label>
+                            </li>
+                            <li><span>Размер: </span>
+                                <label>
+                                    <select th:field="*{propertyCap.sizeEnum}">
+                                        <option th:each="size : ${sizeEnum}"
+                                                th:value="${size}"
+                                                th:text="${size}">
+                                        </option>
+                                    </select>
+                                </label>
+                            </li>
+                        </div>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="submit" name="action"
+                                    value="save">Сохранить
+                            </button>
+                            <button type="submit" class="add-to-cart btn btn-default" name="action"
+                                    value="delete">Удалить
+                            </button>
+                            <!--<button class="add-to-cart btn btn-default"  formmethod="post" formaction="/admin/edit-page?action=save" type="button">Сохранить</button>-->
+                            <!--<button class="add-to-cart btn btn-default" type="button">Удалить</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

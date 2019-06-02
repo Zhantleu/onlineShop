@@ -4,8 +4,12 @@ import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.service.*;
+import kz.aa.shop.onlineShop.service.clothes.CapService;
+import kz.aa.shop.onlineShop.service.music.DombraService;
+import kz.aa.shop.onlineShop.service.order.CustomerOrderService;
+import kz.aa.shop.onlineShop.service.order.OrderItemService;
 import kz.aa.shop.onlineShop.util.ValidationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,6 +59,7 @@ public class UtilController {
         return new ValidationResponse();
     }
 
+//    todo
     private void likeFunction(@RequestParam(name = "itemId") Long itemId, @RequestParam(name = "categoryType") String typeCategory, Optional<User> user) {
         OrderItem orderItem = new OrderItem();
 
@@ -65,19 +70,19 @@ public class UtilController {
         customerOrderService.saveOrUpdate(customerOrder);
         orderItem.setCustomerOrder(customerOrder);
 
-        switch (TypeCategory.valueOf(typeCategory)) {
+        switch (SubTypeCategory.valueOf(typeCategory)) {
             case CAP:
-                setOrderItem(orderItem, capService.findById(itemId), TypeCategory.CAP);
+                setOrderItem(orderItem, capService.findById(itemId), SubTypeCategory.CAP);
                 break;
             case DOMBRA:
-                setOrderItem(orderItem, dombraService.findById(itemId), TypeCategory.DOMBRA);
+                setOrderItem(orderItem, dombraService.findById(itemId), SubTypeCategory.DOMBRA);
                 break;
         }
     }
 
     private void dislikeAction(@RequestParam(name = "itemId") Long itemId, @RequestParam(name = "categoryType") String typeCategory) {
 
-        switch (TypeCategory.valueOf(typeCategory)) {
+        switch (SubTypeCategory.valueOf(typeCategory)) {
             case CAP:
                 System.out.println(orderItemService.findByTypeCategoryAndIdItemAndCustomerOrder(itemId, customerOrder));
                 orderItemService.delete(orderItemService.findByTypeCategoryAndIdItemAndCustomerOrder(itemId, customerOrder));
@@ -88,8 +93,8 @@ public class UtilController {
         }
     }
 
-    private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity, TypeCategory typeCategory) {
-        orderItem.setTypeCategory(typeCategory);
+    private void setOrderItem(OrderItem orderItem, BaseEntity baseEntity, SubTypeCategory subTypeCategory) {
+        orderItem.setSubTypeCategory(subTypeCategory);
         orderItem.setIdItem(baseEntity.getId());
         orderItemService.saveOrUpdate(orderItem);
     }

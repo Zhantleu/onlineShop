@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.dto;
 
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
 import lombok.*;
 
@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 public class ItemDto {
     private Class clazz;
-    private TypeCategory typeCategory;
+    private SubTypeCategory subTypeCategory;
     private String clazzName;
     private Long id;
     private BaseEntity baseEntity;

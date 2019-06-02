@@ -3,8 +3,6 @@ package kz.aa.shop.onlineShop.repository.base;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.order.OrderItem;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
-import org.hibernate.criterion.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;

@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.dto;
 
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 public class OrderItemDto {
     private Long idOrderItem;
-    private TypeCategory typeCategory;
+    private SubTypeCategory subTypeCategory;
     private Long id;
     private String urlImage;
     private String name;
@@ -24,15 +24,15 @@ public class OrderItemDto {
     public OrderItemDto() {
     }
 
-    public OrderItemDto(Long id, TypeCategory typeCategory, Long amount, Long idOrderItem) {
-        this.typeCategory = typeCategory;
+    public OrderItemDto(Long id, SubTypeCategory subTypeCategory, Long amount, Long idOrderItem) {
+        this.subTypeCategory = subTypeCategory;
         this.id = id;
         this.amount = amount;
         this.idOrderItem = idOrderItem;
     }
 
-    public OrderItemDto(TypeCategory typeCategory, Long id, String urlImage, String name, Double price, String articul, Long amount, Long idOrderItem) {
-        this.typeCategory = typeCategory;
+    public OrderItemDto(SubTypeCategory subTypeCategory, Long id, String urlImage, String name, Double price, String articul, Long amount, Long idOrderItem) {
+        this.subTypeCategory = subTypeCategory;
         this.id = id;
         this.urlImage = urlImage;
         this.name = name;
@@ -50,12 +50,12 @@ public class OrderItemDto {
         this.idOrderItem = idOrderItem;
     }
 
-    public TypeCategory getTypeCategory() {
-        return typeCategory;
+    public SubTypeCategory getSubTypeCategory() {
+        return subTypeCategory;
     }
 
-    public void setTypeCategory(TypeCategory typeCategory) {
-        this.typeCategory = typeCategory;
+    public void setSubTypeCategory(SubTypeCategory subTypeCategory) {
+        this.subTypeCategory = subTypeCategory;
     }
 
     public Long getId() {

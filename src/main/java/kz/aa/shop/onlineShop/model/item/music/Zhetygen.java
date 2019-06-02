@@ -10,12 +10,12 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
+@Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "zhetygen")
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -24,32 +24,9 @@ public class Zhetygen extends BaseItemEntity {
 
     private Double price;
 
-
     @OneToOne(mappedBy = "zhetygen", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     private PropertyZhetygen propertyZhetygen;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public PropertyZhetygen getPropertyZhetygen() {
-        return propertyZhetygen;
-    }
-
-    public void setPropertyZhetygen(PropertyZhetygen propertyZhetygen) {
-        this.propertyZhetygen = propertyZhetygen;
-    }
+    private Boolean isUsed = true;
 }

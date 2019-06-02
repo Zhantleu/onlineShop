@@ -1,16 +1,18 @@
-package kz.aa.shop.onlineShop.controller;
+package kz.aa.shop.onlineShop.controller.admin;
 
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.*;
-import kz.aa.shop.onlineShop.service.CustomerOrderService;
-import kz.aa.shop.onlineShop.service.DombraService;
-import kz.aa.shop.onlineShop.service.PropertyCapService;
+import kz.aa.shop.onlineShop.service.order.CustomerOrderService;
+import kz.aa.shop.onlineShop.service.music.DombraService;
+import kz.aa.shop.onlineShop.service.property.PropertyCapService;
 import kz.aa.shop.onlineShop.service.UserService;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
+import kz.aa.shop.onlineShop.util.ErrorMessage;
 import kz.aa.shop.onlineShop.util.UtilImage;
+import kz.aa.shop.onlineShop.util.ValidationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
@@ -19,17 +21,14 @@ import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @PreFilter("authentication.principal.username != null")
@@ -94,7 +93,7 @@ public class AdminController {
 
             cap.setUrlImage(utilImage.saveFile(file, uploadPath));
             cap.getPropertyCap().setCap(cap);
-            cap.setTypeCategory(TypeCategory.CAP);
+            cap.setSubTypeCategory(SubTypeCategory.CAP);
 
             capService.saveOrUpdate(cap);
 
@@ -119,11 +118,30 @@ public class AdminController {
 
             dombra.setUrlImage(utilImage.saveFile(file, uploadPath));
             dombra.getPropertyDombra().setDombra(dombra);
-            dombra.setTypeCategory(TypeCategory.DOMBRA);
+            dombra.setSubTypeCategory(SubTypeCategory.DOMBRA);
 
             dombraService.saveOrUpdate(dombra);
 
             return "redirect:/admin/page";
         }
+    }
+
+    @RequestMapping(value = "/admin/delete-item", method = RequestMethod.POST)
+    public @ResponseBody ValidationResponse deleteItem(@RequestParam("itemId") String itemId, @RequestParam("categoryType") SubTypeCategory subTypeCategory) {
+        ValidationResponse res = new ValidationResponse();
+        ErrorMessage message;
+
+        switch (subTypeCategory){
+            case CAP:
+                Cap cap = capService.findById(Long.valueOf(itemId));
+                cap.setIsUsed(false);
+                capService.saveOrUpdate(cap);
+                message = new ErrorMessage("status", "ok");
+                res.setStatus("ok");
+                res.setErrorMessageList(Collections.singletonList(message));
+                break;
+        }
+
+        return res;
     }
 }
