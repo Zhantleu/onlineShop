@@ -16,7 +16,7 @@ public class UtilConvertFromDtoToEntity {
         List<OrderItem> orderItems = new ArrayList<>();
 
         for (OrderItemDto orderItemDto : orderDto.getOrderItemDtos()) {
-            orderItems.add(new OrderItem(orderDto.getCustomerOrder(),orderItemDto.getIdOrderItem(),orderItemDto.getId(), LocalDateTime.now(),orderItemDto.getAmount(),orderItemDto.getPrice(),orderItemDto.getTypeCategory(),orderItemDto.getTotalPrice()));
+            orderItems.add(new OrderItem(orderDto.getCustomerOrder(),orderItemDto.getIdOrderItem(),orderItemDto.getId(), LocalDateTime.now(),orderItemDto.getAmount(),orderItemDto.getPrice(),orderItemDto.getSubTypeCategory(),orderItemDto.getTotalPrice()));
         }
 
         return orderItems;

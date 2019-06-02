@@ -5,7 +5,7 @@ import kz.aa.shop.onlineShop.dto.OrderItemDto;
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.service.impl.base.CustomerOrderServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.OrderItemServiceImpl;
 import kz.aa.shop.onlineShop.service.impl.base.UserServiceImpl;
@@ -142,7 +142,7 @@ public class MainController {
 
     @RequestMapping(value = "/product-view", method = RequestMethod.GET)
     public String testMethod(Model model,
-                             @RequestParam("typeCategory") TypeCategory typeCategory,
+                             @RequestParam("subTypeCategory") SubTypeCategory subTypeCategory,
                              @RequestParam("idItem") Long id,
                              HttpServletRequest request) {
 
@@ -150,7 +150,7 @@ public class MainController {
         user = utilControllers.checkUserInSession(model, request, userService);
         model.addAttribute("user", user);
         insertValueCartInMainPage(model);
-        utilControllers.checkTypeCategory(model, typeCategory, Long.valueOf(id));
+        utilControllers.checkTypeCategory(model, subTypeCategory, id);
 
         return "view/product_info";
     }

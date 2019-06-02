@@ -19,7 +19,7 @@
             <!-- first col -->
             <div class="col-md-3" th:each="prod : ${products}">
                 <div class="card" th:id="${prod.urlImage}"
-                     data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+                     data-th-attr="itemId=${prod.id} ,categoryType=${prod.subTypeCategory}">
                     <div class="card__image">
                         <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product">
                         <div class="card__hover">

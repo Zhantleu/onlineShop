@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.springframework.org/schema/security" xmlns:h="http://www.w3.org/1999/html"
+<html xmlns:th="http://www.springframework.org/schema/security"
 	  xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
@@ -28,12 +28,12 @@
                             <div class="sliders__iterator" th:each="prod : ${products}">
                             <div class="sl__slide">
                             <img th:src="@{'/img_src/' + ${prod.urlImage}}" alt="product" class="sl__img">
-                            <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.typeCategory}">
+                            <div class="card__hover" data-th-attr="itemId=${prod.id} ,categoryType=${prod.subTypeCategory}">
                             <input class="card__button-btn" type="button" value="Satip alu"/>
-                            <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" class="card__button">Karau</a>
-                            <a th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Edit</a>
+                            <a th:href="@{/product-view(subTypeCategory=${prod.subTypeCategory},idItem=${prod.id})}" class="card__button">Karau</a>
+                            <a th:href="@{/admin/edit-page(subTypeCategory=${prod.subTypeCategory},idItem=${prod.id})}" sec:authorize="hasAuthority('ADMIN')" class="card__button">Edit</a>
                             <a id="delete-item-id" sec:authorize="hasAuthority('ADMIN')" class="card__button">Delete</a>
-								<!--th:href="@{/product-view(typeCategory=${prod.typeCategory},idItem=${prod.id})}"-->
+								<!--th:href="@{/product-view(subTypeCategory=${prod.subTypeCategory},idItem=${prod.id})}"-->
                             </div>
                             </div>
                             </div>

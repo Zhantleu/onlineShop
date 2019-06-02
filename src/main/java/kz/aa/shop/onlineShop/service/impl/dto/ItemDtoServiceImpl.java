@@ -2,7 +2,7 @@ package kz.aa.shop.onlineShop.service.impl.dto;
 
 import kz.aa.shop.onlineShop.dto.ItemDto;
 import kz.aa.shop.onlineShop.dto.OrderItemDto;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.service.dto.ItemDtoService;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class ItemDtoServiceImpl implements ItemDtoService {
         Query query;
 
         for (OrderItemDto orderItemDto : orderItemDtos) {
-            switch (orderItemDto.getTypeCategory()) {
+            switch (orderItemDto.getSubTypeCategory()) {
                 case CAP:
                     query = entityManager.createQuery("SELECT oi.price from " + "Cap oi where oi.id = :id", Object[].class);
                     query.setParameter("id", orderItemDto.getId());
@@ -60,7 +60,7 @@ public class ItemDtoServiceImpl implements ItemDtoService {
             itemDto.setId((Long) objects[0]);
             itemDto.setClazzName(clazz.getSimpleName());
             itemDto.setUrlImage((String) objects[1]);
-            itemDto.setTypeCategory(TypeCategory.valueOf(clazz.getSimpleName().toUpperCase()));
+            itemDto.setSubTypeCategory(SubTypeCategory.valueOf(clazz.getSimpleName().toUpperCase()));
 
             itemDtos.add(itemDto);
         }

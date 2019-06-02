@@ -52,13 +52,13 @@
                                 <td class="text-left">
                                     <div class="btn-block cart-put">
                                         <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].id}">
-                                        <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].typeCategory}">
+                                        <input hidden th:field="*{orderItemDtos[__${itemStat.index}__].subTypeCategory}">
                                         <input class="form-control" type="number" id="" min="1"
                                                th:id="${'sumOfTovar' + itemStat.index}"
                                                th:field="*{orderItemDtos[__${itemStat.index}__].amount}"
                                                th:attr="onclick='javascript:countMoney(\''+ ${'tovarPrice' + itemStat.index} +'\',\'' + ${'sumOfTovar' + itemStat.index} +'\',\'' + ${'subTotal' + itemStat.index} +'\');'"/>
                                         <div class="input-group-btn cart-buttons">
-                                            <a class="btn btn-danger" data-th-attr="itemId=${item.idOrderItem} ,categoryType=${item.typeCategory}">
+                                            <a class="btn btn-danger" data-th-attr="itemId=${item.idOrderItem} ,categoryType=${item.subTypeCategory}">
                                             <span class="text--but"
                                                   th:attr="onclick='javascript:deleteElem(\''+ ${'tableID' + itemStat.index} +'\');'"
                                             >Alyp tastay</span>

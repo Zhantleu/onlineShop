@@ -1,6 +1,6 @@
 package kz.aa.shop.onlineShop.model.base;
 
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,7 +18,7 @@ public class BaseItemEntity extends BaseEntity implements Serializable{
     private String urlImage;
 
     @Enumerated(EnumType.STRING)
-    private TypeCategory typeCategory;
+    private SubTypeCategory subTypeCategory;
 
     private String articul;
 }

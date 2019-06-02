@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.util;
 
 import kz.aa.shop.onlineShop.model.User;
-import kz.aa.shop.onlineShop.model.property.enumeration.TypeCategory;
+import kz.aa.shop.onlineShop.model.property.enumeration.SubTypeCategory;
 import kz.aa.shop.onlineShop.service.clothes.CapService;
 import kz.aa.shop.onlineShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +50,8 @@ public class UtilControllers {
         }
     }
 
-    public String checkTypeCategory(Model model, TypeCategory typeCategory, Long id) {
-        switch (typeCategory) {
+    public String checkTypeCategory(Model model, SubTypeCategory subTypeCategory, Long id) {
+        switch (subTypeCategory) {
             case CAP:
                 model.addAttribute("product",capService.findById(id));
                 return "view/product_info";

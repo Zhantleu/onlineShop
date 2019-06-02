@@ -1,4 +1,4 @@
-package kz.aa.shop.onlineShop.controller;
+package kz.aa.shop.onlineShop.controller.admin;
 
 import kz.aa.shop.onlineShop.model.User;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
@@ -23,7 +23,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.*;
@@ -91,7 +93,7 @@ public class AdminController {
 
             cap.setUrlImage(utilImage.saveFile(file, uploadPath));
             cap.getPropertyCap().setCap(cap);
-            cap.setTypeCategory(TypeCategory.CAP);
+            cap.setSubTypeCategory(SubTypeCategory.CAP);
 
             capService.saveOrUpdate(cap);
 
@@ -116,7 +118,7 @@ public class AdminController {
 
             dombra.setUrlImage(utilImage.saveFile(file, uploadPath));
             dombra.getPropertyDombra().setDombra(dombra);
-            dombra.setTypeCategory(TypeCategory.DOMBRA);
+            dombra.setSubTypeCategory(SubTypeCategory.DOMBRA);
 
             dombraService.saveOrUpdate(dombra);
 
@@ -125,11 +127,11 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/delete-item", method = RequestMethod.POST)
-    public @ResponseBody ValidationResponse deleteItem(@RequestParam("itemId") String itemId, @RequestParam("categoryType") TypeCategory typeCategory) {
+    public @ResponseBody ValidationResponse deleteItem(@RequestParam("itemId") String itemId, @RequestParam("categoryType") SubTypeCategory subTypeCategory) {
         ValidationResponse res = new ValidationResponse();
         ErrorMessage message;
 
-        switch (typeCategory){
+        switch (subTypeCategory){
             case CAP:
                 Cap cap = capService.findById(Long.valueOf(itemId));
                 cap.setIsUsed(false);
