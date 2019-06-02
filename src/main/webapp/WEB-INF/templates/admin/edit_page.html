@@ -26,6 +26,7 @@
                         <input hidden th:field="*{id}">
                         <input hidden th:field="*{propertyCap.id}">
                         <input hidden th:field="*{urlImage}">
+                        <input hidden th:field="*{propertyCap.cap}">
                     </label>
                     <div class="details col-md-6">
                         <input class="product-title" th:field="*{name}"/>
@@ -67,6 +68,16 @@
                                         <option th:each="material : ${materialEnum}"
                                                 th:value="${material}"
                                                 th:text="${material.label}">
+                                        </option>
+                                    </select>
+                                </label>
+                            </li>
+                            <li><span>Размер: </span>
+                                <label>
+                                    <select th:field="*{propertyCap.sizeEnum}">
+                                        <option th:each="size : ${sizeEnum}"
+                                                th:value="${size}"
+                                                th:text="${size}">
                                         </option>
                                     </select>
                                 </label>
