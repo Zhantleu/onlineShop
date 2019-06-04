@@ -1,15 +1,16 @@
 package kz.aa.shop.onlineShop.controller.admin;
 
 import kz.aa.shop.onlineShop.model.User;
+import kz.aa.shop.onlineShop.model.item.ashekey_biym.Alqa;
 import kz.aa.shop.onlineShop.model.item.clothes.Cap;
 import kz.aa.shop.onlineShop.model.item.music.Dombra;
 import kz.aa.shop.onlineShop.model.order.CustomerOrder;
 import kz.aa.shop.onlineShop.model.property.enumeration.*;
-import kz.aa.shop.onlineShop.service.order.CustomerOrderService;
-import kz.aa.shop.onlineShop.service.music.DombraService;
-import kz.aa.shop.onlineShop.service.property.PropertyCapService;
 import kz.aa.shop.onlineShop.service.UserService;
 import kz.aa.shop.onlineShop.service.impl.item.CapServiceImpl;
+import kz.aa.shop.onlineShop.service.music.DombraService;
+import kz.aa.shop.onlineShop.service.order.CustomerOrderService;
+import kz.aa.shop.onlineShop.service.property.PropertyCapService;
 import kz.aa.shop.onlineShop.util.ErrorMessage;
 import kz.aa.shop.onlineShop.util.UtilImage;
 import kz.aa.shop.onlineShop.util.ValidationResponse;
@@ -23,12 +24,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 @PreFilter("authentication.principal.username != null")
@@ -68,6 +70,8 @@ public class AdminController {
         model.addAttribute("orders",customerOrderList);
         model.addAttribute("user", Objects.requireNonNullElseGet(user, User::new));
         model.addAttribute("dombra", new Dombra());
+        model.addAttribute("product", new Alqa());
+        model.addAttribute("subTypeCategory", SubTypeCategory.values());
         model.addAttribute("cap", new Cap());
         model.addAttribute("genderTypes", Gender.values());
         model.addAttribute("colorEnum", ColorEnum.values());

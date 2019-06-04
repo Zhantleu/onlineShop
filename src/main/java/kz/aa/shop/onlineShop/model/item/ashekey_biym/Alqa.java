@@ -1,9 +1,11 @@
 package kz.aa.shop.onlineShop.model.item.ashekey_biym;
 
-import kz.aa.shop.onlineShop.model.base.BaseEntity;
-
+import kz.aa.shop.onlineShop.model.base.BaseItemEntity;
 import kz.aa.shop.onlineShop.model.property.buym.PropertyAlqa;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -19,7 +21,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Alqa extends BaseEntity {
+public class Alqa extends BaseItemEntity {
     private String name;
 
     private Double price;

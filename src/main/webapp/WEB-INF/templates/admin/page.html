@@ -116,15 +116,13 @@
     <div class="tabContent">
         <h3>Буимдар</h3>
         <div class="container-fluid">
-            <form method="post" enctype="multipart/form-data" th:action="@{/admin/create-dombra}" th:object="${dombra}">
+            <form method="post" enctype="multipart/form-data" th:action="@{/admin/createItem}" th:object="${product}">
                 <p>Категория: <label>
-                    <select name="ashekey_cat">
-                        <option value="alqa">Alqa</option>
-                        <option value="bilezik">Bilezik</option>
-                        <option value="saqina">Saqina</option>
-                        <option value="shaspay">Shaspay</option>
-                        <option value="sholpy">Sholpy</option>
-                        <option value="syrga">Syrga</option>
+                    <select th:field="*{subTypeCategory}">
+                        <option th:text="${category}"
+                                th:each="category : ${subTypeCategory}"
+                                th:value="${category}">
+                        </option>
                     </select>
                 </label></p>
                 <p>Название: <label>
@@ -134,17 +132,19 @@
                     <input type="text" th:field="*{price}"/>
                 </label></p>
                 <p>Длина: <label>
-                    <input type="text" th:field="*{propertyDombra.length}"/>
+                    <input type="text" th:field="*{propertyAlqa.length}"/>
                 </label></p>
 
                 <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
                         <span>Выберите изображение</span>
-                        <input type="file" name="file" id="imgDombra">
+                        <input type="file" name="file" id="img">
                         <p th:if="${#fields.hasErrors('urlImage')}" th:errors="*{url}"></p>
                     </div>
                 </div>
-                <p><input type="submit" value="Создать" th:href="@{/admin/page}"/></p>
+                <button type="submit" name="type"
+                        value="alqa">Создать
+                </button>
             </form>
         </div>
     </div>
@@ -190,7 +190,8 @@
                             <li class="without--dot"><label th:text="*{order.orderTime}"></label></li>
                         </td>
                         <td class="text-left">
-                            <li class="without--dot"><label th:text="*{order.user.name + ' ' + order.user.lastName}"></label></li>
+                            <li class="without--dot"><label
+                                    th:text="*{order.user.name + ' ' + order.user.lastName}"></label></li>
                         </td>
                         <td class="text-center" id="tovarPrice"><a href="#">Click</a></td>
 
@@ -203,8 +204,8 @@
                 </table>
             </div>
         </div>
-            <!-- End Table -->
-</div>
+        <!-- End Table -->
+    </div>
 </div>
 <!-- TAB ORDERS END -->
 
