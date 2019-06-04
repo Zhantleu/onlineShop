@@ -51,7 +51,7 @@ public class CategoryController {
                         Page<Alqa> pageAlgaList = alqaService.findAllByIsUsedTrue(pageable);
                         model.addAttribute("products", pageAlgaList);
                         utilControllers.pageCountNumber(model, pageAlgaList.getTotalPages());
-                        return "view/alqa";
+                        return "view/buyimdar/alqa";
                     case "bilezik":
                         Page<Bilezik> pageList = bilezikService.findAllByIsUsedTrue(pageable);
                         model.addAttribute("products", pageList);

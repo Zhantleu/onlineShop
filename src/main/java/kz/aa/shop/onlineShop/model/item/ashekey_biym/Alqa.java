@@ -1,7 +1,8 @@
 package kz.aa.shop.onlineShop.model.item.ashekey_biym;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyAlqa;
+
+import kz.aa.shop.onlineShop.model.property.buym.PropertyAlqa;
 import lombok.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicInsert;

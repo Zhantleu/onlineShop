@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.clothes;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyKoylek;
+import kz.aa.shop.onlineShop.model.property.clothes.PropertyKoylek;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;

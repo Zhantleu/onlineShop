@@ -1,7 +1,7 @@
 package kz.aa.shop.onlineShop.model.item.music;
 
 import kz.aa.shop.onlineShop.model.base.BaseEntity;
-import kz.aa.shop.onlineShop.model.property.PropertyTyaqtas;
+import kz.aa.shop.onlineShop.model.property.music.PropertyTyaqtas;
 import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
